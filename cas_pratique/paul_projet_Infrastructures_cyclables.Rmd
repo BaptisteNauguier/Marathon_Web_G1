@@ -1,0 +1,174 @@
+---
+title: "Projet : Infrastructures cyclables"
+author: "d-sidd\nhttps://d-sidd.github.io/"
+date: 'Avril 2023'
+output: 
+    html_document:
+      number_sections: true
+      toc_depth: 2
+      toc: true
+      toc_float:
+        toc_collapsed: true
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE,error = FALSE,message = FALSE,eval=TRUE)
+htmltools::img(src =file.path(getwd(), "Images","no_accident.png"),
+               alt = 'logo',
+               style = 'position:absolute; top:0; right:0; padding:20px 20px 10px 10px; width: auto; height: 200px')
+
+```
+
+# Contexte
+
+## Objectif
+
+**Ambition :** proposer un cadre de vie dans lequel les flux cyclistes sont sécurisés et des moyens sont mis en oeuvre pour systématiquement réduire l'occurrence d'accidents impliquant des cyclistes
+
+**Analyse a posteriori :** Identifier les zones accidentogènes d'un territoire pour les cyclistes à travers l'analyse des flux et des caractéristiques des lieux d'accident
+
+**Analyse a priori :** identifier les zones susceptibles de présenter des caractéristiques accidentogènes sur la base de l'analyse a posteriori
+
+**Reproductibilité :** Proposer un modèle d'analyse générique pour permettre de réaliser l'évaluation d'un territoire par une collectivité, une association ou des usagers avertis avec comme objectif de proposer des évolutions de la voirie susceptible de réduire l'accidentologie
+
+## Besoins
+
+**T1** - Définir les caractéristiques types des zones accidentogènes à travers l'analyse fine de la voirie, des flux, de la météo et de toutes propriétés discriminantes
+
+**T2 -** Identifier les zones d'un territoire géographique susceptible de présenter des critères accidentogènes sur la base de ces critères
+
+**Data \>** Produire un module d'analyse open-source, documenté et partagé pour les zones accidentogènes.
+
+**Communication \>** Promouvoir le modèle d'analyse à travers un site internet, un github et des outils de communication à destination des cibles identifiés
+
+## Cibles
+
+**1- Les collectivités** pour les aider à prioriser les investissements dans les équipements de sécurisation de voirie des flux cyclistes sur leurs territoires.
+
+**2- Les associations de cyclistes** pour analyser les territoires et appuyer leurs plaidoyers pour demander des évolutions des pratiques des collectivités
+
+**3- Les fournisseurs de service d'itinéraires** cyclistes pour intégrer le contournement de zones identifiables comme plus accidentogènes dans leurs calculs
+
+# Les données
+
+## Cas pratiques sur Montpellier Méditerranée Métropole
+
+```{r chargement_package}
+library(tidyverse)
+library(sf)
+library(tmap)
+```
+
+```{r chargement donnees}
+#geovelo
+epci_geovelo_202301 <- readRDS("data MMM/geovelo/epci_geovelo_202301.rds")
+
+#onisr
+caracteristiques_epci <- readRDS("data MMM/onisr/caracteristiques_epci.rds")
+lieux_epci <- readRDS("data MMM/onisr/lieux_epci.rds")
+usagers_epci <- readRDS("data MMM/onisr/usagers_epci.rds")
+vehicules_epci <- readRDS("data MMM/onisr/vehicules_epci.rds")
+Accidents_velo_epci_sf <- readRDS("data MMM/onisr/Accidents_velo_epci_sf.rds")
+Tampon_Accidents_velo_sf <- readRDS("data MMM/onisr/Tampon_Accidents_velo_sf.rds")
+
+#insee
+communes_epci <- readRDS("data MMM/INSEE/communes_epci.rds")
+epci <- readRDS("data MMM/INSEE/epci.rds")
+
+#osm
+Tampon_Accidents_velo_osm_sf <- readRDS("data MMM/OSM/Tampon_Accidents_velo_osm_sf.rds")
+
+#insee données carroyées
+carreauxSf <- readRDS("data MMM/INSEE/carreauxSf.rds")
+
+#Ecole
+OSM_Montpellier_ecole_sf <- readRDS("data MMM/Ecole/OSM_Montpellier_ecole_sf.rds")
+OSM_Metropole_ecole_sf <- readRDS("data MMM/Ecole/OSM_Metropole_ecole_sf.rds")
+
+#Carte scolaire
+carte_sco_Montpellier_propre_sf <- readRDS("data MMM/Ecole/carte_sco_Montpellier_propre_sf.rds")
+
+#Flux scolaires
+Ensemble_temp_trajet_carreaux_200m_select_explode <- readRDS("data MMM/Trajets_dom_ecole/Ensemble_temp_trajet_carreaux_200m_select_explode.rds")
+
+
+```
+
+### L'offre cyclable
+
+#### Analyse descriptive et cartographie de l'offre cyclable
+
+Individu: Aménagement cyclable
+
+n = 2292
+
+Variables:
+
+le "*d" signifie à droite, le "*g" signifie à gauche
+
+-   ame_d = type d'aménagement (variable qualitative nominale)
+
+-   regime_d = lieu du type d'aménagement (var quali nomi)
+
+-   sens_d = sens de l'aménagement (var quali nomi)
+
+-   statut_d = le statut de l'aménagement (var quali nomi)
+
+-   revet_d = la matière de l'aménagement (var quali nomi)
+
+-   data_maj = la date à laquelle l'aménagement a été crée (var quali nomi)
+
+-   trafic_vit = la limitation de vitesse de la route à côté de la piste cyclable (var quanti discrète)
+
+-   local_d = où se trouve l'aménagement par rapport à la route (var quali nomi)
+
+-   lumiere = si l'aménagement est allumé (TRUE) ou pas (FALSE) (var qualitative nominale)
+
+-   largeur = la largeur de l'aménagement (var quanti discrète)
+
+-   geometry = la ligne correspondant à l'aménagement
+
+```{r carte}
+epci_geovelo_202301$trafic_vit = as.character(epci_geovelo_202301$trafic_vit)
+
+table(epci_geovelo_202301$lumiere)
+
+carte_base <- tm_shape(communes_epci)+
+  tm_polygons(col = "grey",border.col = "white")+
+  tm_shape(epci)+
+  tm_borders(col = "#666666",lwd=3)
+
+
+carte_geovelo_vitesse <- tm_shape(epci_geovelo_202301 %>% 
+                     mutate(ame_d=str_trunc(ame_d,15,side="right",ellipsis="...")) 
+)+
+  tm_lines(col="trafic_vit",title.col = "Vitesse maximale possible",
+           palette="Set1", lwd = 4)
+
+carte_accidents <- tm_shape(Accidents_velo_epci_sf %>% 
+                              select(-adresse,-adr))+
+  tm_dots(col="red", size = 0.03)+
+  tm_add_legend(type = "fill",labels = "Accidents",col="red")
+
+
+carte_tampons_accidents <- tm_shape(Tampon_Accidents_velo_sf %>% 
+                                      select(-adresse,-adr))+
+  tm_fill(col="navy",alpha = 0.5)
+
+
+
+carte_finale <- carte_base+
+  carte_tampons_accidents+
+  carte_geovelo_vitesse+
+  carte_accidents+
+  tm_layout(main.title ='Aménagements cyclables de Montpellier Méditerranée Métropole',
+            main.title.size=1,
+            inner.margins=0.1,
+            legend.outside = T,
+            legend.text.size=0.4)+
+  tm_credits("Source: géovélo, onisr, insee",position = c(0,0))+
+  tm_compass()
+
+
+tmap_leaflet(carte_finale)
+```

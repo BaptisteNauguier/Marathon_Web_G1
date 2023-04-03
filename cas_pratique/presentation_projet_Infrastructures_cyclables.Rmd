@@ -109,7 +109,7 @@ carte_geovelo <- tm_shape(epci_geovelo_202301 %>%
                      mutate(ame_d=str_trunc(ame_d,15,side="right",ellipsis="..."))
 )+
   tm_lines(col="ame_d",title.col = "Type\nd'aménagement",
-           palette="viridis") 
+           palette="viridis")
 
 carte_accidents <- tm_shape(Accidents_velo_epci_sf %>% 
                               select(-adresse,-adr))+
