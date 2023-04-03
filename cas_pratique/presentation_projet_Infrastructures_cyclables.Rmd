@@ -1,0 +1,338 @@
+---
+title: "Projet : Infrastructures cyclables"
+author: "d-sidd\nhttps://d-sidd.github.io/"
+date: 'Avril 2023'
+output: 
+    html_document:
+      number_sections: true
+      toc_depth: 2
+      toc: true
+      toc_float:
+        toc_collapsed: true
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE,error = FALSE,message = FALSE,eval=TRUE)
+htmltools::img(src =file.path(getwd(), "Images","no_accident.png"),
+               alt = 'logo',
+               style = 'position:absolute; top:0; right:0; padding:20px 20px 10px 10px; width: auto; height: 200px')
+
+```
+
+# Contexte
+
+## Objectif
+
+**Ambition :** proposer un cadre de vie dans lequel les flux cyclistes sont sécurisés et des moyens sont mis en oeuvre pour systématiquement réduire l'occurrence d’accidents impliquant des cyclistes
+
+**Analyse a posteriori :** Identifier les zones accidentogènes d’un territoire pour les cyclistes à travers l’analyse des flux et des caractéristiques des lieux d’accident
+
+**Analyse a priori :** identifier les zones susceptibles de présenter des caractéristiques accidentogènes sur la base de l’analyse a posteriori
+
+**Reproductibilité :** Proposer un modèle d’analyse générique pour permettre de réaliser l’évaluation d’un territoire par une collectivité, une association ou des usagers avertis avec comme objectif de proposer des évolutions de la voirie susceptible de réduire l’accidentologie 
+
+## Besoins
+
+**T1** - Définir les caractéristiques types des zones accidentogènes à travers l’analyse fine de la voirie, des flux, de la météo et de toutes propriétés discriminantes 
+
+**T2 -** Identifier les zones d’un territoire géographique susceptible de présenter des critères accidentogènes sur la base de ces critères
+
+**Data >** Produire un module d’analyse open-source, documenté et partagé pour les zones accidentogènes.
+
+**Communication >** Promouvoir le modèle d’analyse à travers un site internet, un github et des outils de communication à destination des cibles identifiés
+
+## Cibles
+
+**1- Les collectivités** pour les aider à prioriser les investissements dans les équipements de sécurisation de voirie des flux cyclistes sur leurs territoires. 
+
+**2- Les associations de cyclistes** pour analyser les territoires et appuyer leurs plaidoyers pour demander des évolutions des pratiques des collectivités 
+
+**3- Les fournisseurs de service d’itinéraires** cyclistes pour intégrer le contournement de zones identifiables comme plus accidentogènes dans leurs calculs
+
+
+# Les données
+
+## Cas pratiques sur Montpellier Méditerranée Métropole
+
+```{r chargement_package}
+library(tidyverse)
+library(sf)
+library(tmap)
+```
+
+```{r chargement donnees}
+#geovelo
+epci_geovelo_202301 <- readRDS("data MMM/geovelo/epci_geovelo_202301.rds")
+
+#onisr
+caracteristiques_epci <- readRDS("data MMM/onisr/caracteristiques_epci.rds")
+lieux_epci <- readRDS("data MMM/onisr/lieux_epci.rds")
+usagers_epci <- readRDS("data MMM/onisr/usagers_epci.rds")
+vehicules_epci <- readRDS("data MMM/onisr/vehicules_epci.rds")
+Accidents_velo_epci_sf <- readRDS("data MMM/onisr/Accidents_velo_epci_sf.rds")
+Tampon_Accidents_velo_sf <- readRDS("data MMM/onisr/Tampon_Accidents_velo_sf.rds")
+
+#insee
+communes_epci <- readRDS("data MMM/INSEE/communes_epci.rds")
+epci <- readRDS("data MMM/INSEE/epci.rds")
+
+#osm
+Tampon_Accidents_velo_osm_sf <- readRDS("data MMM/OSM/Tampon_Accidents_velo_osm_sf.rds")
+
+#insee données carroyées
+carreauxSf <- readRDS("data MMM/INSEE/carreauxSf.rds")
+
+#Ecole
+OSM_Montpellier_ecole_sf <- readRDS("data MMM/Ecole/OSM_Montpellier_ecole_sf.rds")
+OSM_Metropole_ecole_sf <- readRDS("data MMM/Ecole/OSM_Metropole_ecole_sf.rds")
+
+#Carte scolaire
+carte_sco_Montpellier_propre_sf <- readRDS("data MMM/Ecole/carte_sco_Montpellier_propre_sf.rds")
+
+#Flux scolaires
+Ensemble_temp_trajet_carreaux_200m_select_explode <- readRDS("data MMM/Trajets_dom_ecole/Ensemble_temp_trajet_carreaux_200m_select_explode.rds")
+
+
+```
+
+### L'offre cyclable
+
+#### Cartographie de l'offre cyclable 
+
+```{r carte}
+carte_base <- tm_shape(communes_epci)+
+  tm_polygons(col = "grey",border.col = "white")+
+  tm_shape(epci)+
+  tm_borders(col = "#666666",lwd=3)
+
+carte_geovelo <- tm_shape(epci_geovelo_202301 %>% 
+                     mutate(ame_d=str_trunc(ame_d,15,side="right",ellipsis="..."))
+)+
+  tm_lines(col="ame_d",title.col = "Type\nd'aménagement",
+           palette="viridis") 
+
+carte_accidents <- tm_shape(Accidents_velo_epci_sf %>% 
+                              select(-adresse,-adr))+
+  tm_dots(col="red")+
+  tm_add_legend(type = "fill",labels = "Accidents",col="red")
+
+carte_tampons_accidents <- tm_shape(Tampon_Accidents_velo_sf %>% 
+                                      select(-adresse,-adr))+
+  tm_fill(col="navy",alpha = 0.5)
+
+
+
+carte_finale <- carte_base+
+  carte_tampons_accidents+
+  carte_geovelo+
+  carte_accidents+
+  tm_layout(main.title ='Aménagements cyclables de Montpellier Méditerranée Métropole',
+            main.title.size=1,
+            inner.margins=0.1,
+            legend.outside = T,
+            legend.text.size=0.4)+
+  tm_credits("Source: géovélo, onisr, insee",position = c(0,0))+
+  tm_compass()
+
+tmap_leaflet(carte_finale)
+
+
+```
+
+#### Brève caractérisation des zones d'accidents
+
+```{r tag_osm_accidents}
+str_split(Tampon_Accidents_velo_osm_sf$other_tags,",") %>% 
+  unlist() %>% 
+  unique() %>% 
+  str_split_fixed("=>",2) %>% 
+  as_tibble() %>% 
+  setNames(c("tag","valeur")) %>% 
+  filter(tag!="") %>% 
+  DT::datatable()
+```
+
+### Le besoin cyclable
+
+#### Cartographie des écoles et des enfants en âge d'être scolarisés
+
+```{r carte_finale_age_ecole}
+carte_age2 <- carreauxSf %>% 
+  select(Ind_4_5,Ind_6_10) %>%
+  mutate("Pop 2017"=Ind_4_5+Ind_6_10) %>% 
+  select(-Ind_4_5,-Ind_6_10) %>% 
+  tm_shape()+
+  tm_fill(col = "Pop 2017",
+          title = "Population 2017",
+          style = "fixed",
+          breaks = c(-Inf,1,2,5,10,20,50,Inf),
+          labels = tibble(inf=c(1,2,5,10,20),
+                          sup=c(2,5,10,20,50)) %>% 
+            mutate(label=paste0("De ",inf," à ", sup)) %>% 
+            pull(label) %>% 
+            c("0",.,"Plus de 50"),
+          legend.format = list(text.separator="à",
+                               text.less.than="Moins de",
+                               text.or.more="ou plus"),
+          palette = "-viridis")
+
+carte_ecole2 <- tm_shape(OSM_Metropole_ecole_sf )+
+  tm_dots(col="Age", palette=c("#FEB4B6","#D1181D"))
+
+
+carte_finale_age_ecole2 <- carte_base+
+  carte_age2+
+  carte_ecole2+
+  tm_layout(main.title ='Répartition des enfants sur le territoire en 2017',
+            main.title.size=1,
+            inner.margins=0.1,
+            legend.outside = T,
+            legend.text.size=0.4)+
+  tm_credits("Source: insee, données carroyées - 2017; Ministère de l'éducation, 2022;",position = c(0,0))+
+  tm_compass()
+
+tmap_leaflet(carte_finale_age_ecole2)
+```
+
+Pour l'accès aux écoles, le besoin de sécurisation se situe du domicile de l'enfant à son école. Lorsqu'il n'y a qu'une école dans la commune, nous pouvons éventuellement faire l'hypothèse que tous les enfants vont à la même unique école communale. Ainsi, nous pouvons  tracer les itinéraires à sécuriser.
+
+En revanche, lorsqu'il y a plusieurs écoles (12 communes concernées sur Montpellier Méditerranée Métropole), il est nécéssaire de s'appuyer sur une carte scolaire de la commune quand elle est disponible. C'est par exemple le cas pour la ville de Montpellier.
+
+```{r tab_nb_ecole_commune}
+OSM_Metropole_ecole_sf %>%
+  as_tibble() %>% 
+  group_by(Type  ,libgeo ) %>% 
+  count(name="Nombre")  %>% 
+  ungroup() %>% 
+  spread(Type,Nombre) %>% 
+  mutate_all(replace_na,0) %>% 
+  DT::datatable()
+```
+
+23 communes de MMM n'ont qu'une école par niveau.
+
+```{r carte_scolaire}
+ carte_ecole_montp <- tm_shape(OSM_Montpellier_ecole_sf %>% 
+                              mutate(objectid=factor(objectid)))+
+    tm_dots(col="objectid",legend.show = FALSE)
+
+  carte_carte_scolaire__montp <- tm_shape(carte_sco_Montpellier_propre_sf %>% 
+                                       mutate(objectid=factor(objectid)))+
+    tm_polygons(col="objectid",lty = "dotted",lwd=2,legend.show = FALSE,alpha = 0.9)
+
+  carte_finale_age_ecole_carte_scolaire <- carte_carte_scolaire__montp+
+    carte_ecole_montp+
+    tm_layout(main.title ='Carte scolaire sur la ville de Montpellier',
+              main.title.size=1,
+              inner.margins=0.1,
+              legend.outside = T,
+              legend.text.size=0.4)+
+    tm_credits("Source: Montpellier Mediterranée Metropole, 2022;",position = c(0,0))+
+    tm_compass()
+  
+  tmap_leaflet(carte_finale_age_ecole_carte_scolaire)
+```
+
+
+### Flux de circulation potentiels à vélo
+
+#### Carte exemple de densité des flux de circulation potentiels à vélo en direction d'une école
+
+```{r carte_exemple_densite_flux}
+temp_trajet_carreaux_200m_ecole_select_explode <- readRDS("data MMM/Trajets_dom_ecole/temp_trajet_carreaux_200m_ecole_select_explode.rds")
+liste_osm_id_a_calculer <- readRDS("data MMM/Trajets_dom_ecole/liste_osm_id_a_calculer.rds")
+
+carte_ecole_exemple <- tm_shape(OSM_Metropole_ecole_sf %>% 
+                                  filter(osm_id ==liste_osm_id_a_calculer[1]) )+
+  tm_dots(col="#fd6467",size=0.2)+
+  tm_add_legend(type = "fill",labels = "Ecole et limites de la carte scolaire associée",col="#fd6467")
+
+
+carte_carte_scolaire_exemple <- tm_shape(carte_sco_Montpellier_propre_sf%>% 
+                                           filter(osm_id ==liste_osm_id_a_calculer[1],
+                                                  Age==(
+                                                    OSM_Metropole_ecole_sf %>% 
+                                                      filter(osm_id ==liste_osm_id_a_calculer[1]) %>% 
+                                                      as_tibble() %>% 
+                                                      pull(Age)
+                                                  )))+
+  tm_polygons(border.col="#fd6467",lty = "dotted",lwd=2.5,legend.show = FALSE,alpha = 0,interactive=FALSE)
+
+icon_accident <- tmap_icons(file = "Images/burst.png")
+
+carte_accidents_exemple <- tm_shape(st_intersection(
+  Accidents_velo_epci_sf,
+  carte_sco_Montpellier_propre_sf%>%
+    filter(osm_id ==liste_osm_id_a_calculer[1],
+           Age==(
+             OSM_Metropole_ecole_sf %>%
+               filter(osm_id ==liste_osm_id_a_calculer[1]) %>%
+               as_tibble() %>%
+               pull(Age)
+           ))
+)
+)+
+  tm_symbols(shape = 8,size=1,col="#f8b323")
+
+
+
+
+tmap_leaflet(carte_carte_scolaire_exemple+
+               tm_shape(temp_trajet_carreaux_200m_ecole_select_explode)+
+               tm_lines(col="Pop",lwd=5,style = "cont",id="id",palette = "-viridis",
+                        title.col = "Population concernée")+
+               carte_ecole_exemple+
+               carte_accidents_exemple+
+               tm_add_legend(type = "fill",
+                             labels = c("Ecole et limites de la carte scolaire associée",
+                                        "Accidents"),
+                             col=c("#fd6467","#f8b323")
+               )
+               )
+
+```
+
+
+#### Carte exemple de densité des flux de circulation potentiels à vélo en direction de l'ensemble des écoles disposant d'une carte scolaire (ou commune n'ayant qu'une école sur son territoire)
+
+```{r carte_ensemble_flux}
+carte_ecole <- tm_shape(OSM_Metropole_ecole_sf)+
+  tm_dots(col="#fd6467",size=0.2)+
+  tm_add_legend(type = "fill",labels = "Ecole et limites de la carte scolaire associée",col="#fd6467")+
+  tm_facets(by="Age")
+
+
+carte_accidents <- tm_shape(Accidents_velo_epci_sf %>% 
+                              select(-adr,-adresse))+
+  tm_dots(col="#f8b323",size=0.2)
+  
+tmap_leaflet(
+  tm_shape(Ensemble_temp_trajet_carreaux_200m_select_explode %>% 
+             filter(Pop>0) %>% 
+             left_join(as_tibble(OSM_Metropole_ecole_sf) %>% 
+                         select(-geometry) %>% 
+                         mutate(osm_id=as.character(osm_id)),by="osm_id"))+
+    tm_lines(col="Pop",lwd=5,style = "fixed",id="id",
+             title.col = "Population concernée",
+             breaks = c(-Inf,5,10,20,50,Inf),
+             labels = tibble(inf=c(3,5,10,20),
+                             sup=c(5,10,20,50)) %>% 
+               mutate(label=paste0("De ",inf," à ", sup)) %>% 
+               pull(label) %>% 
+               c("Moins de 3",.,"Plus de 50"),
+             legend.format = list(text.separator="à",
+                                  text.less.than="Moins de",
+                                  text.or.more="ou plus"),
+             palette = "-viridis")+
+    tm_facets(by="Age")+
+    carte_ecole+
+    carte_accidents+
+    tm_add_legend(type = "fill",
+                  labels = c("Ecole et limites de la carte scolaire associée",
+                             "Accidents"),
+                  col=c("#fd6467","#f8b323")
+    )
+)
+
+```
+
