@@ -1,0 +1,1058 @@
+highway;other_tags;ame_d;ame_g
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""horse""=>""no"",""lit""=>""yes"",""ref:MMM""=>""2010/NT/R/DGU-P393"",""surface""=>""concrete""";VOIE VERTE;VOIE VERTE
+path;"""bicycle""=>""designated"",""bridge""=>""yes"",""description""=>""2010/NT/R/DGU-P488"",""foot""=>""designated"",""layer""=>""1"",""lit""=>""yes"",""motor_vehicle""=>""no"",""segregated""=>""no"",""smoothness""=>""excellent"",""surface""=>""fine_gravel""";VOIE VERTE;VOIE VERTE
+secondary;"""cycleway""=>""track"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""lanes:forward""=>""2"",""maxspeed""=>""30""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""bridge""=>""yes"",""cycleway""=>""track"",""description:covid19""=>""Piste cyclable temporaire"",""lanes""=>""2"",""lanes:backward""=>""2"",""layer""=>""1"",""maxspeed""=>""50"",""surface""=>""asphalt"",""was:lanes""=>""3""";PISTE CYCLABLE;PISTE CYCLABLE
+primary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""lanes:bus""=>""1"",""maxspeed""=>""50"",""oneway""=>""yes""";COULOIR BUS+VELO;AUCUN
+tertiary;"""cyclability""=>""acceptable"",""cycleway:left""=>""no"",""cycleway:right""=>""no"",""lane_markings""=>""no"",""lit""=>""yes"",""maxspeed""=>""30"",""parking:lane:left""=>""diagonal"",""parking:lane:right""=>""parallel"",""sidewalk""=>""left"",""sidewalk:left:bicycle""=>""yes"",""surface""=>""asphalt""";AUCUN;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""bridge""=>""yes"",""cycleway:both""=>""lane"",""lanes""=>""2"",""layer""=>""1"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cycleway:right""=>""lane"",""maxspeed""=>""30"",""parking:lane:both""=>""parallel"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+tertiary;"""cycleway:right""=>""track"",""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+residential;"""cycleway:left""=>""no"",""cycleway:right""=>""no"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""sidewalk""=>""left"",""smoothness""=>""good"",""source:maxspeed""=>""sign"",""source:width""=>""ARCore"",""surface""=>""asphalt"",""width""=>""3.3""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+residential;"""cycleway:right""=>""lane"",""junction""=>""roundabout"",""maxspeed""=>""30""";BANDE CYCLABLE;AUCUN
+tertiary;"""cycleway""=>""track"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""maxspeed:type""=>""FR:urban"",""oneway""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+tertiary;"""cycleway:right""=>""lane"",""cycleway:right:lane""=>""exclusive"",""junction""=>""roundabout"",""lane_markings""=>""no"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+residential;"""bicycle""=>""yes"",""cyclability""=>""good"",""cycleway""=>""opposite"",""maxspeed""=>""30"",""oneway""=>""yes"",""segregated""=>""no"",""surface""=>""asphalt"",""zone:maxspeed""=>""FR:30""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+primary;"""admin_level""=>""10"",""boundary""=>""administrative"",""busway""=>""lane"",""cyclability""=>""inadvisable"",""cycleway""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""4"",""maxspeed""=>""50"",""surface""=>""asphalt""";COULOIR BUS+VELO;COULOIR BUS+VELO
+cycleway;"""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""yes"",""lanes""=>""2"",""lit""=>""yes"",""segregated""=>""no"",""surface""=>""paving_stones""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway:surface""=>""asphalt"",""foot""=>""yes"",""footway:surface""=>""paving_stones"",""lit""=>""yes"",""segregated""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""foot""=>""yes"",""lit""=>""yes"",""oneway""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""oneway""=>""no""";VOIE VERTE;VOIE VERTE
+cycleway;"""cycleway:surface""=>""concrete"",""foot""=>""yes"",""footway:surface""=>""concrete"",""oneway""=>""no"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""cycleway:right""=>""lane"",""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+residential;"""cyclability""=>""good"",""cycleway""=>""opposite"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt"",""zone:maxspeed""=>""FR:30""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+residential;"""cyclability""=>""good"",""cycleway""=>""opposite"",""maxspeed""=>""30"",""oneway""=>""yes"",""parking:lane:left""=>""parallel"",""zone:maxspeed""=>""FR:30""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+residential;"""cycleway""=>""shared_lane"",""maxspeed""=>""30"",""oneway:bicycle""=>""no""";AUTRE;AUTRE
+cycleway;"""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cyclability""=>""good"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cyclability""=>""good"",""cycleway:surface""=>""asphalt"",""footway:surface""=>""concrete"",""lit""=>""yes"",""oneway""=>""no"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""cycleway:left""=>""no"",""cycleway:right""=>""track"",""cycleway:right:segregated""=>""no"",""maxspeed""=>""30"",""oneway""=>""yes"",""sidewalk""=>""right"",""surface""=>""asphalt"",""zone:maxspeed""=>""FR:30""";PISTE CYCLABLE;AUCUN
+residential;"""cycleway:left""=>""track"",""cycleway:left:segregated""=>""no"",""cycleway:right""=>""no"",""maxspeed""=>""30"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""sidewalk""=>""right"",""surface""=>""asphalt"",""zone:maxspeed""=>""FR:30""";AUCUN;DOUBLE SENS CYCLABLE PISTE
+residential;"""bicycle""=>""yes"",""cyclability""=>""good"",""cycleway""=>""opposite"",""maxspeed""=>""30"",""oneway""=>""yes"",""segregated""=>""yes"",""surface""=>""asphalt"",""zone:maxspeed""=>""FR:30""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+residential;"""bicycle""=>""designated"",""cycleway""=>""opposite"",""lanes""=>""1"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""sidewalk""=>""right"",""surface""=>""asphalt"",""zone:maxspeed""=>""FR:30""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+cycleway;NA;PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""cycleway:right""=>""track"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""smoothness""=>""excellent"",""source:maxspeed""=>""sign"",""start_date""=>""2021-10-31"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+primary;"""cycleway:right""=>""lane"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+residential;"""cycleway:right""=>""lane""";BANDE CYCLABLE;AUCUN
+primary_link;"""bicycle""=>""yes"",""cycleway:right""=>""lane"",""destination""=>""Palavas"",""lanes""=>""1"",""oneway""=>""yes"",""ref""=>""M 986"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+primary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""maxspeed""=>""50"",""oneway""=>""yes""";COULOIR BUS+VELO;AUCUN
+primary;"""cyclability""=>""inadvisable"",""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""maxspeed""=>""50"",""oneway""=>""yes"",""surface""=>""asphalt"",""was:lanes""=>""3""";COULOIR BUS+VELO;AUCUN
+primary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""3"",""maxspeed""=>""50"",""oneway""=>""yes"",""ref:FR:FANTOIR""=>""341722415S""";COULOIR BUS+VELO;AUCUN
+primary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""maxspeed""=>""50"",""oneway""=>""yes"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+primary;"""admin_level""=>""10"",""bicycle""=>""yes"",""boundary""=>""administrative"",""cyclability""=>""inadvisable"",""cycleway:left""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""4"",""maxspeed""=>""50"",""ref:FR:FANTOIR""=>""341722415S"",""segregated""=>""no"",""surface""=>""asphalt""";AUCUN;COULOIR BUS+VELO
+residential;"""cycleway:left""=>""lane"",""maxspeed""=>""50""";AUCUN;BANDE CYCLABLE
+residential;"""cycleway:right""=>""lane"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+track;"""motor_vehicle""=>""no"",""tracktype""=>""grade2""";AUTRE;AUTRE
+residential;"""cycleway""=>""opposite"",""oneway""=>""yes"",""oneway:bicycle""=>""no""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""foot""=>""yes"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes"",""start_date:cycleway:right""=>""2020-08"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""start_date:cycleway:right""=>""2020-08"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+secondary;"""cycleway:right""=>""track"",""description:covid19""=>""Piste cyclable temporaire"",""lanes""=>""1"",""oneway""=>""yes"",""surface""=>""asphalt"",""was:lanes""=>""2""";PISTE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""track"",""description:covid19""=>""Piste cyclable temporaire"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+secondary;"""bridge""=>""yes"",""cycleway""=>""track"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""lanes:forward""=>""2"",""layer""=>""1"",""maxspeed""=>""30"",""overtaking""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""cycleway:left""=>""lane"",""cycleway:left:lane""=>""exclusive"",""cycleway:left:oneway""=>""-1"",""cycleway:right""=>""lane"",""cycleway:right:lane""=>""exclusive"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""parking:lane:both""=>""parallel"",""sidewalk""=>""both"",""start_date""=>""2021-06-31"",""surface""=>""asphalt""";BANDE CYCLABLE;DOUBLE SENS CYCLABLE BANDE
+service;"""bicycle""=>""yes"",""cycleway:right""=>""lane"",""destination:forward""=>""Esplnanade de l'Europe"",""maxspeed""=>""30""";BANDE CYCLABLE;AUCUN
+service;"""access""=>""no"",""bicycle""=>""yes"",""bridge""=>""yes"",""layer""=>""1"",""loc_name""=>""Pont de Sète"",""maxspeed""=>""30"",""oneway""=>""yes"",""psv""=>""yes"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+tertiary;"""cycleway:left""=>""lane"",""cycleway:left:lane""=>""exclusive"",""cycleway:right""=>""no"",""maxspeed""=>""30""";AUCUN;BANDE CYCLABLE
+secondary;"""cycleway:left""=>""share_busway"",""cycleway:right""=>""no"",""cycleway:right:lane""=>""advisory"",""lanes""=>""2"",""lanes:backward""=>""1"",""maxspeed""=>""30"",""oneway""=>""no"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";AUCUN;COULOIR BUS+VELO
+secondary;"""busway:left""=>""lane"",""cycleway:left""=>""share_busway"",""cycleway:right""=>""lane"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""maxspeed:type""=>""FR:urban"",""parking:lane:right""=>""parallel"",""sidewalk""=>""both"",""surface""=>""asphalt""";BANDE CYCLABLE;COULOIR BUS+VELO
+primary;"""cyclability""=>""good"",""cycleway:right""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""maxspeed""=>""50"",""oneway""=>""yes"",""source:maxspeed""=>""sign""";PISTE CYCLABLE;AUCUN
+primary;"""cycleway:right""=>""lane"",""maxspeed""=>""70"",""oneway""=>""yes"",""ref""=>""M 65"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+primary;"""cycleway:both""=>""lane"",""cycleway:both:lane""=>""advisory"",""maxspeed""=>""70"",""ref""=>""M 65"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""admin_level""=>""11"",""boundary""=>""administrative"",""cycleway""=>""lane"",""maxspeed""=>""30"",""parking:lane:both""=>""diagonal"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cycleway:both""=>""lane"",""cycleway:both:lane""=>""exclusive"",""lanes""=>""2"",""maxspeed""=>""30"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""cycleway:right""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""turn:lanes""=>""left;through|right"",""was:lanes""=>""2""";PISTE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""lane"",""cycleway:right:lane""=>""exclusive"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cyclability""=>""acceptable"",""cycleway:both""=>""lane"",""cycleway:both:lane""=>""exclusive"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""sidewalk""=>""both"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""cycleway:both""=>""lane"",""cycleway:both:lane""=>""exclusive"",""lanes""=>""2"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""cycleway:right""=>""lane"",""maxspeed""=>""30"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+service;"""access""=>""no"",""bicycle""=>""yes"",""bridge""=>""yes"",""foot""=>""yes"",""layer""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""psv""=>""yes"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+tertiary;"""cycleway:left""=>""track"",""cycleway:left:start_date""=>""2020-01-28"",""description""=>""covid19 : piste cyclable temporaire"",""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";AUCUN;PISTE CYCLABLE
+residential;"""cycleway:right""=>""lane"",""maxspeed""=>""30"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""source:maxspeed""=>""sign"",""surface""=>""asphalt"",""was:lanes""=>""2""";PISTE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""designated"",""oneway""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""yes"",""oneway""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;AUCUN
+cycleway;"""smoothness""=>""excellent"",""start_date:cycleway""=>""2018"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""cycleway""=>""shared_lane"",""oneway:bicycle""=>""no""";AUTRE;AUTRE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""oneway""=>""no"",""segregated""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+tertiary;"""cycleway:left""=>""track"",""cycleway:left:oneway""=>""-1"",""cycleway:right""=>""no"",""lanes""=>""1"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""sidewalk""=>""both"",""sidewalk:both:surface""=>""asphalt"",""smoothness""=>""good"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE PISTE
+residential;"""cycleway:left""=>""no"",""cycleway:right""=>""track"",""lit""=>""yes"",""maxspeed""=>""30"",""maxspeed:type""=>""FR:urban"",""oneway""=>""yes"",""sidewalk""=>""right"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+residential;"""cycleway:left""=>""opposite_track"",""foot""=>""yes"",""lanes""=>""1"",""lit""=>""yes"",""maxspeed""=>""30"",""motor_vehicle""=>""yes"",""oneway""=>""yes"",""smoothness""=>""good"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE PISTE
+residential;"""cycleway:right""=>""lane"",""maxspeed""=>""30""";BANDE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""lit""=>""yes"",""oneway""=>""yes"",""ref""=>""M 21"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""oneway""=>""yes"",""ref""=>""M 21"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+cycleway;"""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""track"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""foot""=>""yes"",""motorcar""=>""no"",""motorcycle""=>""yes"",""segregated""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+tertiary;"""alt_name""=>""Avenue du Professeur Louis Ravaz"",""cycleway:left""=>""no"",""cycleway:right""=>""lane"",""cycleway:right:lane""=>""exclusive"",""lanes""=>""3"",""lanes:forward""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""sidewalk""=>""both"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cycleway:right""=>""lane"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""no""";BANDE CYCLABLE;AUCUN
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cycleway:right""=>""lane"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""no"",""parking:lane:both""=>""parallel"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+residential;"""cycleway""=>""opposite"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+residential;"""cycleway""=>""opposite"",""maxspeed""=>""30"",""oneway""=>""yes"",""ref:FR:FANTOIR""=>""341720180M"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+living_street;"""cycleway""=>""opposite"",""lit""=>""yes"",""maxspeed""=>""20"",""oneway""=>""yes"",""smoothness""=>""good"",""source:width""=>""ARCore"",""surface""=>""asphalt"",""width""=>""3.5""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+living_street;"""cycleway""=>""opposite"",""maxspeed""=>""20"",""oneway""=>""yes"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+living_street;"""cycleway""=>""opposite"",""maxspeed""=>""20"",""oneway""=>""yes""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+residential;"""cycleway""=>""opposite"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""sidewalk""=>""both"",""sidewalk:both:surface""=>""asphalt"",""smoothness""=>""excellent"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cycleway:right""=>""lane"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""maxspeed:type""=>""sign"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+primary;"""cycleway:left""=>""share_busway"",""cycleway:right""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""4"",""lit""=>""yes"",""maxspeed""=>""50"",""sidewalk""=>""both"",""surface""=>""asphalt""";PISTE CYCLABLE;COULOIR BUS+VELO
+tertiary;"""cycleway""=>""lane"",""maxspeed""=>""30"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+residential;"""bicycle""=>""yes"",""cycleway""=>""lane"",""maxspeed""=>""30""";BANDE CYCLABLE;BANDE CYCLABLE
+residential;"""bicycle""=>""yes"",""cycleway""=>""lane"",""maxspeed""=>""30"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+residential;"""cycleway:both""=>""lane"",""cycleway:both:lane""=>""advisory"",""lit""=>""yes"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""1"",""oneway""=>""yes"",""ref""=>""M 21"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+residential;"""cycleway""=>""lane"",""maxspeed""=>""30""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""cycleway:right""=>""share_busway"",""lanes""=>""1"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+residential;"""cycleway""=>""opposite"",""maxspeed""=>""30"",""oneway""=>""yes"",""zone:maxspeed""=>""FR:30""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+unclassified;"""cycleway:right""=>""lane"",""junction""=>""roundabout"",""maxspeed""=>""50""";BANDE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""lane"",""cycleway:right:lane""=>""exclusive"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes"",""parking:lane:right""=>""parallel"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+cycleway;"""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""lane"",""cycleway:right:lane""=>""advisory"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes"",""source:maxspeed""=>""FR:urban"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+cycleway;"""foot""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+primary;"""alt_name""=>""Bowstring"",""bridge""=>""yes"",""lanes""=>""2"",""layer""=>""1"",""motor_vehicle""=>""no"",""ref""=>""M 62E3"",""surface""=>""asphalt""";AUTRE;AUTRE
+cycleway;"""bicycle""=>""designated"",""lcn""=>""yes"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""designated"",""layer""=>""-1"",""oneway""=>""yes"",""tunnel""=>""yes""";PISTE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""description""=>""2010/NT/R/DGU-P487"",""foot""=>""designated""";VOIE VERTE;VOIE VERTE
+cycleway;"""access""=>""no"",""bicycle""=>""designated"",""bridge""=>""yes"",""foot""=>""designated"",""layer""=>""1"",""motor_vehicle""=>""no"",""surface""=>""wood""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""lcn""=>""yes"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+cycleway;"""bridge""=>""yes"",""layer""=>""1""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""cycleway:right""=>""lane"",""oneway""=>""yes"",""ref:FR:FANTOIR""=>""341980326H""";BANDE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes""";COULOIR BUS+VELO;AUCUN
+residential;"""cycleway:right""=>""lane"",""cycleway:start_date""=>""2017"",""maxspeed""=>""30""";BANDE CYCLABLE;AUCUN
+residential;"""access""=>""yes"",""bicycle""=>""yes"",""cyclability""=>""good"",""cycleway:right""=>""lane"",""doubleway""=>""yes"",""foot""=>""yes"",""maxspeed""=>""30"",""oneway""=>""no"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""horse""=>""no"",""surface""=>""asphalt"",""width""=>""3""";VOIE VERTE;VOIE VERTE
+path;"""bicycle""=>""designated"",""bridge""=>""yes"",""description""=>""2010/NT/R/DGU-P395"",""foot""=>""designated"",""horse""=>""no"",""layer""=>""1"",""lit""=>""yes"",""segregated""=>""no"",""surface""=>""wood""";VOIE VERTE;VOIE VERTE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""designated"",""footway""=>""sidewalk"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""cycleway:right""=>""share_busway"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""designated"",""footway""=>""sidewalk""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""lit""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bridge""=>""yes"",""layer""=>""1"",""lit""=>""yes"",""surface""=>""concrete""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""lit""=>""yes"",""surface""=>""concrete""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""bicycle""=>""yes"",""foot""=>""yes"",""maxspeed""=>""30"",""motor_vehicle""=>""no""";AUTRE;AUTRE
+secondary;"""cycleway""=>""lane"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""lanes:forward""=>""1"",""maxspeed""=>""30""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""cycleway:left""=>""track"",""description:covid19""=>""piste cyclable temporaire"",""maxspeed""=>""30"",""surface""=>""asphalt""";AUCUN;PISTE CYCLABLE
+residential;"""cycleway""=>""opposite"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt"",""zone:maxspeed""=>""FR:30""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+service;"""bicycle""=>""yes"",""foot""=>""yes"",""horse""=>""no"",""motorcar""=>""no"",""ski""=>""no"",""snowmobile""=>""no"",""surface""=>""asphalt""";AUTRE;AUTRE
+tertiary;"""cycleway:left""=>""opposite_lane"",""lanes""=>""3"",""maxspeed""=>""30"",""oneway""=>""yes"",""parking:lane:both""=>""parallel"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE BANDE
+residential;"""cycleway""=>""lane"",""maxspeed""=>""30"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+residential;"""cycleway:left""=>""track"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";AUCUN;PISTE CYCLABLE
+residential;"""cycleway:right""=>""lane"",""lit""=>""yes"",""maxspeed""=>""30"",""sidewalk""=>""both"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+residential;"""cycleway:right""=>""lane"",""cycleway:right:lane""=>""exclusive"",""junction""=>""roundabout"",""lit""=>""yes"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+residential;"""cycleway:left""=>""no"",""cycleway:right""=>""lane"",""cycleway:right:lane""=>""exclusive"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+service;"""access""=>""designated"",""bicycle""=>""yes"",""foot""=>""yes"",""goods""=>""permissive"",""hour_off""=>""11"",""hour_on""=>""8"",""maxspeed""=>""30"",""motorcar""=>""no"",""motorcycle""=>""no""";AUTRE;AUTRE
+cycleway;"""foot""=>""yes"",""segregated""=>""no"",""surface""=>""concrete:plates""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""foot""=>""yes"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+cycleway;"""bridge""=>""yes"",""layer""=>""1"",""surface""=>""wood""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""crossing""=>""marked"",""foot""=>""designated"",""footway""=>""crossing"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""crossing"",""foot""=>""no"",""horse""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""abandoned:railway""=>""rail"",""access""=>""no"",""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""railway""=>""abandoned"",""surface""=>""asphalt""";VOIE VERTE;VOIE VERTE
+path;"""abandoned:railway""=>""rail"",""bicycle""=>""designated"",""bridge""=>""yes"",""layer""=>""1"",""motor_vehicle""=>""no"",""railway""=>""abandoned"",""surface""=>""paved""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+path;"""abandoned:railway""=>""rail"",""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""railway""=>""abandoned"",""surface""=>""paved""";VOIE VERTE;VOIE VERTE
+secondary;"""alt_name""=>""Avenue du Professeur Louis Ravaz"",""cycleway""=>""lane"",""lanes""=>""3"",""lanes:backward""=>""2"",""maxspeed""=>""30"",""maxspeed:type""=>""FR:urban"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+living_street;"""cycleway""=>""opposite"",""lit""=>""yes"",""maxspeed""=>""20"",""oneway""=>""yes"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+secondary;"""cycleway:right""=>""track"",""lanes""=>""1"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""smoothness""=>""excellent"",""source:maxspeed""=>""FR:urban"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""bridge""=>""yes"",""foot""=>""designated"",""motor_vehicle""=>""no""";VOIE VERTE;VOIE VERTE
+secondary;"""bicycle""=>""yes"",""cycleway:right""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""3"",""maxspeed""=>""30"",""oneway""=>""no"",""parking:lane:right""=>""parallel"",""source:maxspeed""=>""sign"",""surface""=>""asphalt"",""turn:lanes:backward""=>""left;through|through"",""was:lanes""=>""4""";PISTE CYCLABLE;AUCUN
+residential;"""cycleway""=>""lane""";BANDE CYCLABLE;BANDE CYCLABLE
+residential;"""admin_level""=>""11"",""boundary""=>""administrative"",""cycleway:left""=>""no"",""cycleway:right""=>""no"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""sidewalk""=>""both"",""smoothness""=>""good"",""source:maxspeed""=>""sign"",""source:width""=>""ARCore"",""surface""=>""asphalt"",""width""=>""2.7""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+residential;"""cycleway:left""=>""lane"",""maxspeed""=>""30"",""oneway""=>""yes"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";AUCUN;BANDE CYCLABLE
+tertiary;"""cycleway:right""=>""lane"",""cycleway:right:lane""=>""exclusive"",""lane_markings""=>""no"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+secondary;"""bicycle""=>""yes"",""cycleway:right""=>""track"",""description""=>""covid19 : piste cyclable temporaire"",""lane_markings""=>""no"",""maxspeed""=>""30"",""noname""=>""yes"",""oneway""=>""yes"",""start_date:cycleway:right""=>""2021-01-28"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+residential;"""bicycle""=>""yes"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""surface""=>""paved"",""zone:maxspeed""=>""FR:30""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+residential;"""bicycle""=>""yes"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""surface""=>""paved""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""segregated""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+track;"""bicycle""=>""dismount"",""bridge""=>""yes"",""foot""=>""yes"",""horse""=>""yes"",""layer""=>""1"",""motor_vehicle""=>""no"",""surface""=>""fine_gravel"",""tracktype""=>""grade1""";AUTRE;AUTRE
+residential;"""cycleway:left""=>""lane"",""lit""=>""yes"",""maxspeed""=>""30""";AUCUN;BANDE CYCLABLE
+residential;"""cycleway""=>""opposite"",""maxspeed""=>""30"",""oneway""=>""yes"",""sidewalk""=>""both"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+residential;"""cycleway""=>""opposite"",""lit""=>""yes"",""maxspeed""=>""30"",""maxspeed:type""=>""FR:zone30"",""oneway""=>""yes"",""sidewalk""=>""both"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+residential;"""cycleway""=>""opposite"",""lit""=>""yes"",""maxspeed""=>""30"",""maxspeed:type""=>""FR:zone30"",""oneway""=>""yes"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+footway;"""bicycle""=>""yes"",""footway""=>""sidewalk""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+tertiary;"""cycleway""=>""lane"",""maxspeed""=>""30""";BANDE CYCLABLE;BANDE CYCLABLE
+residential;"""cycleway:left""=>""lane"",""cycleway:left:lane""=>""exclusive"",""cycleway:right""=>""track"",""description""=>""début 2018 : suppression voie tàd au et ajout bande cyclable"",""lanes:backward""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""surface""=>""asphalt"",""width""=>""5.7""";PISTE CYCLABLE;BANDE CYCLABLE
+tertiary;"""cycleway:right""=>""lane"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+residential;"""cycleway:right""=>""track"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""sidewalk""=>""both"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+tertiary;"""busway""=>""opposite_lane"",""cycleway:right""=>""lane"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+residential;"""cycleway""=>""lane"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cycleway:right""=>""lane"",""lit""=>""yes"",""maxspeed""=>""30"",""parking:lane:left""=>""parallel"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""description""=>""2010/NT/R/DGU-P503"",""foot""=>""designated"",""motor_vehicle""=>""no"",""segregated""=>""no"",""surface""=>""fine_gravel"",""wheelchair""=>""yes""";VOIE VERTE;VOIE VERTE
+cycleway;"""layer""=>""-1"",""motor_vehicle""=>""no"",""surface""=>""concrete""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""abandoned:railway""=>""rail"",""access""=>""no"",""bicycle""=>""designated"",""bridge""=>""yes"",""foot""=>""designated"",""layer""=>""1"",""motor_vehicle""=>""no"",""railway""=>""abandoned"",""surface""=>""paved""";VOIE VERTE;VOIE VERTE
+cycleway;"""bicycle""=>""designated"",""foot""=>""designated"",""lcn""=>""yes"",""segregated""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bridge""=>""yes"",""layer""=>""1"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""lcn""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""lcn""=>""yes"",""lit""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bridge""=>""yes"",""layer""=>""1"",""lcn""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""lcn""=>""yes"",""segregated""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""lcn""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""description""=>""2010/NT/R/DGU-P299"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""sidewalk"",""description""=>""2010/NT/R/DGU-P299"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""sidewalk"",""oneway""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""cycleway:right""=>""lane"",""cycleway:right:oneway""=>""yes"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+tertiary;"""cycleway:left""=>""lane"",""cycleway:left:lane""=>""advisory"",""cycleway:right""=>""no"",""lanes""=>""2"",""surface""=>""asphalt""";AUCUN;BANDE CYCLABLE
+residential;"""cycleway:right""=>""track"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cycleway:left""=>""track"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";AUCUN;PISTE CYCLABLE
+residential;"""bicycle""=>""designated"",""lanes""=>""1"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""sidewalk""=>""left"",""surface""=>""paving_stones""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+secondary;"""cycleway:right""=>""track"",""foot""=>""yes"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""tracktype""=>""grade1""";VOIE VERTE;VOIE VERTE
+tertiary;"""cycleway""=>""lane"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+residential;"""cycleway:right""=>""track"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+residential;"""cycleway:left""=>""opposite_share_busway"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";AUCUN;COULOIR BUS+VELO
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cycleway:left""=>""track"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";AUCUN;PISTE CYCLABLE
+service;"""access""=>""no"",""bicycle""=>""designated"",""maxspeed""=>""30"",""oneway""=>""yes"",""psv""=>""yes""";COULOIR BUS+VELO;AUCUN
+tertiary;"""cycleway:both""=>""lane"",""cycleway:both:lane""=>""exclusive"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+tertiary;"""cycleway:left""=>""track"",""cycleway:left:oneway""=>""-1"",""cycleway:right""=>""no"",""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE PISTE
+cycleway;"""oneway""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+tertiary;"""cycleway:right""=>""lane"",""oneway""=>""yes"",""ref""=>""M 27E7"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+secondary;"""access""=>""yes"",""bicycle""=>""yes"",""cycleway:left""=>""no"",""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""foot""=>""yes"",""lanes""=>""3"",""lanes:psv""=>""1"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""start_date:cycleway:right""=>""2021-01-28"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+tertiary;"""cycleway:right""=>""track"",""maxspeed""=>""30"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+tertiary;"""cycleway:both""=>""lane"",""cycleway:both:lane""=>""advisory"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""sidewalk""=>""both"",""sidewalk:both:surface""=>""asphalt"",""smoothness""=>""excellent"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""cycleway:right""=>""lane"",""junction""=>""roundabout"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""sidewalk""=>""both"",""start_date:cycleway:right""=>""2021-01-28"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""sidewalk""=>""both"",""source:maxspeed""=>""FR:urban"",""start_date:cycleway:right""=>""2021-01-28"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+residential;"""cycleway""=>""lane"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""cycleway:right""=>""track"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes"",""start_date:cycleway:right""=>""2020-08"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes"",""start_date:cycleway:right""=>""2020-08"",""surface""=>""asphalt"",""turn:lanes""=>""through|through;right""";COULOIR BUS+VELO;AUCUN
+cycleway;"""lit""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""junction""=>""roundabout"",""lanes""=>""2"",""lit""=>""yes"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+cycleway;"""cycleway""=>""sidewalk"",""cycleway:surface""=>""asphalt"",""foot""=>""yes"",""footway:surface""=>""asphalt"",""lit""=>""yes"",""motor_vehicle""=>""no"",""segregated""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+track;"""bicycle""=>""yes"",""foot""=>""yes"",""horse""=>""yes"",""motor_vehicle""=>""no"",""surface""=>""asphalt"",""tracktype""=>""grade1""";AUTRE;AUTRE
+cycleway;"""bicycle""=>""designated"",""foot""=>""designated"",""segregated""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""yes"",""oneway""=>""no"",""surface""=>""asphalt"",""width""=>""1""";PISTE CYCLABLE;PISTE CYCLABLE
+track;"""bicycle""=>""yes"",""foot""=>""yes"",""motor_vehicle""=>""no"",""surface""=>""gravel""";AUTRE;AUTRE
+track;"""motorcar""=>""no"",""tracktype""=>""grade1""";AUTRE;AUTRE
+cycleway;"""surface""=>""asphalt"",""width""=>""2.5""";PISTE CYCLABLE;PISTE CYCLABLE
+tertiary;"""cycleway:left""=>""opposite_lane"",""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE BANDE
+primary;"""cyclability""=>""inadvisable"",""cycleway:right""=>""lane"",""cycleway:right:lane""=>""advisory"",""lanes""=>""1"",""maxspeed""=>""50"",""oneway""=>""yes"",""source:maxspeed""=>""sign""";BANDE CYCLABLE;AUCUN
+track;"""access""=>""yes"",""motorcar""=>""no"",""mtb:scale""=>""0"",""surface""=>""compacted"",""tracktype""=>""grade1"",""width""=>""5""";AUTRE;AUTRE
+track;"""access""=>""agricultural"",""bicycle""=>""yes"",""foot""=>""yes"",""horse""=>""yes"",""motor_vehicle""=>""private"",""motorcar""=>""no"",""mtb:scale""=>""0"",""ref""=>""MOC6, CT34"",""surface""=>""compacted"",""tracktype""=>""grade1""";AUTRE;AUTRE
+tertiary;"""admin_level""=>""10"",""bicycle""=>""yes"",""boundary""=>""administrative"",""cycleway""=>""opposite"",""maxspeed""=>""30"",""oneway""=>""yes"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+residential;"""cycleway:left""=>""opposite"",""maxspeed""=>""30"",""oneway""=>""yes"",""oneway:bicycle""=>""no""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+residential;"""cycleway""=>""opposite_lane"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE BANDE
+residential;"""cycleway:left""=>""opposite_lane"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE BANDE
+residential;"""access""=>""no"",""bicycle""=>""yes"",""foot""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""zone:maxspeed""=>""FR:30""";AUTRE;AUCUN
+residential;"""cycleway:left""=>""no"",""cycleway:right""=>""no"",""maxspeed""=>""30"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""surface""=>""paving_stones"",""zone:maxspeed""=>""FR:30""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+residential;"""oneway""=>""yes"",""oneway:bicycle""=>""no"",""width""=>""4""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""segregated""=>""no""";VOIE VERTE;VOIE VERTE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated""";PISTE CYCLABLE;PISTE CYCLABLE
+service;"""bicycle""=>""yes"",""maxspeed""=>""30"",""motor_vehicle""=>""no"",""surface""=>""asphalt""";AUTRE;AUTRE
+service;"""motor_vehicle""=>""no""";AUTRE;AUTRE
+service;"""bicycle""=>""yes"",""motor_vehicle""=>""no"",""surface""=>""asphalt""";AUTRE;AUTRE
+cycleway;"""oneway""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+track;"""access""=>""no"",""bicycle""=>""yes"",""foot""=>""yes"",""tracktype""=>""grade1""";AUTRE;AUTRE
+cycleway;"""layer""=>""1""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""surface""=>""concrete:plates""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""oneway""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""cycleway""=>""lane"",""lanes""=>""3"",""lanes:backward""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+residential;"""cycleway:right""=>""track"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""foot""=>""yes"",""oneway""=>""yes"",""segregated""=>""no""";PISTE CYCLABLE;AUCUN
+residential;"""cycleway""=>""lane"",""lit""=>""yes"",""maxspeed""=>""30"",""maxspeed:type""=>""FR:urban"",""oneway""=>""no"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+residential;"""cycleway""=>""lane"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+track;"""bicycle""=>""yes"",""foot""=>""yes"",""horse""=>""yes"",""motor_vehicle""=>""no"",""surface""=>""fine_gravel"",""tracktype""=>""grade1""";AUTRE;AUTRE
+residential;"""bicycle""=>""yes"",""cycleway:right""=>""lane""";BANDE CYCLABLE;AUCUN
+residential;"""bicycle""=>""yes"",""cycleway:right""=>""lane"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+residential;"""bicycle""=>""yes"",""cycleway:right""=>""lane"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+residential;"""bicycle""=>""designated"",""cycleway:right""=>""lane""";BANDE CYCLABLE;AUCUN
+residential;"""bicycle""=>""yes"",""cycleway:right""=>""lane"",""oneway""=>""no""";BANDE CYCLABLE;AUCUN
+residential;"""cycleway:right""=>""lane"",""cycleway:right:oneway""=>""no"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""yes"",""layer""=>""-3"",""segregated""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+track;"""bicycle""=>""yes"",""foot""=>""yes"",""motor_vehicle""=>""no"",""tracktype""=>""grade1""";AUTRE;AUTRE
+footway;"""bicycle""=>""designated"",""crossing""=>""marked"",""foot""=>""designated"",""footway""=>""crossing"",""lit""=>""yes"",""oneway""=>""yes"",""segregated""=>""yes"",""surface""=>""concrete""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AUCUN
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""oneway""=>""yes"",""segregated""=>""yes"",""surface""=>""concrete""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""designated"",""bridge""=>""yes"",""foot""=>""designated"",""layer""=>""1"",""oneway""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""bicycle""=>""designated"",""cycleway""=>""opposite"",""maxspeed""=>""30"",""oneway""=>""yes"",""zone:maxspeed""=>""FR:30""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+cycleway;"""bicycle""=>""designated"",""foot""=>""designated"",""segregated""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""access""=>""agricultural"",""bicycle""=>""designated"",""description""=>""voie verte"",""foot""=>""designated"",""motor_vehicle""=>""no"",""surface""=>""fine_gravel""";VOIE VERTE;VOIE VERTE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""cycleway:surface""=>""concrete"",""description""=>""2011/NT/R/DGU-P 128"",""foot""=>""designated"",""lit""=>""yes"",""oneway""=>""no"",""segregated""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""oneway""=>""no"",""surface""=>""concrete""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""oneway""=>""yes"",""surface""=>""concrete:plates""";PISTE CYCLABLE;AUCUN
+cycleway;"""cycleway:surface""=>""concrete:plates"",""footway:surface""=>""concrete:plates"",""oneway""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;AUCUN
+residential;"""bicycle""=>""yes"",""cycleway:right""=>""lane"",""junction""=>""roundabout""";BANDE CYCLABLE;AUCUN
+cycleway;"""oneway""=>""no"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""cycleway:right""=>""opposite_lane"",""oneway""=>""yes""";DOUBLE SENS CYCLABLE BANDE;AUCUN
+cycleway;"""layer""=>""-1"",""tunnel""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""yes"",""foot""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""bicycle""=>""designated"",""description""=>""Voie verte"",""foot""=>""designated"",""motor_vehicle""=>""no"",""tracktype""=>""grade2""";VOIE VERTE;VOIE VERTE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""tracktype""=>""grade2""";VOIE VERTE;VOIE VERTE
+path;"""bicycle""=>""designated"",""bridge""=>""yes"",""foot""=>""designated"",""layer""=>""1"",""motor_vehicle""=>""no"",""tracktype""=>""grade2""";VOIE VERTE;VOIE VERTE
+cycleway;"""access""=>""no"",""alt_name""=>""Bowstring"",""bicycle""=>""designated"",""bridge""=>""yes"",""cycleway""=>""sidewalk"",""layer""=>""1"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""access""=>""no"",""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""access""=>""no"",""bicycle""=>""designated"",""bridge""=>""yes"",""cycleway""=>""sidewalk"",""layer""=>""1"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""yes"",""oneway""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""foot""=>""yes"",""oneway""=>""no"",""segregated""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""foot""=>""designated"",""oneway""=>""yes"",""segregated""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""yes"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""foot""=>""yes"",""oneway""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bridge""=>""yes"",""layer""=>""1"",""oneway""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""bicycle""=>""designated"",""foot""=>""designated""";VOIE VERTE;VOIE VERTE
+cycleway;"""bicycle""=>""yes"",""cycleway""=>""sidewalk"",""foot""=>""yes"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""sidewalk"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""access""=>""no"",""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""yes"",""cycleway""=>""sidewalk"",""foot""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""motor_vehicle""=>""no""";AUTRE;AUTRE
+cycleway;"""cyclability""=>""good"",""oneway""=>""no"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+service;"""access""=>""no"",""admin_level""=>""11"",""bicycle""=>""designated"",""boundary""=>""administrative"",""maxspeed""=>""30"",""oneway""=>""yes"",""psv""=>""yes""";COULOIR BUS+VELO;AUCUN
+residential;"""cycleway""=>""shared_lane"",""maxspeed""=>""30"",""oneway""=>""yes""";AUTRE;AUCUN
+cycleway;"""foot""=>""yes"",""oneway""=>""yes"",""oneway:foot""=>""no""";PISTE CYCLABLE;AUCUN
+residential;"""cycleway:left""=>""no"",""cycleway:right""=>""lane"",""cycleway:right:lane""=>""exclusive"",""oneway""=>""yes"",""parking:lane:left""=>""perpendicular"",""parking:lane:left:perpendicular""=>""street_side"",""parking:lane:right""=>""no"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""segregated"",""oneway""=>""no"",""surface""=>""concrete""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""cycleway:left""=>""lane"",""maxspeed""=>""30"",""zone:maxspeed""=>""FR:30""";AUCUN;BANDE CYCLABLE
+secondary;"""bus:lanes""=>""yes|designated"",""cycleway:right""=>""share_busway"",""lanes""=>""2"",""lanes:bus""=>""1"",""maxspeed""=>""30"",""maxweight""=>""7.5"",""oneway""=>""yes"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+secondary;"""cycleway:right""=>""track"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""1"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""source:width""=>""ARCore"",""surface""=>""asphalt"",""width""=>""3.3""";PISTE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""horse""=>""no"",""oneway""=>""no"",""surface""=>""asphalt"",""width""=>""3""";VOIE VERTE;VOIE VERTE
+cycleway;"""layer""=>""-1"",""oneway""=>""no"",""tunnel""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""surface""=>""compacted""";VOIE VERTE;VOIE VERTE
+footway;"""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""oneway""=>""no""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+footway;"""bicycle""=>""designated"",""foot""=>""designated"",""lit""=>""yes"",""motor_vehicle""=>""no"",""segregated""=>""no"",""surface""=>""concrete""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+residential;"""bicycle""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""surface""=>""paved"",""zone:maxspeed""=>""FR:30""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""oneway""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""alt_name""=>""Avenue de l'École d'Agriculture-Gabriel Buchet"",""cycleway""=>""lane"",""maxspeed""=>""30"",""parking:lane:both""=>""diagonal"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""alt_name""=>""Avenue de l'École d'Agriculture-Gabriel Buchet"",""cycleway:right""=>""lane"",""maxspeed""=>""30"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+secondary;"""alt_name""=>""Avenue de l'École d'Agriculture Gabriel Buchet"",""cycleway:right""=>""lane"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+secondary;"""alt_name""=>""Avenue de l'École d'Agriculture-Gabriel Buchet"",""cycleway:right""=>""lane"",""maxspeed""=>""30"",""maxspeed:type""=>""FR:urban"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+living_street;"""access""=>""destination"",""bicycle""=>""designated"",""lanes""=>""1"",""maxspeed""=>""10"",""maxweight""=>""7.5"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+residential;"""bicycle""=>""designated"",""lanes""=>""1"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""sidewalk""=>""right"",""surface""=>""paving_stones""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+secondary;"""cycleway:right""=>""lane"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""lane"",""destination""=>""PLAN des 4 SEIGNEURS;C.N.R.S."",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+secondary;"""cycleway:left""=>""share_busway"",""lanes""=>""2"",""maxspeed""=>""30"",""surface""=>""asphalt""";AUCUN;COULOIR BUS+VELO
+tertiary;"""cycleway""=>""lane"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+tertiary;"""access""=>""destination"",""cycleway:right""=>""lane"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+tertiary;"""cycleway:right""=>""lane"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+residential;"""cycleway""=>""lane"",""junction""=>""roundabout""";BANDE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""shared"",""foot""=>""yes"",""oneway""=>""no"",""segregated""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""layer""=>""1"",""lit""=>""no"",""oneway""=>""yes"",""oneway:bicycle""=>""yes"",""surface""=>""paving_stones""";PISTE CYCLABLE;AUCUN
+cycleway;"""bridge""=>""yes"",""layer""=>""1"",""lit""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+track;"""motor_vehicle""=>""no"",""surface""=>""ground""";AUTRE;AUTRE
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes"",""start_date:cycleway:right""=>""2020-08""";COULOIR BUS+VELO;AUCUN
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""motor_vehicle""=>""no"",""oneway""=>""no"",""segregated""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""motor_vehicle""=>""no"",""oneway""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bridge""=>""yes"",""foot""=>""yes"",""layer""=>""1""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""segregated""=>""yes""";VOIE VERTE;VOIE VERTE
+cycleway;"""bridge""=>""aqueduct""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""surface""=>""concrete""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""foot""=>""no"",""lit""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""bicycle""=>""yes"",""motor_vehicle""=>""private"",""oneway""=>""yes"",""oneway:bicycle""=>""no""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+residential;"""cycleway:right""=>""lane"",""maxspeed""=>""30"",""old_name""=>""Rue de Montferrier"",""oneway:bicycle""=>""no"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+tertiary;"""cycleway""=>""opposite"",""oneway""=>""yes"",""ref""=>""M 27E6""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+residential;"""cycleway:left""=>""lane"",""lanes""=>""2"",""maxspeed""=>""30"",""maxspeed:type""=>""FR:urban"",""surface""=>""asphalt""";AUCUN;BANDE CYCLABLE
+residential;"""cycleway:both""=>""shared_lane"",""cycleway:both:lane""=>""pictogram"",""maxspeed""=>""30"",""maxspeed:type""=>""FR:urban"",""surface""=>""asphalt""";AUTRE;AUTRE
+cycleway;"""bicycle""=>""designated"",""foot""=>""yes"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""designated"",""foot""=>""permissive"",""oneway""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""yes"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+residential;"""cycleway:right""=>""track""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""yes"",""bridge""=>""yes"",""layer""=>""1"",""oneway""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""yes"",""oneway""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+unclassified;"""cycleway:left""=>""lane"",""cycleway:left:oneway""=>""-1"",""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes""";AUCUN;BANDE CYCLABLE
+footway;"""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""segregated""=>""no""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+unclassified;"""cycleway:left""=>""opposite_lane"",""lanes""=>""1"",""maxspeed""=>""30"",""maxweight""=>""3.5"",""oneway""=>""yes"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE BANDE
+cycleway;"""foot""=>""yes"",""oneway""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""admin_level""=>""10"",""alt_name""=>""Avenue François Delmas"",""boundary""=>""administrative"",""cycleway:right""=>""lane"",""lanes""=>""4"",""old_name""=>""Avenue de Nîmes"",""political_division""=>""canton""";BANDE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""designated"",""lcn""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+service;"""access""=>""no"",""bicycle""=>""yes"",""emergency""=>""yes"",""foot""=>""yes""";AUTRE;AUTRE
+residential;"""cycleway:left""=>""no"",""cycleway:right""=>""lane"",""cycleway:right:lane""=>""exclusive"",""maxspeed""=>""30"",""oneway""=>""yes"",""ref:FR:FANTOIR""=>""341722791A"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+residential;"""cycleway:left""=>""lane"",""oneway""=>""yes""";AUCUN;BANDE CYCLABLE
+tertiary;"""bicycle""=>""yes"",""cycleway:right""=>""lane"",""maxspeed""=>""30"",""oneway""=>""yes"",""ref""=>""M 27""";BANDE CYCLABLE;AUCUN
+tertiary;"""cycleway""=>""lane"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+residential;"""cycleway:left""=>""lane""";AUCUN;BANDE CYCLABLE
+residential;"""cycleway:left""=>""opposite_lane"",""maxspeed""=>""30"",""oneway""=>""yes"",""source:maxspeed""=>""FR:zone30""";AUCUN;DOUBLE SENS CYCLABLE BANDE
+cycleway;"""lit""=>""no"",""oneway""=>""no"",""segregated""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""bicycle""=>""designated"",""description""=>""voie verte"",""foot""=>""designated"",""lit""=>""no"",""segregated""=>""no"",""surface""=>""fine_gravel""";VOIE VERTE;VOIE VERTE
+cycleway;"""oneway""=>""no"",""surface""=>""concrete:plates""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""description""=>""2016-P 110"",""foot""=>""no"",""lit""=>""yes"",""oneway""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+primary;"""cycleway:right""=>""lane"",""junction""=>""roundabout"",""lanes""=>""2"",""maxspeed""=>""50"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+primary;"""bridge""=>""yes"",""cyclability""=>""inadvisable"",""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""1"",""layer""=>""1"",""lit""=>""yes"",""maxspeed""=>""50"",""maxweight:signed""=>""no"",""oneway""=>""yes"",""shoulder""=>""no"",""surface""=>""asphalt"",""was:lanes""=>""2""";COULOIR BUS+VELO;AUCUN
+residential;"""cycleway:right""=>""lane"",""maxspeed""=>""50"",""oneway""=>""no""";BANDE CYCLABLE;AUCUN
+residential;"""access""=>""no"",""motor_vehicle""=>""no"",""oneway""=>""yes""";AUTRE;AUCUN
+path;"""bicycle""=>""designated"",""description""=>""2010/NT/R/DGU-P503"",""foot""=>""designated"",""segregated""=>""no"",""surface""=>""ground""";VOIE VERTE;VOIE VERTE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""note:MMM""=>""2010/NT/R/DGU-P503"",""segregated""=>""no"",""surface""=>""paved""";VOIE VERTE;VOIE VERTE
+residential;"""cyclability""=>""good"",""cycleway""=>""opposite"",""maxspeed""=>""30"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""sidewalk""=>""none"",""surface""=>""asphalt"",""zone:maxspeed""=>""FR:30""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+cycleway;"""access""=>""yes"",""bicycle""=>""yes"",""cyclability""=>""good"",""doubleway""=>""yes"",""foot""=>""yes"",""maxspeed""=>""30"",""motor_vehicle""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""yes"",""cycleway""=>""shared"",""oneway:bicycle""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""surface""=>""concrete""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""bicycle""=>""designated"",""embankment""=>""yes"",""foot""=>""designated"",""motor_vehicle""=>""no"",""surface""=>""dirt""";VOIE VERTE;VOIE VERTE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""official"",""tracktype""=>""grade2""";VOIE VERTE;VOIE VERTE
+cycleway;"""foot""=>""yes"",""oneway""=>""yes"",""oneway:foot""=>""no"",""segregated""=>""no""";PISTE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""lane"",""cycleway:right:lane""=>""exclusive"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes"",""parking:lane:right""=>""parallel"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+tertiary;"""cycleway:right""=>""lane"",""cycleway:right:lane""=>""advisory"",""lane_markings""=>""no"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+cycleway;"""lit""=>""yes"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""sidewalk"",""footway""=>""sidewalk"",""lit""=>""yes"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""sidewalk"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""foot""=>""yes"",""surface""=>""unhewn_cobblestone""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""motor_vehicle""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""ref""=>""M 5E6""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no""";VOIE VERTE;VOIE VERTE
+cycleway;"""lit""=>""yes"",""oneway""=>""yes"",""surface""=>""paving_stones""";PISTE CYCLABLE;AUCUN
+cycleway;"""foot""=>""yes"",""lit""=>""yes"",""oneway""=>""yes"",""segregated""=>""no"",""surface""=>""paving_stones""";PISTE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""segregated""=>""yes"",""smoothness""=>""good"",""surface""=>""asphalt""";VOIE VERTE;VOIE VERTE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""footway""=>""crossing"",""oneway:bicycle""=>""yes"",""oneway:foot""=>""no"",""segregated""=>""no""";VOIE VERTE;AUCUN
+residential;"""bicycle""=>""designated"",""cycleway:right""=>""lane"",""lit""=>""yes"",""maxspeed""=>""30"",""maxspeed:type""=>""FR:urban"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""description""=>""2009/NT/R/DGU-P188"",""foot""=>""designated"",""horse""=>""no"",""motor_vehicle""=>""no"",""segregated""=>""no"",""smoothness""=>""intermediate"",""surface""=>""paved""";VOIE VERTE;VOIE VERTE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""horse""=>""permissive"",""lit""=>""yes"",""segregated""=>""no"",""smoothness""=>""intermediate"",""surface""=>""fine_gravel""";VOIE VERTE;VOIE VERTE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""oneway""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""lit""=>""yes"",""oneway""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""lit""=>""yes"",""oneway""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;AUCUN
+cycleway;"""foot""=>""yes"",""oneway""=>""no"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""bicycle""=>""designated"",""description""=>""2009/NT/R/DGU-P188"",""foot""=>""designated"",""horse""=>""no"",""lit""=>""yes"",""segregated""=>""no"",""smoothness""=>""good"",""surface""=>""asphalt""";VOIE VERTE;VOIE VERTE
+path;"""bicycle""=>""designated"",""description""=>""2010/NT/R/DGU-P400"",""foot""=>""designated"",""horse""=>""no"",""segregated""=>""no""";VOIE VERTE;VOIE VERTE
+cycleway;"""tunnel""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+footway;"""bicycle""=>""designated"",""lit""=>""yes"",""segregated""=>""no"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+primary;"""bridge""=>""yes"",""cyclability""=>""inadvisable"",""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""lanes:bus""=>""1"",""layer""=>""1"",""lit""=>""yes"",""maxspeed""=>""50"",""maxweight:signed""=>""no"",""oneway""=>""yes"",""shoulder""=>""no"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+primary_link;"""cycleway:right""=>""share_busway"",""lanes""=>""2"",""maxspeed""=>""50"",""maxspeed:type""=>""FR:urban"",""oneway""=>""yes"",""sidewalk""=>""both"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+primary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""3"",""lanes:bus""=>""1"",""maxspeed""=>""50"",""oneway""=>""yes"",""ref:FR:FANTOIR""=>""341722415S"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+primary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""maxspeed""=>""50"",""oneway""=>""yes"",""ref:FR:FANTOIR""=>""341722415S"",""surface""=>""asphalt"",""turn:lanes""=>""through|through;right""";COULOIR BUS+VELO;AUCUN
+footway;"""bicycle""=>""designated"",""foot""=>""designated"",""segregated""=>""no""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+primary;"""bicycle""=>""yes"",""cyclability""=>""good"",""cycleway:right""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""1"",""maxspeed""=>""50"",""oneway""=>""yes"",""source:maxspeed""=>""sign"",""was:lanes""=>""2""";PISTE CYCLABLE;AUCUN
+tertiary;"""cyclability""=>""inadvisable"",""cycleway:left""=>""track"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""no"",""parking:lane:left""=>""parallel"",""surface""=>""asphalt""";AUCUN;PISTE CYCLABLE
+tertiary;"""cyclability""=>""inadvisable"",""cycleway""=>""track"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""no"",""parking:lane:both""=>""parallel"",""sidewalk""=>""both"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""designated"",""oneway""=>""yes"",""segregated""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""cyclability""=>""good"",""oneway""=>""no"",""segregated""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""lit""=>""yes"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""layer""=>""-1"",""lit""=>""yes"",""oneway""=>""yes"",""surface""=>""asphalt"",""tunnel""=>""yes""";PISTE CYCLABLE;AUCUN
+primary;"""cyclability""=>""inadvisable"",""cycleway""=>""no"",""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""lanes:bus""=>""1"",""lit""=>""yes"",""maxspeed""=>""50"",""oneway""=>""yes"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+cycleway;"""cyclability""=>""good"",""foot""=>""yes"",""motor_vehicle""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""cycleway:surface""=>""sett"",""cycleway:width""=>""1.7"",""foot""=>""yes"",""footway:surface""=>""sett"",""lit""=>""yes"",""segregated""=>""yes"",""source:cycleway:width""=>""ARCore"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway:surface""=>""concrete"",""footway:surface""=>""concrete"",""oneway""=>""yes"",""segregated""=>""yes"",""surface""=>""concrete""";PISTE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""sidewalk"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+footway;"""bicycle""=>""designated"",""description""=>""2016-P 110"",""foot""=>""designated"",""segregated""=>""yes"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""lit""=>""yes"",""motor_vehicle""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""motor_vehicle""=>""no"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+residential;"""cycleway""=>""opposite"",""lane_markings""=>""no"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""psv""=>""opposite"",""surface""=>""asphalt"",""zone:maxspeed""=>""FR:30""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+secondary;"""cycleway:left""=>""lane"",""ref""=>""M 17"",""surface""=>""asphalt""";AUCUN;BANDE CYCLABLE
+secondary;"""cycleway""=>""lane"",""ref""=>""M 17"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""footway""=>""sidewalk"",""lit""=>""yes"",""oneway:bicycle""=>""yes"",""segregated""=>""no"",""surface""=>""paved""";VOIE VERTE;AUCUN
+tertiary;"""cycleway:left""=>""lane"",""ref""=>""M 132""";AUCUN;BANDE CYCLABLE
+tertiary;"""cycleway:right""=>""lane"",""ref""=>""M 132""";BANDE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+residential;"""cycleway:right""=>""lane"",""oneway""=>""yes"",""traffic_calming""=>""table""";BANDE CYCLABLE;AUCUN
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cyclability""=>""acceptable"",""cycleway:both""=>""lane"",""cycleway:both:lane""=>""exclusive"",""lanes""=>""2"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cyclability""=>""acceptable"",""cycleway:both""=>""lane"",""cycleway:both:lane""=>""advisory"",""lanes""=>""2"",""maxspeed""=>""30"",""segregated""=>""no"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""oneway""=>""yes"",""surface""=>""concrete""";PISTE CYCLABLE;AUCUN
+footway;"""bicycle""=>""yes"",""footway""=>""sidewalk"",""lit""=>""yes"",""surface""=>""paving_stones""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+cycleway;"""bicycle""=>""designated"",""lcn""=>""yes"",""oneway:bicycle""=>""yes"",""segregated""=>""yes"",""surface""=>""asphalt"",""width""=>""2.5""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+unclassified;"""cycleway:right""=>""lane"",""maxspeed""=>""50""";BANDE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""yes"",""oneway""=>""no"",""surface""=>""concrete""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""yes"",""tunnel""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""access""=>""no"",""bicycle""=>""designated"",""foot""=>""designated""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""access""=>""no"",""bicycle""=>""designated"",""embankment""=>""yes"",""foot""=>""designated"",""motor_vehicle""=>""no"",""rcn""=>""yes"",""surface""=>""paved""";VOIE VERTE;VOIE VERTE
+path;"""access""=>""no"",""bicycle""=>""designated"",""embankment""=>""yes"",""foot""=>""designated"",""motor_vehicle""=>""no"",""segregated""=>""no"",""surface""=>""asphalt""";VOIE VERTE;VOIE VERTE
+cycleway;"""bridge""=>""yes"",""cycleway""=>""sidewalk"",""layer""=>""1""";PISTE CYCLABLE;PISTE CYCLABLE
+track;"""access""=>""no"",""bicycle""=>""yes"",""foot""=>""designated"",""surface""=>""gravel"",""tracktype""=>""grade1""";AUTRE;AUTRE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""segregated""=>""no"",""surface""=>""asphalt""";VOIE VERTE;VOIE VERTE
+cycleway;"""foot""=>""yes"",""segregated""=>""yes"",""start_date""=>""2018""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""bicycle""=>""designated"",""bridge""=>""yes"",""foot""=>""designated"",""layer""=>""1"",""segregated""=>""no""";VOIE VERTE;VOIE VERTE
+footway;"""bicycle""=>""designated"",""description""=>""2010/NT/R/DGU-P503"",""foot""=>""designated""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+cycleway;"""cycleway:surface""=>""asphalt"",""foot""=>""yes"",""footway:surface""=>""asphalt"",""lit""=>""yes"",""segregated""=>""yes"",""start_date""=>""2016"",""surface""=>""asphalt"",""width""=>""3""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""bicycle""=>""designated"",""description""=>""2010/NT/R/DGU-P487"",""foot""=>""designated"",""motor_vehicle""=>""no"",""segregated""=>""no"",""surface""=>""paving_stones""";VOIE VERTE;VOIE VERTE
+cycleway;"""cycleway""=>""sidewalk"",""cycleway:surface""=>""paving_stones"",""foot""=>""designated"",""footway:surface""=>""paving_stones"",""lit""=>""yes"",""oneway""=>""yes"",""segregated""=>""yes"",""surface""=>""paving_stones""";PISTE CYCLABLE;AUCUN
+footway;"""bicycle""=>""yes"",""foot""=>""yes"",""footway""=>""sidewalk"",""lit""=>""yes"",""oneway""=>""yes"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AUCUN
+path;"""bicycle""=>""designated"",""cycleway:surface""=>""concrete"",""foot""=>""designated"",""footway""=>""sidewalk"",""footway:surface""=>""concrete"",""lit""=>""yes"",""oneway:bicycle""=>""yes"",""segregated""=>""yes"",""surface""=>""paved""";VOIE VERTE;AUCUN
+path;"""bicycle""=>""designated"",""cycleway:surface""=>""concrete"",""foot""=>""designated"",""footway""=>""sidewalk"",""footway:surface""=>""concrete"",""oneway:bicycle""=>""yes"",""segregated""=>""yes"",""surface""=>""paved""";VOIE VERTE;AUCUN
+cycleway;"""bicycle""=>""designated"",""foot""=>""yes"",""lcn""=>""yes"",""oneway:bicycle""=>""yes"",""segregated""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""cycleway:right""=>""track"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""track"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""lanes:forward""=>""2"",""maxspeed""=>""30""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""yes"",""foot""=>""designated"",""oneway""=>""yes"",""wheelchair""=>""yes""";PISTE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""sidewalk"",""lit""=>""yes"",""oneway""=>""yes"",""surface""=>""concrete""";PISTE CYCLABLE;AUCUN
+cycleway;"""bridge""=>""yes"",""layer""=>""1"",""lit""=>""yes"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+secondary;"""admin_level""=>""11"",""alt_name""=>""Avenue François Delmas"",""boundary""=>""administrative"",""cycleway:right""=>""lane"",""lanes""=>""3"",""lanes:forward""=>""1"",""old_name""=>""Avenue de Nîmes"",""political_division""=>""canton""";BANDE CYCLABLE;AUCUN
+primary;"""cyclability""=>""inadvisable"",""cycleway:right""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""1"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+primary;"""cyclability""=>""inadvisable"",""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""lanes:bus""=>""1"",""maxspeed""=>""50"",""oneway""=>""yes"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""bridge""=>""yes"",""cycleway:both""=>""lane"",""layer""=>""1"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""bridge""=>""yes"",""cycleway""=>""track"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""lanes:forward""=>""2"",""layer""=>""1"",""maxspeed""=>""30"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""cycleway:right""=>""track"",""lane_markings""=>""no"",""maxspeed""=>""30"",""oneway""=>""yes"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""foot""=>""permissive"",""start_date""=>""2018-08"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""bicycle""=>""designated"",""embankment""=>""yes"",""foot""=>""designated"",""motor_vehicle""=>""no""";VOIE VERTE;VOIE VERTE
+secondary;"""busway:left""=>""lane"",""cycleway:left""=>""share_busway"",""cycleway:right""=>""lane"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;COULOIR BUS+VELO
+residential;"""bicycle""=>""yes"",""cycleway:right""=>""lane"",""maxspeed""=>""30"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+residential;"""cycleway:right""=>""track"",""maxspeed""=>""30"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""junction""=>""roundabout"",""lanes""=>""2"",""surface""=>""asphalt"",""turn:lanes""=>""through|through""";COULOIR BUS+VELO;AUCUN
+secondary;"""cycleway:right""=>""lane"",""junction""=>""roundabout"",""lane_markings""=>""no"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""lane"",""junction""=>""roundabout"",""lanes""=>""1"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes"",""start_date:cycleway:right""=>""2020-08"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+tertiary;"""cycleway:left""=>""track"",""cycleway:right:oneway""=>""no"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE PISTE
+cycleway;"""description""=>""2015-P64"",""surface""=>""concrete:plates""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway:surface""=>""asphalt"",""foot""=>""yes"",""footway:surface""=>""asphalt"",""lit""=>""yes"",""oneway""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;AUCUN
+service;"""access""=>""no"",""bicycle""=>""designated"",""psv""=>""yes""";COULOIR BUS+VELO;COULOIR BUS+VELO
+service;"""access""=>""no"",""bicycle""=>""designated"",""foot""=>""yes"",""maxspeed""=>""30"",""motorcycle""=>""yes"",""psv""=>""opposite_lane"",""surface""=>""sett""";COULOIR BUS+VELO;COULOIR BUS+VELO
+service;"""access""=>""no"",""bicycle""=>""yes"",""foot""=>""yes"",""horse""=>""yes"",""lanes""=>""1"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""psv""=>""yes"",""smoothness""=>""intermediate"",""surface""=>""sett""";COULOIR BUS+VELO;AUCUN
+footway;"""bicycle""=>""yes"",""footway""=>""sidewalk"",""oneway""=>""no"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""bridge""=>""yes"",""cycleway""=>""track"",""description:covid19""=>""Piste cyclable temporaire"",""lanes""=>""2"",""lanes:backward""=>""2"",""layer""=>""1"",""old_name""=>""Avenue de Nîmes"",""surface""=>""asphalt"",""was:lanes""=>""3""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+tertiary;"""cycleway:right""=>""lane"",""maxspeed""=>""30""";BANDE CYCLABLE;AUCUN
+path;"""abandoned:railway""=>""rail"",""access""=>""no"",""bicycle""=>""designated"",""foot""=>""designated"",""railway""=>""abandoned"",""surface""=>""paved""";VOIE VERTE;VOIE VERTE
+secondary;"""cycleway:right""=>""lane"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+service;"""access""=>""no"",""bicycle""=>""designated"",""maxspeed""=>""30"",""psv""=>""yes""";COULOIR BUS+VELO;COULOIR BUS+VELO
+service;"""access""=>""no"",""bicycle""=>""designated"",""oneway""=>""yes"",""psv""=>""yes""";COULOIR BUS+VELO;AUCUN
+residential;"""cycleway:right""=>""lane"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""lane"",""junction""=>""roundabout"",""ref:MMM""=>""M 21E6""";BANDE CYCLABLE;AUCUN
+service;"""access""=>""no"",""bicycle""=>""yes"",""foot""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""psv""=>""yes"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+track;"""bicycle""=>""yes"",""horse""=>""yes"",""motor_vehicle""=>""no"",""surface""=>""asphalt"",""tracktype""=>""grade1""";AUTRE;AUTRE
+cycleway;"""bicycle""=>""designated"",""cycleway:surface""=>""asphalt"",""foot""=>""designated"",""footway:surface""=>""asphalt"",""lcn""=>""yes"",""lit""=>""yes"",""segregated""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+track;"""bicycle""=>""dismount"",""bridge""=>""yes"",""foot""=>""yes"",""horse""=>""yes"",""layer""=>""1"",""motor_vehicle""=>""no"",""surface""=>""wood"",""tracktype""=>""grade1""";AUTRE;AUTRE
+track;"""access""=>""no"",""bicycle""=>""dismount"",""bridge""=>""movable"",""foot""=>""yes"",""horse""=>""no"",""layer""=>""1"",""motor_vehicle""=>""no"",""opening_hours""=>""Feb-Mar Mo-Fr 13:00-17:00; Feb-Mar Sa,Su 10:00-17:00; Apr Mo-Fr 13:00-18:00; Apr Sa,Su,PH 10:00-18:00; May 10:00-19:00; Jun 01-Sep 01 08:00-20:30; Sep 02-30 10:00-19:00; Oct Mo-Fr 13:00-17:30; Oct Sa,Su 10:00-17:30"",""opening_hours:url""=>""https://www.villeneuvelesmaguelone.fr/cadre-de-vie/plage"",""seamark:type""=>""pontoon"",""surface""=>""wood"",""tourism""=>""pontoon"",""tracktype""=>""grade1""";AUTRE;AUTRE
+path;"""abandoned:railway""=>""rail"",""access""=>""no"",""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""railway""=>""abandoned"",""surface""=>""paved""";VOIE VERTE;VOIE VERTE
+secondary;"""cycleway:right""=>""track"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""foot""=>""yes"",""lit""=>""yes"",""segregated""=>""no"",""surface""=>""concrete""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""layer""=>""1"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+track;"""access""=>""agricultural"",""bicycle""=>""yes"",""foot""=>""yes"",""horse""=>""yes"",""motor_vehicle""=>""no"",""tracktype""=>""grade2""";AUTRE;AUTRE
+track;"""access""=>""agricultural"",""bicycle""=>""yes"",""foot""=>""yes"",""ref""=>""MOC6"",""surface""=>""compacted"",""tracktype""=>""grade1""";AUTRE;AUTRE
+secondary;"""cycleway:right""=>""lane"",""junction""=>""roundabout"",""lanes""=>""2"",""maxspeed""=>""30"",""start_date:cycleway:right""=>""2018-08"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+footway;"""bicycle""=>""yes"",""footway""=>""sidewalk"",""surface""=>""paved""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+secondary;"""cycleway:right""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes"",""source:maxspeed""=>""sign"",""turn:lanes""=>""left|through|through"",""was:lanes""=>""3""";PISTE CYCLABLE;AUCUN
+primary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""3"",""maxspeed""=>""50"",""oneway""=>""yes"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+secondary;"""bicycle""=>""yes"",""cyclability""=>""inadvisable"",""cycleway:right""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""segregated""=>""no"",""surface""=>""asphalt"",""was:lanes""=>""2""";PISTE CYCLABLE;AUCUN
+secondary;"""cycleway:left""=>""no"",""cycleway:right""=>""track"",""cycleway:right:segregated""=>""no"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""parking:lane:both""=>""parallel"",""sidewalk""=>""both"",""source:maxspeed""=>""FR:urban"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+primary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""maxspeed""=>""50"",""oneway""=>""yes"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+service;"""motor_vehicle""=>""no"",""surface""=>""fine_gravel""";AUTRE;AUTRE
+track;"""motor_vehicle""=>""no"",""ref:DFCI""=>""MOE5"",""ref:FR:FANTOIR""=>""340580024N"",""tracktype""=>""grade1""";AUTRE;AUTRE
+service;"""cycleway""=>""opposite"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+path;"""access""=>""yes"",""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""oneway""=>""no""";VOIE VERTE;VOIE VERTE
+tertiary;"""bicycle""=>""yes"",""cycleway""=>""lane"",""maxspeed""=>""50"",""ref""=>""M 112"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+residential;"""cycleway:right""=>""lane"",""maxspeed""=>""30"",""old_name""=>""Rue de Montferrier"",""oneway:bicycle""=>""no""";BANDE CYCLABLE;AUCUN
+cycleway;"""start_date""=>""2012-10"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+track;"""motor_vehicle""=>""no"",""segregated""=>""no"",""surface""=>""asphalt"",""tracktype""=>""grade1""";AUTRE;AUTRE
+secondary;"""cycleway:right""=>""lane"",""junction""=>""roundabout"",""loc_name""=>""Rond-Point Jules Ventre"",""maxspeed""=>""30""";BANDE CYCLABLE;AUCUN
+service;"""access""=>""no"",""bicycle""=>""permissive"",""oneway""=>""yes"",""psv""=>""yes""";COULOIR BUS+VELO;AUCUN
+service;"""access""=>""no"",""bicycle""=>""designated"",""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""psv""=>""yes""";COULOIR BUS+VELO;AUCUN
+cycleway;"""start_date""=>""2012-10""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""shared"",""foot""=>""yes"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""yes"",""foot""=>""yes"",""oneway""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""access""=>""yes"",""bicycle""=>""yes"",""cycleway""=>""sidewalk"",""motor_vehicle""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+tertiary;"""cycleway:both""=>""lane"",""cycleway:both:lane""=>""exclusive"",""lanes""=>""2"",""ref""=>""M 27E7"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+tertiary;"""bicycle""=>""yes"",""cycleway""=>""lane"",""ref""=>""M 27E7"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+pedestrian;"""admin_level""=>""11"",""boundary""=>""administrative"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""oneway:foot""=>""no"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+cycleway;"""foot""=>""yes"",""footway:surface""=>""asphalt"",""oneway""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;AUCUN
+cycleway;"""foot""=>""yes"",""lit""=>""yes"",""motor_vehicle""=>""no"",""oneway""=>""no"",""segregated""=>""no"",""surface""=>""sett""";PISTE CYCLABLE;PISTE CYCLABLE
+track;"""access""=>""agricultural"",""bicycle""=>""yes"",""foot""=>""yes"",""horse""=>""yes"",""motor_vehicle""=>""no"",""surface""=>""gravel"",""tracktype""=>""grade2"",""trail_visibility""=>""good""";AUTRE;AUTRE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""oneway""=>""no"",""segregated""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""shared"",""oneway""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""designated""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""cycleway:surface""=>""concrete"",""foot""=>""designated"",""footway:surface""=>""concrete"",""lit""=>""yes"",""segregated""=>""yes"",""surface""=>""concrete""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bridge""=>""yes"",""cycleway""=>""sidewalk"",""lit""=>""yes"",""surface""=>""concrete""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""designated"",""lit""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""oneway""=>""yes"",""surface""=>""concrete""";PISTE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""sidewalk"",""lit""=>""yes"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+footway;"""bicycle""=>""designated""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+living_street;"""cycleway""=>""opposite_lane"",""maxspeed""=>""20"",""oneway""=>""yes"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE BANDE
+tertiary;"""cycleway:right""=>""lane"",""maxspeed""=>""30"",""start_date:cycleway:left""=>""2018"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+footway;"""bicycle""=>""yes"",""footway""=>""sidewalk"",""lit""=>""yes"",""surface""=>""concrete""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+cycleway;"""bicycle""=>""designated"",""foot""=>""designated"",""horse""=>""designated""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""footway""=>""sidewalk"",""oneway:bicycle""=>""yes"",""segregated""=>""yes"",""surface""=>""paved""";VOIE VERTE;AUCUN
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""oneway:bicycle""=>""no"",""segregated""=>""no"",""surface""=>""asphalt"",""tracktype""=>""grade1""";VOIE VERTE;VOIE VERTE
+path;"""access""=>""no"",""bicycle""=>""designated"",""embankment""=>""yes"",""foot""=>""designated"",""lit""=>""no"",""motor_vehicle""=>""no"",""rcn""=>""yes"",""segregated""=>""no"",""surface""=>""asphalt""";VOIE VERTE;VOIE VERTE
+secondary;"""cycleway:right""=>""lane"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+footway;"""bicycle""=>""yes"",""foot""=>""designated"",""footway""=>""sidewalk"",""segregated""=>""no""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+path;"""bicycle""=>""designated"",""description""=>""2010/NT/R/DGU-P487"",""foot""=>""designated"",""surface""=>""ground""";VOIE VERTE;VOIE VERTE
+cycleway;"""cycleway""=>""sidewalk"",""lit""=>""yes"",""oneway:bicycle""=>""no"",""source:width""=>""ARCore"",""surface""=>""asphalt"",""width""=>""2""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""cycleway:right""=>""lane"",""cycleway:right:lane""=>""exclusive"",""lane_markings""=>""no"",""maxspeed""=>""30"",""oneway""=>""yes"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""horse""=>""permissive"",""lit""=>""no"",""motor_vehicle""=>""no"",""oneway""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""horse""=>""permissive"",""motor_vehicle""=>""no"",""oneway""=>""no"",""segregated""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""motor_vehicle""=>""no"",""oneway""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""yes"",""oneway""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+tertiary;"""cycleway:right""=>""track"",""cycleway:right:segregated""=>""no"",""junction""=>""roundabout"",""lane_markings""=>""no"",""maxspeed""=>""30"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""lane"",""junction""=>""roundabout"",""lanes""=>""2"",""maxspeed""=>""30"",""ref:MMM""=>""M 127""";BANDE CYCLABLE;AUCUN
+secondary;"""admin_level""=>""10"",""cycleway:both""=>""lane"",""cycleway:both:lane""=>""exclusive"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""no"",""parking:lane:both""=>""parallel"",""source:maxspeed""=>""FR:urban"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""admin_level""=>""10"",""cycleway:both""=>""lane"",""cycleway:both:lane""=>""exclusive"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""no"",""parking:lane:right""=>""parallel"",""sidewalk""=>""both"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+tertiary;"""bicycle""=>""yes"",""cycleway""=>""lane"",""maxspeed""=>""80"",""ref""=>""M 112"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+cycleway;"""bicycle""=>""yes"",""description""=>""2010/NT/R/DGU-P487"",""foot""=>""yes"",""surface""=>""paving_stones""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bridge""=>""yes"",""oneway""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""admin_level""=>""11"",""boundary""=>""administrative"",""cycleway:left""=>""no"",""cycleway:right""=>""lane"",""cycleway:right:lane""=>""exclusive"",""lanes""=>""2"",""maxspeed""=>""30"",""parking:lane:both""=>""parallel"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cycleway:left""=>""no"",""cycleway:right""=>""lane"",""cycleway:right:lane""=>""exclusive"",""maxspeed""=>""30"",""oneway""=>""no"",""parking:lane:both""=>""parallel"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+residential;"""cycleway:left""=>""no"",""cycleway:right""=>""lane"",""cycleway:right:lane""=>""advisory"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""sidewalk"",""cycleway:surface""=>""asphalt"",""foot""=>""yes"",""footway:surface""=>""asphalt"",""lit""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+tertiary;"""alt_name""=>""Avenue du Professeur Louis Ravaz"",""cycleway""=>""lane"",""maxspeed""=>""30"",""opening_hours""=>""Mo-Su 06:00-20:00"",""opening_hours:covid19""=>""Mo-Su 06:00-20:00"",""source:opening_hours:covid19""=>""https://www.openstreetmap.org/note/2139860""";BANDE CYCLABLE;BANDE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""lit""=>""yes"",""oneway""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+service;"""motorcar""=>""no""";AUTRE;AUTRE
+cycleway;"""foot""=>""yes"",""oneway""=>""yes"",""segregated""=>""no"",""smoothness""=>""good"",""surface""=>""concrete""";PISTE CYCLABLE;AUCUN
+cycleway;"""foot""=>""yes"",""segregated""=>""yes"",""surface""=>""paved""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""access""=>""no"",""bicycle""=>""designated"",""foot""=>""yes"",""lit""=>""yes"",""motor_vehicle""=>""no"",""oneway""=>""yes"",""ref:MMM""=>""2014-P129""";PISTE CYCLABLE;AUCUN
+cycleway;"""foot""=>""yes"",""oneway""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;AUCUN
+tertiary;"""cycleway:right""=>""lane"",""lanes""=>""3"",""lanes:forward""=>""2"",""maxspeed""=>""30""";BANDE CYCLABLE;AUCUN
+cycleway;"""cycleway:surface""=>""asphalt"",""foot""=>""yes"",""footway:surface""=>""asphalt"",""oneway""=>""no"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""cycleway""=>""opposite"",""maxspeed""=>""30"",""oneway""=>""yes"",""sidewalk""=>""right"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+cycleway;"""bridge""=>""yes"",""layer""=>""1"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+residential;"""cycleway:left""=>""lane"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";AUCUN;BANDE CYCLABLE
+residential;"""cycleway:right""=>""lane"",""lit""=>""yes"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""designated"",""foot""=>""designated"",""segregated""=>""no"",""surface""=>""paved""";PISTE CYCLABLE;PISTE CYCLABLE
+track;"""bicycle""=>""yes"",""bridge""=>""yes"",""foot""=>""yes"",""horse""=>""yes"",""motor_vehicle""=>""no"",""surface""=>""asphalt"",""tracktype""=>""grade1""";AUTRE;AUTRE
+cycleway;"""foot""=>""yes"",""oneway""=>""no"",""segregated""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""admin_level""=>""11"",""alt_name""=>""Avenue François Delmas"",""boundary""=>""administrative"",""cycleway:right""=>""lane"",""lanes""=>""4"",""old_name""=>""Avenue de Nîmes"",""political_division""=>""canton""";BANDE CYCLABLE;AUCUN
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cycleway:right""=>""lane"",""lanes""=>""4"",""old_name""=>""Avenue de Nîmes"",""political_division""=>""canton""";BANDE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""yes"",""cycleway""=>""sidewalk""";PISTE CYCLABLE;PISTE CYCLABLE
+footway;"""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+secondary;"""alt_name""=>""Avenue de l'École d'Agriculture-Gabriel Buchet"",""cycleway:right""=>""lane"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cycleway:right""=>""lane"",""cycleway:right:lane""=>""advisory"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+tertiary;"""cycleway:right""=>""lane"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+residential;"""cycleway:left""=>""no"",""cycleway:right""=>""no"",""lit""=>""yes"",""maxspeed""=>""10"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""sidewalk""=>""both"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+path;"""bicycle""=>""designated"",""surface""=>""paved""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+living_street;"""maxspeed""=>""20"",""oneway""=>""yes"",""oneway:bicycle""=>""no""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+secondary;"""admin_level""=>""11"",""boundary""=>""administrative"",""cycleway:left""=>""no"",""cycleway:right""=>""lane"",""cycleway:right:lane""=>""exclusive"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""no"",""parking:lane:right""=>""parallel"",""sidewalk""=>""both"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+tertiary;"""bridge""=>""yes"",""cycleway""=>""lane"",""layer""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""description""=>""2010/NT/R/DGU-P503"",""foot""=>""designated"",""motor_vehicle""=>""no"",""segregated""=>""no"",""smoothness""=>""good"",""surface""=>""fine_gravel"",""wheelchair""=>""yes""";VOIE VERTE;VOIE VERTE
+footway;"""bicycle""=>""designated"",""description""=>""2010/NT/R/DGU-P400"",""horse""=>""no""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""cycleway:surface""=>""concrete"",""description""=>""2011/NT/R/DGU-P 128"",""foot""=>""designated"",""footway:surface""=>""concrete"",""lit""=>""yes"",""oneway""=>""no"",""segregated""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""designated"",""footway""=>""sidewalk"",""segregated""=>""yes"",""surface""=>""concrete""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""lit""=>""yes"",""segregated""=>""no"",""smoothness""=>""intermediate"",""surface""=>""concrete:plates""";VOIE VERTE;VOIE VERTE
+cycleway;"""lit""=>""yes"",""oneway""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""segregated"",""lit""=>""yes"",""oneway""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+service;"""access""=>""no"",""bicycle""=>""yes"",""bridge""=>""yes"",""layer""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""psv""=>""yes"",""surface""=>""paved""";COULOIR BUS+VELO;AUCUN
+cycleway;"""lit""=>""yes"",""surface""=>""concrete"",""width""=>""2.5""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""junction""=>""roundabout"",""lanes""=>""3"",""surface""=>""asphalt"",""turn:lanes""=>""slight_left|through|through""";COULOIR BUS+VELO;AUCUN
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""junction""=>""roundabout"",""lanes""=>""3"",""surface""=>""asphalt"",""turn:lanes""=>""slight_left|through|through;right""";COULOIR BUS+VELO;AUCUN
+residential;"""cycleway""=>""lane"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+residential;"""cycleway:left""=>""lane"",""description""=>""2016-P98"",""lit""=>""yes"",""maxspeed""=>""30""";AUCUN;BANDE CYCLABLE
+cycleway;"""description""=>""2010/NT/R/DGU-P408"",""lit""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""description""=>""2014-P112"",""lit""=>""yes"",""oneway""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""foot""=>""yes"",""segregated""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""foot""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""3"",""maxspeed""=>""30"",""oneway""=>""yes"",""start_date:cycleway:right""=>""2020-08"",""surface""=>""asphalt"",""turn:lanes""=>""left|through|through""";COULOIR BUS+VELO;AUCUN
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""start_date:cycleway:right""=>""2020-08"",""surface""=>""asphalt"",""turn:lanes""=>""through|through;right""";COULOIR BUS+VELO;AUCUN
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""foot""=>""yes"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""start_date:cycleway:right""=>""2020-08"",""surface""=>""asphalt"",""turn:lanes""=>""through|through;right""";COULOIR BUS+VELO;AUCUN
+secondary;"""cycleway""=>""track"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""lanes:forward""=>""2"",""maxspeed""=>""30"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""lit""=>""yes"",""oneway""=>""yes"",""surface""=>""concrete""";PISTE CYCLABLE;AUCUN
+residential;"""cycleway""=>""lane"",""cycleway:right""=>""lane"",""junction""=>""roundabout"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+footway;"""bicycle""=>""yes"",""footway""=>""sidewalk"",""lit""=>""yes"",""smoothness""=>""good"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+secondary;"""cycleway:right""=>""lane"",""junction""=>""roundabout"",""maxspeed""=>""30""";BANDE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""no"",""lanes""=>""1"",""maxspeed""=>""30"",""motor_vehicle""=>""no"",""oneway""=>""yes"",""surface""=>""asphalt""";AUTRE;AUCUN
+residential;"""cycleway:left""=>""opposite"",""cycleway:right""=>""lane"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""sidewalk""=>""both"",""surface""=>""asphalt""";BANDE CYCLABLE;DOUBLE SENS CYCLABLE NON MATERIALISE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""designated"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+tertiary;"""cycleway:right""=>""lane"",""junction""=>""roundabout"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+cycleway;"""foot""=>""no"",""horse""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""foot""=>""designated"",""lcn""=>""yes"",""lit""=>""no"",""segregated""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+living_street;"""cycleway""=>""opposite_lane"",""lit""=>""yes"",""maxspeed""=>""20"",""oneway""=>""yes"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE BANDE
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""destination:lanes""=>""|Square Jean Monnet"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes"",""start_date:cycleway:right""=>""2021-01-28"",""surface""=>""asphalt"",""turn:lanes""=>""none|none;right""";COULOIR BUS+VELO;AUCUN
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""maxspeed""=>""30"",""oneway""=>""yes"",""start_date:cycleway:right""=>""2021-01-28"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+tertiary;"""bicycle""=>""yes"",""cycleway:left""=>""opposite_lane"",""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""parking:lane:right""=>""parallel"",""start_date:cycleway:left""=>""2021-01-28"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE BANDE
+tertiary;"""bicycle""=>""yes"",""cycleway:left""=>""opposite_lane"",""lanes""=>""1"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""start_date:cycleway:left""=>""2021-01-28"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE BANDE
+cycleway;"""cycleway:surface""=>""asphalt"",""foot""=>""yes"",""footway:surface""=>""asphalt"",""oneway""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""horse""=>""designated""";VOIE VERTE;VOIE VERTE
+footway;"""bicycle""=>""designated"",""foot""=>""designated"",""lcn""=>""yes"",""segregated""=>""no"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+secondary;"""cycleway:right""=>""track"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""surface""=>""compacted""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""yes"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""yes"",""cycleway""=>""sidewalk"",""foot""=>""designated""";PISTE CYCLABLE;PISTE CYCLABLE
+footway;"""bicycle""=>""yes"",""footway""=>""sidewalk"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""oneway""=>""no"",""surface""=>""concrete""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway:surface""=>""asphalt"",""footway:surface""=>""asphalt"",""oneway""=>""no"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""foot""=>""no"",""horse""=>""no"",""oneway""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""foot""=>""designated"",""horse""=>""designated"",""path""=>""crossing""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""yes"",""segregated""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""admin_level""=>""10"",""boundary""=>""administrative"",""cycleway""=>""opposite_lane"",""cycleway:left""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes""";AUCUN;DOUBLE SENS CYCLABLE BANDE
+steps;"""handrail""=>""both"",""incline""=>""up"",""ramp""=>""yes"",""ramp:bicycle""=>""yes"",""step_count""=>""13"",""surface""=>""concrete""";GOULOTTE;GOULOTTE
+cycleway;"""foot""=>""yes"",""lit""=>""yes"",""oneway""=>""yes"",""segregated""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""foot""=>""yes"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""surface""=>""paved""";VOIE VERTE;VOIE VERTE
+residential;"""cycleway:both""=>""lane"",""cycleway:both:lane""=>""exclusive"",""lit""=>""yes"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+residential;"""cycleway""=>""lane"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+service;"""emergency""=>""yes"",""lit""=>""yes"",""maxspeed""=>""30"",""motor_vehicle""=>""no"",""surface""=>""concrete""";AUTRE;AUTRE
+path;"""bicycle""=>""designated"",""bridge""=>""yes"",""description""=>""2010/NT/R/DGU-P393"",""foot""=>""designated"",""horse""=>""no"",""layer""=>""1"",""lit""=>""yes"",""segregated""=>""no"",""surface""=>""concrete""";VOIE VERTE;VOIE VERTE
+path;"""bicycle""=>""designated"",""description""=>""2010/NT/R/DGU-P393"",""foot""=>""designated"",""horse""=>""no"",""lit""=>""yes"",""segregated""=>""no"",""surface""=>""concrete""";VOIE VERTE;VOIE VERTE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""horse""=>""no"",""lit""=>""yes"",""ref:MMM""=>""2010/NT/R/DGU-P395"",""segregated""=>""no"",""surface""=>""concrete""";VOIE VERTE;VOIE VERTE
+footway;"""bicycle""=>""yes"",""footway""=>""sidewalk"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+cycleway;"""bridge""=>""yes"",""cycleway:surface""=>""wood"",""footway:surface""=>""wood"",""oneway""=>""no"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""check_date:smoothness""=>""2022-11-01"",""smoothness""=>""good"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""cycleway""=>""track"",""cycleway:both""=>""no"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""maxspeed""=>""30"",""overtaking""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""foot""=>""designated"",""lit""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+service;"""bicycle""=>""yes"",""cycleway""=>""lane"",""maxspeed""=>""30"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+primary_link;"""cycleway:both""=>""track""";PISTE CYCLABLE;PISTE CYCLABLE
+primary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""3"",""maxspeed""=>""50"",""oneway""=>""yes"",""ref:FR:FANTOIR""=>""341722415S"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+secondary;"""bicycle""=>""yes"",""cyclability""=>""inadvisable"",""cycleway:right""=>""lane"",""cycleway:right:lane""=>""advisory"",""lane_markings""=>""no"",""maxspeed""=>""30"",""oneway""=>""yes"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""designated"",""foot""=>""designated"",""oneway""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""foot""=>""yes"",""segregated""=>""yes"",""tunnel""=>""building_passage""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""yes"",""oneway""=>""no"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+footway;"""bicycle""=>""designated"",""foot""=>""designated"",""incline""=>""up"",""motor_vehicle""=>""no"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""lit""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cycleway:right""=>""lane"",""lanes""=>""3"",""maxspeed""=>""30"",""oneway""=>""no"",""parking:lane:both""=>""parallel"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+secondary;"""bicycle""=>""yes"",""cycleway:right""=>""track"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""maxspeed:type""=>""sign"",""oneway""=>""yes"",""start_date:cycleway:right""=>""2021-01-28"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""lane"",""cycleway:right:lane""=>""exclusive"",""lane_markings""=>""no"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+primary;"""cyclability""=>""inadvisable"",""cycleway""=>""no"",""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""3"",""lanes:bus""=>""1"",""maxspeed""=>""50"",""oneway""=>""yes"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+primary;"""cyclability""=>""inadvisable"",""cycleway""=>""no"",""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""lanes:bus""=>""1"",""lit""=>""yes"",""maxspeed""=>""50"",""oneway""=>""yes"",""overtaking""=>""no"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+primary;"""cyclability""=>""inadvisable"",""cycleway""=>""no"",""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""50"",""oneway""=>""yes"",""parking:lane:right""=>""parallel"",""surface""=>""asphalt"",""turn:lanes""=>""left|through|through;right""";COULOIR BUS+VELO;AUCUN
+primary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""destination""=>""TOUTES DIRECTIONS;GANGES;LES CÉVENNES;MOSSON;C.H.R.U de Montpellier"",""destination:colour""=>""green;white;white;white;white"",""destination:ref""=>""A9 A75;;;;"",""destination:symbol""=>""airport;;;;hospital"",""lanes""=>""2"",""maxspeed""=>""50"",""oneway""=>""yes"",""ref:FR:FANTOIR""=>""341722415S"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+tertiary;"""cycleway""=>""lane"",""junction""=>""roundabout"",""maxspeed""=>""30""";BANDE CYCLABLE;AUCUN
+tertiary;"""cycleway""=>""lane"",""maxspeed""=>""30"",""oneway""=>""yes"",""traffic_calming""=>""table""";BANDE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""footway""=>""sidewalk"",""segregated""=>""yes""";VOIE VERTE;VOIE VERTE
+secondary;"""cycleway:right""=>""track"",""lanes""=>""3"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""track"",""lanes""=>""2"",""maxspeed""=>""30"",""maxspeed:type""=>""FR:urban"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+residential;"""cycleway:both""=>""no"",""lane_markings""=>""no"",""maxspeed""=>""30"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""source:maxspeed""=>""FR:urban"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+tertiary;"""cycleway""=>""lane"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""designated"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+service;"""access""=>""permissive"",""horse""=>""no"",""motor_vehicle""=>""no""";AUTRE;AUTRE
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cycleway""=>""lane"",""cycleway:left""=>""track"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;PISTE CYCLABLE
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cycleway:left""=>""track"",""maxspeed""=>""30"",""oneway""=>""yes"",""parking:lane:right""=>""parallel"",""surface""=>""asphalt""";AUCUN;PISTE CYCLABLE
+secondary;"""busway:left""=>""lane"",""cycleway:left""=>""share_busway"",""cycleway:right""=>""lane"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""parking:lane:right""=>""parallel"",""surface""=>""asphalt""";BANDE CYCLABLE;COULOIR BUS+VELO
+secondary;"""busway:left""=>""lane"",""cycleway:left""=>""share_busway"",""cycleway:right""=>""lane"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""parking:lane:both""=>""parallel"",""surface""=>""asphalt""";BANDE CYCLABLE;COULOIR BUS+VELO
+secondary;"""busway:left""=>""lane"",""cycleway:left""=>""share_busway"",""cycleway:right""=>""lane"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""parking:lane:left""=>""parallel"",""surface""=>""asphalt""";BANDE CYCLABLE;COULOIR BUS+VELO
+cycleway;"""bicycle""=>""yes"",""cycleway""=>""sidewalk"",""oneway""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cycleway""=>""lane"",""maxspeed""=>""30"",""parking:lane:both""=>""diagonal"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cycleway:both""=>""lane"",""cycleway:both:lane""=>""exclusive"",""lanes""=>""2"",""maxspeed""=>""30"",""parking:lane:left""=>""parallel"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""alt_name""=>""Avenue de l'École d'Agriculture-Gabriel Buchet"",""cycleway""=>""lane"",""maxspeed""=>""30"",""parking:lane:both""=>""diagonal""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""alt_name""=>""Avenue du Professeur Louis Ravaz"",""cycleway""=>""lane"",""maxspeed""=>""30"",""maxspeed:type""=>""FR:urban"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""cycleway""=>""lane"",""maxspeed""=>""30"",""parking:lane:both""=>""parallel""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""cycleway""=>""lane"",""maxspeed""=>""30"",""parking:lane:left""=>""parallel""";BANDE CYCLABLE;BANDE CYCLABLE
+tertiary;"""cycleway:left""=>""track"",""cycleway:left:start_date""=>""2020-01-28"",""description""=>""covid19 : piste cyclable temporaire"",""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""parking:lane:right""=>""parallel"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";AUCUN;PISTE CYCLABLE
+tertiary;"""cycleway:left""=>""track"",""cycleway:left:start_date""=>""2020-01-28"",""description""=>""covid19 : piste cyclable temporaire"",""maxspeed""=>""30"",""oneway""=>""yes"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";AUCUN;PISTE CYCLABLE
+primary;"""cyclability""=>""inadvisable"",""cycleway:right""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""1"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+primary;"""cyclability""=>""inadvisable"",""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""maxspeed""=>""50"",""oneway""=>""yes"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+primary;"""cyclability""=>""inadvisable"",""cycleway:right""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+tertiary;"""cycleway""=>""opposite_lane"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE BANDE
+cycleway;"""foot""=>""yes"",""lit""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+primary_link;"""cycleway:right""=>""lane"",""layer""=>""1"",""oneway""=>""yes"",""ref""=>""M 65""";BANDE CYCLABLE;AUCUN
+secondary;"""bicycle""=>""yes"",""cyclability""=>""inadvisable"",""cycleway:right""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""parking:lane:right""=>""parallel"",""segregated""=>""no"",""surface""=>""asphalt"",""was:lanes""=>""2""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""admin_level""=>""10"",""cycleway:both""=>""lane"",""cycleway:both:lane""=>""exclusive"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""no"",""parking:lane:right""=>""parallel"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cycleway:left""=>""no"",""cycleway:right""=>""lane"",""cycleway:right:lane""=>""exclusive"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""no"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cycleway:both""=>""lane"",""cycleway:both:lane""=>""exclusive"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""no"",""parking:lane:both""=>""parallel"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+residential;"""capacity""=>""56"",""capacity:disabled""=>""1"",""cycleway:right""=>""lane"",""parking:lane:left""=>""parallel""";BANDE CYCLABLE;AUCUN
+secondary;"""access""=>""yes"",""bicycle""=>""yes"",""cycleway:left""=>""no"",""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""foot""=>""yes"",""lanes""=>""3"",""lanes:psv""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""parking:lane:both""=>""parallel"",""start_date:cycleway:right""=>""2021-01-28"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+secondary;"""bicycle""=>""yes"",""cycleway:right""=>""track"",""description:covid19""=>""Piste cyclable temporaire"",""lanes""=>""3"",""maxspeed""=>""30"",""oneway""=>""yes"",""parking:lane:right""=>""parallel"",""start_date:cycleway:right""=>""2021-01-28"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+secondary;"""bicycle""=>""yes"",""cycleway:right""=>""track"",""description:covid19""=>""Piste cyclable temporaire"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes"",""start_date:cycleway:right""=>""2021-01-28"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""lane"",""cycleway:right:lane""=>""exclusive"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+track;"""bicycle""=>""dismount"",""horse""=>""yes"",""motor_vehicle""=>""no"",""surface""=>""asphalt"",""tracktype""=>""grade1""";AUTRE;AUTRE
+cycleway;"""foot""=>""yes"",""oneway""=>""yes"",""oneway:foot""=>""no"",""segregated""=>""yes""";PISTE CYCLABLE;AUCUN
+primary;"""cyclability""=>""inadvisable"",""cycleway""=>""no"",""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""50"",""oneway""=>""yes"",""surface""=>""asphalt"",""was:lanes""=>""3""";COULOIR BUS+VELO;AUCUN
+primary;"""cyclability""=>""inadvisable"",""cycleway""=>""no"",""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""50"",""oneway""=>""yes"",""parking:lane:right""=>""parallel"",""surface""=>""asphalt"",""was:lanes""=>""3""";COULOIR BUS+VELO;AUCUN
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""footway""=>""crossing"",""segregated""=>""yes""";VOIE VERTE;VOIE VERTE
+cycleway;"""surface""=>""paved""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""cycleway""=>""opposite"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt"",""zone:maxspeed""=>""FR:30""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+cycleway;"""bicycle""=>""designated"",""foot""=>""designated"",""oneway""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""footway""=>""crossing"",""segregated""=>""no""";VOIE VERTE;VOIE VERTE
+tertiary;"""cycleway:right""=>""track"",""lit""=>""yes"",""maxspeed""=>""30"",""maxspeed:type""=>""FR:urban"",""oneway""=>""yes"",""parking:lane:right""=>""parallel"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""description""=>""2010/NT/R/DGU-P487"",""foot""=>""designated"",""horse""=>""no"",""lit""=>""yes"",""motor_vehicle""=>""no"",""segregated""=>""no"",""surface""=>""paving_stones""";VOIE VERTE;VOIE VERTE
+track;"""motor_vehicle""=>""no"",""tracktype""=>""grade1""";AUTRE;AUTRE
+primary;"""cyclability""=>""good"",""cycleway:right""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""maxspeed""=>""50"",""oneway""=>""yes"",""source:maxspeed""=>""sign"",""turn:lanes""=>""left|through|through"",""was:lanes""=>""2""";PISTE CYCLABLE;AUCUN
+primary;"""cyclability""=>""inadvisable"",""cycleway:right""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""1"",""oneway""=>""yes"",""was:lanes""=>""2""";PISTE CYCLABLE;AUCUN
+primary;"""cyclability""=>""inadvisable"",""cycleway""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""oneway""=>""no"",""was:lanes""=>""4""";PISTE CYCLABLE;PISTE CYCLABLE
+primary;"""cyclability""=>""good"",""cycleway""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""3"",""lanes:backward""=>""3"",""oneway""=>""no"",""surface""=>""asphalt"",""turn:lanes:backward""=>""left|through|through;right"",""was:lanes""=>""5""";PISTE CYCLABLE;PISTE CYCLABLE
+footway;"""bicycle""=>""designated"",""footway""=>""crossing"",""segregated""=>""no"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+secondary;"""cycleway""=>""lane"",""lanes""=>""3"",""lanes:backward""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""lit""=>""yes"",""segregated""=>""no"",""surface""=>""concrete""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""oneway""=>""no"",""ref:MMM""=>""2016-P114"",""start_date""=>""2016-09-20"",""surface""=>""concrete""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bridge""=>""yes"",""description""=>""2016-P114"",""layer""=>""1"",""oneway""=>""no"",""start_date""=>""2016-09-20""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""oneway""=>""no"",""start_date""=>""2016""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""access""=>""no"",""cycleway:right""=>""lane"",""maxspeed""=>""30"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+residential;"""cycleway:left""=>""opposite_share_busway"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""sidewalk""=>""both"",""smoothness""=>""good"",""surface""=>""asphalt""";AUCUN;COULOIR BUS+VELO
+residential;"""bicycle""=>""designated"",""cycleway""=>""opposite"",""oneway""=>""yes""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+tertiary;"""cycleway""=>""lane""";BANDE CYCLABLE;BANDE CYCLABLE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""lit""=>""yes"",""oneway""=>""no"",""segregated""=>""yes"",""surface""=>""asphalt""";VOIE VERTE;VOIE VERTE
+residential;"""cycleway:right""=>""lane"",""junction""=>""roundabout""";BANDE CYCLABLE;AUCUN
+residential;"""cycleway:right""=>""lane"",""oneway""=>""yes"",""ref:FR:FANTOIR""=>""340950302E""";BANDE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""description""=>""Voie verte"",""foot""=>""designated"",""motor_vehicle""=>""no"",""surface""=>""fine_gravel""";VOIE VERTE;VOIE VERTE
+footway;"""bicycle""=>""designated"",""footway""=>""crossing""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+residential;"""cycleway:left""=>""opposite_lane"",""oneway""=>""yes"",""surface""=>""paved"",""zone:maxspeed""=>""FR:30""";AUCUN;DOUBLE SENS CYCLABLE BANDE
+path;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""motor_vehicle""=>""no""";VOIE VERTE;VOIE VERTE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""footway""=>""crossing"",""surface""=>""asphalt""";VOIE VERTE;VOIE VERTE
+track;"""access""=>""agricultural"",""bicycle""=>""yes"",""foot""=>""yes"",""incline""=>""up"",""motor_vehicle""=>""no"",""surface""=>""ground"",""tracktype""=>""grade2"",""width""=>""3""";AUTRE;AUTRE
+cycleway;"""bicycle""=>""designated"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+track;"""bicycle""=>""yes"",""foot""=>""yes"",""horse""=>""yes"",""motor_vehicle""=>""no"",""surface""=>""asphalt"",""tracktype""=>""grade1"",""width""=>""2.5""";AUTRE;AUTRE
+cycleway;"""start_date""=>""2015-12""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""bicycle""=>""yes"",""cycleway:both""=>""lane"",""cycleway:both:lane""=>""exclusive"",""lanes""=>""3"",""lanes:backward""=>""2"",""lanes:forward""=>""1"",""lit""=>""yes"",""maxspeed""=>""30"",""sidewalk""=>""both"",""surface""=>""asphalt"",""turn:lanes:backward""=>""left|through;right""";BANDE CYCLABLE;BANDE CYCLABLE
+cycleway;"""lit""=>""yes"",""start_date""=>""2016"",""surface""=>""asphalt"",""width""=>""3""";PISTE CYCLABLE;PISTE CYCLABLE
+living_street;"""bicycle""=>""yes"",""cycleway:left""=>""no"",""cycleway:right""=>""no"",""foot""=>""yes"",""lit""=>""yes"",""maxspeed""=>""10"",""motor_vehicle""=>""designated"",""oneway""=>""yes"",""psv""=>""yes"",""sidewalk""=>""right"",""sidewalk:right:bicycle""=>""yes"",""surface""=>""concrete""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AUCUN
+cycleway;"""lit""=>""yes"",""surface""=>""paved"",""surface:note""=>""gravillons dans béton""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""cyclability""=>""good"",""cycleway""=>""opposite"",""maxspeed""=>""30"",""oneway""=>""yes"",""parking:lane:both""=>""parallel"",""surface""=>""asphalt"",""zone:maxspeed""=>""FR:30""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+residential;"""cyclability""=>""good"",""cycleway""=>""opposite"",""maxspeed""=>""30"",""oneway""=>""yes"",""zone:maxspeed""=>""FR:30""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+residential;"""cyclability""=>""good"",""cycleway""=>""opposite"",""maxspeed""=>""30"",""oneway""=>""yes"",""parking:lane:right""=>""parallel"",""zone:maxspeed""=>""FR:30""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+residential;"""maxspeed""=>""30"",""oneway""=>""yes"",""oneway:bicycle""=>""no""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+cycleway;"""cycleway""=>""crossing"",""lit""=>""yes"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""crossing""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""cycleway:left""=>""lane"",""oneway""=>""yes"",""traffic_calming""=>""table""";AUCUN;BANDE CYCLABLE
+secondary;"""cycleway:right""=>""track"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""turn:lanes""=>""through|right""";PISTE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""sidewalk"",""start_date""=>""2016""";PISTE CYCLABLE;PISTE CYCLABLE
+living_street;"""cycleway""=>""opposite"",""lit""=>""yes"",""maxspeed""=>""20"",""oneway""=>""yes"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""designated"",""start_date""=>""2016-09-21""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""bicycle""=>""designated"",""bridge""=>""yes"",""foot""=>""designated"",""motor_vehicle""=>""no"",""oneway""=>""no""";VOIE VERTE;VOIE VERTE
+footway;"""bicycle""=>""designated"",""foot""=>""designated"",""lit""=>""yes"",""segregated""=>""no"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+cycleway;"""bicycle""=>""designated"",""foot""=>""yes"",""lcn""=>""yes"",""note:MMM""=>""2014-P129"",""oneway""=>""yes"",""oneway:bicycle""=>""yes"",""segregated""=>""yes"",""surface""=>""asphalt"",""width""=>""2.5""";PISTE CYCLABLE;AUCUN
+cycleway;"""access""=>""no"",""bicycle""=>""designated"",""foot""=>""yes"",""lcn""=>""yes"",""note:MMM""=>""2014-P129"",""oneway""=>""yes"",""oneway:bicycle""=>""yes"",""segregated""=>""yes"",""surface""=>""asphalt"",""width""=>""2.5""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""designated"",""bridge""=>""yes"",""foot""=>""yes"",""layer""=>""1"",""lcn""=>""yes"",""oneway:bicycle""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""bridge""=>""yes"",""layer""=>""1"",""lcn""=>""yes"",""oneway:bicycle""=>""yes"",""segregated""=>""yes"",""surface""=>""asphalt"",""width""=>""2.5""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bridge""=>""yes"",""foot""=>""yes"",""layer""=>""1"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+footway;"""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""oneway:bicycle""=>""no""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+path;"""bicycle""=>""designated"",""description""=>""2010/NT/R/DGU-P487"",""foot""=>""designated"",""motor_vehicle""=>""no"",""surface""=>""asphalt""";VOIE VERTE;VOIE VERTE
+footway;"""bicycle""=>""yes"",""cyclability""=>""good"",""footway""=>""sidewalk"",""oneway""=>""no"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""oneway""=>""yes"",""start_date""=>""2017""";PISTE CYCLABLE;AUCUN
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cycleway:right""=>""lane"",""lanes""=>""2"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+residential;"""bicycle""=>""designated"",""cycleway:left""=>""lane"",""cycleway:start_date""=>""2017"",""maxspeed""=>""30"",""surface""=>""asphalt""";AUCUN;BANDE CYCLABLE
+footway;"""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""start_date""=>""2017-03-30""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+footway;"""bicycle""=>""designated"",""bridge""=>""yes"",""foot""=>""designated"",""layer""=>""1"",""motor_vehicle""=>""no"",""start_date""=>""2017-03-30""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+footway;"""bicycle""=>""designated"",""foot""=>""designated"",""incline""=>""down"",""motor_vehicle""=>""no"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+cycleway;"""oneway""=>""yes"",""ref:MMM""=>""2010/NT/R/DGU-P299"",""start_date""=>""2016""";PISTE CYCLABLE;AUCUN
+cycleway;"""oneway""=>""yes"",""ref:3MMM""=>""2010/NT/R/DGU-P299""";PISTE CYCLABLE;AUCUN
+path;"""access""=>""no"",""bicycle""=>""designated"",""description""=>""2010/NT/R/DGU-P487"",""embankment""=>""yes"",""foot""=>""designated"",""motor_vehicle""=>""no"",""rcn""=>""yes"",""surface""=>""asphalt""";VOIE VERTE;VOIE VERTE
+residential;"""cycleway""=>""lane"",""lanes""=>""2"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+residential;"""bicycle""=>""yes"",""cycleway""=>""lane"",""foot""=>""yes"",""horse""=>""yes"",""lanes""=>""2"",""maxspeed""=>""30"",""motor_vehicle""=>""yes"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+cycleway;"""foot""=>""yes"",""oneway""=>""no"",""surface""=>""asphalt"",""width""=>""1""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""cycleway""=>""lane"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""2"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+secondary;"""cycleway:right""=>""lane"",""description:covid19""=>""piste cyclable temporaire"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+cycleway;"""start_date""=>""2014""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""description""=>""2016-P98"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""yes"",""cycleway""=>""sidewalk"",""surface""=>""paving_stones""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""access""=>""no"",""bicycle""=>""designated"",""description""=>""2015-P111"",""oneway""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""access""=>""no"",""bicycle""=>""designated"",""description""=>""2015-P111"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""designated"",""foot""=>""yes"",""lcn""=>""yes"",""note:MMM""=>""2014-P129"",""oneway""=>""yes"",""oneway:bicycle""=>""yes"",""segregated""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""description""=>""2010/NT/R/DGU-P400"",""foot""=>""designated"",""horse""=>""no"",""lit""=>""yes"",""segregated""=>""no"",""smoothness""=>""intermediate"",""surface""=>""asphalt""";VOIE VERTE;VOIE VERTE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""horse""=>""no"",""lit""=>""yes"",""segregated""=>""yes"",""smoothness""=>""good"",""surface""=>""paved""";VOIE VERTE;VOIE VERTE
+footway;"""bicycle""=>""designated"",""foot""=>""designated""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+path;"""bicycle""=>""designated"",""cycleway""=>""crossing"",""foot""=>""designated"",""footway""=>""crossing"",""oneway:bicycle""=>""yes"",""segregated""=>""yes"",""surface""=>""paved""";VOIE VERTE;AUCUN
+cycleway;"""cycleway:surface""=>""asphalt"",""foot""=>""yes"",""footway:surface""=>""asphalt"",""lit""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""cycleway:right""=>""lane"",""maxspeed""=>""50"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+secondary;"""cycleway:left""=>""track"",""cycleway:right""=>""no"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""no"",""parking:lane:left""=>""parallel"",""surface""=>""asphalt""";AUCUN;PISTE CYCLABLE
+tertiary;"""bicycle""=>""yes"",""cycleway:right""=>""lane"",""oneway""=>""yes"",""ref""=>""M 27E7"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+tertiary;"""cycleway:right""=>""lane"",""oneway""=>""no"",""ref""=>""M 27E7"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+service;"""admin_level""=>""11"",""boundary""=>""administrative"",""cycleway""=>""opposite"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""smoothness""=>""excellent"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+residential;"""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""ref""=>""M 112"",""surface""=>""asphalt"",""zone:maxspeed""=>""FR:30""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+residential;"""cycleway""=>""opposite_lane"",""maxspeed""=>""30"",""oneway""=>""yes"",""traffic_calming""=>""table""";AUCUN;DOUBLE SENS CYCLABLE BANDE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""yes"",""segregated""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+tertiary;"""cycleway:right""=>""track"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""designated"",""footway""=>""crossing"",""lit""=>""yes"",""oneway""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;AUCUN
+footway;"""bicycle""=>""designated"",""cycleway:surface""=>""paving_stones"",""footway:surface""=>""paving_stones"",""lit""=>""yes"",""segregated""=>""yes"",""surface""=>""paving_stones""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+cycleway;"""access""=>""no"",""bicycle""=>""yes"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""horse""=>""no"",""lit""=>""yes"",""motor_vehicle""=>""no"",""segregated""=>""no"",""surface""=>""asphalt"",""width""=>""2""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""designated"",""segregated""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""lit""=>""yes"",""oneway""=>""yes"",""surface""=>""concrete""";PISTE CYCLABLE;AUCUN
+footway;"""bicycle""=>""designated"",""footway""=>""sidewalk""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+primary;"""bicycle""=>""yes"",""cyclability""=>""inadvisable"",""cycleway:right""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""maxspeed""=>""50"",""oneway""=>""yes"",""source:maxspeed""=>""sign"",""turn:lanes""=>""left|through|through"",""was:lanes""=>""3""";PISTE CYCLABLE;AUCUN
+footway;"""bicycle""=>""yes"",""cyclability""=>""good"",""footway""=>""sidewalk"",""oneway""=>""no"",""segregated""=>""no""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+cycleway;"""cyclability""=>""good"",""oneway""=>""no"",""segregated""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""designated"",""segregated""=>""no"",""surface""=>""concrete""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""oneway""=>""yes"",""start_date""=>""2018""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""crossing"",""foot""=>""yes"",""lcn""=>""yes"",""oneway:bicycle""=>""yes"",""segregated""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""cycleway:left""=>""no"",""cycleway:right""=>""no"",""maxspeed""=>""30"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""surface""=>""asphalt"",""zone:maxspeed""=>""FR:30""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+service;"""access""=>""no"",""bicycle""=>""permissive"",""foot""=>""permissive"",""horse""=>""no"",""maxspeed""=>""25"",""motor_vehicle""=>""no""";AUTRE;AUTRE
+service;"""access""=>""permissive"",""motor_vehicle""=>""no""";AUTRE;AUTRE
+secondary;"""alt_name""=>""Avenue de l'École d'Agriculture Gabriel Buchet"",""cycleway:right""=>""lane"",""maxspeed""=>""30"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+tertiary;"""cycleway""=>""lane"",""maxspeed""=>""30"",""maxweight""=>""7.5"",""parking:lane:both""=>""parallel""";BANDE CYCLABLE;BANDE CYCLABLE
+tertiary;"""cycleway""=>""opposite"",""maxspeed""=>""30"",""oneway""=>""yes"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""oneway""=>""yes"",""oneway:foot""=>""no"",""segregated""=>""yes""";VOIE VERTE;AUCUN
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""oneway:bicycle""=>""yes"",""oneway:foot""=>""no"",""segregated""=>""no""";VOIE VERTE;AUCUN
+tertiary;"""cycleway:right""=>""lane"",""junction""=>""roundabout"",""lit""=>""yes"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+footway;"""bicycle""=>""yes"",""footway""=>""sidewalk"",""lit""=>""yes""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+cycleway;"""foot""=>""yes"",""footway""=>""crossing"",""lit""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+footway;"""bicycle""=>""yes"",""footway""=>""sidewalk"",""footway:surface""=>""asphalt"",""lit""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+service;"""access""=>""no"",""bicycle""=>""permissive"",""foot""=>""permissive"",""horse""=>""no"",""motor_vehicle""=>""no"",""surface""=>""asphalt""";AUTRE;AUTRE
+primary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""50"",""oneway""=>""yes"",""sidewalk""=>""both"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+primary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""3"",""lit""=>""yes"",""maxspeed""=>""50"",""oneway""=>""yes"",""sidewalk""=>""both"",""surface""=>""asphalt"",""turn:lanes""=>""left|through|through""";COULOIR BUS+VELO;AUCUN
+primary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cyclability""=>""inadvisable"",""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""50"",""oneway""=>""yes"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+cycleway;"""lit""=>""yes"",""oneway""=>""yes"",""smoothness""=>""good"",""source:width""=>""ARCore"",""surface""=>""concrete"",""width""=>""1.5""";PISTE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""lit""=>""yes"",""motor_vehicle""=>""no"",""segregated""=>""no"",""surface""=>""concrete""";VOIE VERTE;VOIE VERTE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""designated"",""footway""=>""sidewalk"",""motor_vehicle""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""bicycle""=>""designated"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+residential;"""cycleway""=>""lane"",""lanes""=>""2"",""maxspeed""=>""30"",""maxspeed:type""=>""FR:urban"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""footway:surface""=>""asphalt"",""lit""=>""no"",""motor_vehicle""=>""no"",""segregated""=>""yes"",""surface""=>""asphalt""";VOIE VERTE;VOIE VERTE
+tertiary;"""cycleway:left""=>""lane"",""cycleway:left:lane""=>""advisory"",""cycleway:right""=>""no"",""lanes""=>""2"",""maxspeed""=>""30"",""parking:lane:right""=>""parallel"",""start_date:cycleway""=>""2018-09-03"",""surface""=>""asphalt""";AUCUN;BANDE CYCLABLE
+tertiary;"""cycleway:left""=>""lane"",""cycleway:left:lane""=>""advisory"",""cycleway:right""=>""no"",""lanes""=>""2"",""maxspeed""=>""30"",""start_date:cycleway:left""=>""2018-09-03"",""surface""=>""asphalt""";AUCUN;BANDE CYCLABLE
+tertiary;"""cycleway:left""=>""lane"",""cycleway:left:lane""=>""advisory"",""cycleway:right""=>""no"",""lanes""=>""2"",""maxspeed""=>""30"",""parking:lane:right""=>""parallel"",""start_date:cycleway:left""=>""2018-09-03"",""surface""=>""asphalt""";AUCUN;BANDE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""oneway""=>""yes"",""start_date""=>""2018""";PISTE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""crossing"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+footway;"""bicycle""=>""designated"",""lit""=>""yes"",""motor_vehicle""=>""destination"",""segregated""=>""no"",""surface""=>""paving_stones""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+cycleway;"""smoothness""=>""excellent"",""start_date""=>""2018"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""description""=>""was a footway with paint allowing for bicycles until the pavement was repaired ; paint disappeared"",""foot""=>""yes"",""oneway""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""footway""=>""sidewalk"",""lit""=>""yes"",""oneway:bicycle""=>""yes"",""segregated""=>""no"",""smoothness""=>""excellent"",""surface""=>""concrete:plates""";VOIE VERTE;AUCUN
+cycleway;"""cycleway""=>""crossing"",""cycleway:surface""=>""asphalt"",""foot""=>""yes"",""footway:surface""=>""asphalt"",""oneway""=>""yes"",""segregated""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""foot""=>""yes"",""lit""=>""yes"",""oneway""=>""yes"",""surface""=>""compacted""";PISTE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""designated"",""lit""=>""yes"",""oneway""=>""yes"",""segregated""=>""no"",""surface""=>""paving_stones""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""designated"",""foot""=>""permissive"",""motor_vehicle""=>""no"",""oneway""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""access""=>""no"",""bicycle""=>""designated"",""foot""=>""designated"",""lit""=>""yes"",""motor_vehicle""=>""no"",""rcn""=>""yes"",""surface""=>""paved""";VOIE VERTE;VOIE VERTE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""cycleway:surface""=>""concrete"",""description""=>""2011/NT/R/DGU-P 128"",""foot""=>""designated"",""footway:surface""=>""asphalt"",""lit""=>""yes"",""oneway""=>""no"",""segregated""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""description""=>""2011/NT/R/DGU-P 128"",""foot""=>""designated"",""oneway""=>""no"",""segregated""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""old_name""=>""Via Tolosana""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""oneway""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;AUCUN
+tertiary;"""cycleway""=>""lane"",""ref:FR:FANTOIR""=>""342590132G""";BANDE CYCLABLE;BANDE CYCLABLE
+track;"""motor_vehicle""=>""no"",""surface""=>""unpaved""";AUTRE;AUTRE
+cycleway;"""bicycle""=>""designated"",""cycleway:surface""=>""concrete"",""foot""=>""designated"",""footway:surface""=>""concrete"",""segregated""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""foot""=>""yes"",""oneway:bicycle""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""bicycle""=>""designated"",""cyclability""=>""good"",""foot""=>""designated"",""oneway""=>""no"",""segregated""=>""no"",""surface""=>""asphalt""";VOIE VERTE;VOIE VERTE
+cycleway;"""bicycle""=>""designated"",""cycleway:surface""=>""concrete"",""foot""=>""designated"",""footway:surface""=>""concrete"",""oneway""=>""no"",""segregated""=>""yes"",""surface""=>""concrete""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cyclability""=>""good"",""cycleway:surface""=>""concrete"",""footway:surface""=>""concrete"",""lit""=>""yes"",""oneway""=>""no"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bridge""=>""yes"",""cyclability""=>""good"",""cycleway:surface""=>""concrete"",""footway:surface""=>""concrete"",""layer""=>""1"",""lit""=>""yes"",""oneway""=>""no"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""horse""=>""permissive"",""segregated""=>""no"",""smoothness""=>""good"",""surface""=>""unpaved""";VOIE VERTE;VOIE VERTE
+secondary;"""alt_name""=>""Avenue du Professeur Louis Ravaz"",""cycleway""=>""lane"",""maxspeed""=>""30"",""parking:lane:both""=>""diagonal"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+cycleway;"""smoothness""=>""excellent"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bridge""=>""yes"",""layer""=>""1"",""oneway""=>""yes"",""start_date""=>""2018""";PISTE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""bridge""=>""yes"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""layer""=>""1""";VOIE VERTE;VOIE VERTE
+cycleway;"""description""=>""2016-P 110"",""foot""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""description""=>""2016-P 110"",""lit""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""description""=>""2016-P 110"",""foot""=>""designated"",""lit""=>""yes"",""oneway""=>""no"",""segregated""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+footway;"""bicycle""=>""designated"",""description""=>""2016-P 110"",""foot""=>""designated"",""segregated""=>""no"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+cycleway;"""ref:MMM""=>""2016-P 110"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""cycleway:right""=>""lane"",""cycleway:start_date""=>""2017"",""maxspeed""=>""30"",""tunnel""=>""building_passage""";BANDE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""horse""=>""permissive"",""segregated""=>""no"",""smoothness""=>""good"",""surface""=>""asphalt""";VOIE VERTE;VOIE VERTE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""motor_vehicle""=>""no"",""oneway""=>""no"",""surface""=>""asphalt"",""width""=>""4""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""bicycle""=>""designated"",""cycleway:surface""=>""asphalt"",""foot""=>""designated"",""footway:surface""=>""asphalt"",""segregated""=>""yes""";VOIE VERTE;VOIE VERTE
+secondary;"""admin_level""=>""11"",""boundary""=>""administrative"",""cycleway:left""=>""no"",""cycleway:right""=>""lane"",""cycleway:right:lane""=>""exclusive"",""lanes""=>""3"",""lanes:backward""=>""2"",""maxspeed""=>""30"",""parking:lane:left""=>""parallel"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+cycleway;"""lit""=>""no"",""oneway""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""oneway""=>""no"",""segregated""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""yes"",""cycleway""=>""sidewalk"",""foot""=>""yes"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+residential;"""cycleway""=>""opposite"",""maxspeed""=>""30"",""oneway""=>""yes""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""surface""=>""asphalt""";VOIE VERTE;VOIE VERTE
+cycleway;"""bridge""=>""yes"",""layer""=>""1"",""lcn""=>""yes"",""lit""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""junction""=>""roundabout"",""lanes""=>""2"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+primary;"""cyclability""=>""inadvisable"",""cycleway""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""oneway""=>""no"",""surface""=>""asphalt"",""turn:lanes:backward""=>""left;through|through;right"",""was:lanes""=>""4""";PISTE CYCLABLE;PISTE CYCLABLE
+primary;"""cyclability""=>""good"",""cycleway""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""oneway""=>""no"",""turn:lanes:forward""=>""left;through|through"",""was:lanes""=>""4""";PISTE CYCLABLE;PISTE CYCLABLE
+primary;"""cyclability""=>""good"",""cycleway""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""oneway""=>""no"",""was:lanes""=>""4""";PISTE CYCLABLE;PISTE CYCLABLE
+primary;"""cyclability""=>""inadvisable"",""cycleway""=>""no"",""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""50"",""oneway""=>""yes"",""surface""=>""asphalt"",""was:lanes""=>""2""";COULOIR BUS+VELO;AUCUN
+primary;"""cyclability""=>""inadvisable"",""cycleway:right""=>""share_busway"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""4"",""lanes:bus:forward""=>""1"",""lit""=>""yes"",""maxspeed""=>""50"",""oneway""=>""no"",""overtaking""=>""no"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+primary;"""cyclability""=>""inadvisable"",""cycleway""=>""no"",""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""lanes:bus""=>""1"",""maxspeed""=>""50"",""oneway""=>""yes"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+primary;"""cyclability""=>""inadvisable"",""cycleway""=>""no"",""cycleway:right""=>""share_busway"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""1"",""lit""=>""yes"",""maxspeed""=>""50"",""oneway""=>""yes"",""sidewalk""=>""right"",""surface""=>""asphalt""";COULOIR BUS+VELO;AUCUN
+secondary;"""bicycle""=>""yes"",""cyclability""=>""good"",""cycleway:right""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""yes"",""segregated""=>""no"",""surface""=>""asphalt"",""turn:lanes""=>""left|through|through;right"",""was:lanes""=>""3""";PISTE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""source:maxspeed""=>""sign"",""turn:lanes""=>""through|through;right"",""was:lanes""=>""2""";PISTE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""designated"",""segregated""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+secondary;"""bicycle""=>""yes"",""cycleway:right""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""3"",""maxspeed""=>""30"",""oneway""=>""no"",""parking:lane:right""=>""parallel"",""source:maxspeed""=>""sign"",""surface""=>""asphalt"",""turn:lanes:backward""=>""left;through|through"",""was:lanes""=>""2""";PISTE CYCLABLE;AUCUN
+secondary;"""bicycle""=>""yes"",""cycleway:right""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""3"",""maxspeed""=>""30"",""oneway""=>""no"",""parking:lane:right""=>""parallel"",""source:maxspeed""=>""sign"",""surface""=>""asphalt"",""was:lanes""=>""4""";PISTE CYCLABLE;AUCUN
+cycleway;"""foot""=>""designated"",""footway""=>""crossing"",""oneway""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;AUCUN
+cycleway;"""foot""=>""designated"",""oneway""=>""yes"",""segregated""=>""yes""";PISTE CYCLABLE;AUCUN
+secondary;"""cycleway:left""=>""no"",""cycleway:right""=>""lane"",""cycleway:right:lane""=>""advisory"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""embankment""=>""yes"",""foot""=>""designated"",""motor_vehicle""=>""no"",""tracktype""=>""grade2""";VOIE VERTE;VOIE VERTE
+secondary;"""alt_name""=>""Avenue de l'École d'Agriculture-Gabriel Buchet"",""cycleway""=>""lane"",""maxspeed""=>""30"",""parking:lane:both""=>""diagonal"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""bridge""=>""yes"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""layer""=>""1""";PISTE CYCLABLE;PISTE CYCLABLE
+tertiary;"""cycleway:left""=>""lane"",""cycleway:left:lane""=>""exclusive"",""cycleway:right""=>""no"",""maxspeed""=>""30"",""source:maxspeed""=>""sign""";AUCUN;BANDE CYCLABLE
+residential;"""cycleway:left""=>""lane"",""cycleway:left:lane""=>""advisory"",""cycleway:right""=>""no"",""maxspeed""=>""30"",""source:maxspeed""=>""sign""";AUCUN;BANDE CYCLABLE
+secondary;"""cycleway:right""=>""track"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""parking:lane:left""=>""parallel"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""crossing""=>""marked"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+living_street;"""bicycle""=>""yes"",""cycleway:left""=>""no"",""cycleway:right""=>""no"",""foot""=>""yes"",""lit""=>""yes"",""maxspeed""=>""10"",""motor_vehicle""=>""designated"",""psv""=>""yes"",""sidewalk""=>""right"",""sidewalk:right:bicycle""=>""yes"",""surface""=>""concrete""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AUCUN
+tertiary;"""alt_name""=>""Avenue du Professeur Louis Ravaz"",""cycleway:both""=>""lane"",""cycleway:both:lane""=>""advisory"",""lanes""=>""2"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+tertiary;"""cycleway:right""=>""track"",""lit""=>""yes"",""maxspeed""=>""30"",""oneway""=>""yes"",""sidewalk""=>""both"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+tertiary;"""cycleway:right""=>""track"",""maxspeed""=>""30"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+secondary;"""cycleway:left""=>""share_busway"",""lanes""=>""3"",""maxspeed""=>""30"",""surface""=>""asphalt""";AUCUN;COULOIR BUS+VELO
+living_street;"""access""=>""destination"",""bicycle""=>""designated"",""capacity:disabled""=>""1"",""lanes""=>""1"",""maxspeed""=>""10"",""maxweight""=>""7.5"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""parking:condition:right""=>""disabled"",""parking:lane:right""=>""parallel"",""parking:lane:right:capacity""=>""1"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+living_street;"""access""=>""destination"",""bicycle""=>""designated"",""lanes""=>""1"",""lit""=>""yes"",""maxspeed""=>""10"",""maxweight""=>""7.5"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""parking:lane:right""=>""parallel"",""parking:lane:right:capacity""=>""1"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+cycleway;"""lit""=>""yes"",""oneway""=>""no"",""start_date""=>""2019-12"",""surface""=>""asphalt"",""width""=>""3""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""cycleway:left""=>""opposite_lane"",""maxspeed""=>""50"",""oneway""=>""yes""";AUCUN;DOUBLE SENS CYCLABLE BANDE
+cycleway;"""oneway:bicycle""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""oneway:bicycle""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""access""=>""no"",""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""surface""=>""asphalt""";VOIE VERTE;VOIE VERTE
+residential;"""bicycle""=>""yes"",""cycleway""=>""lane""";BANDE CYCLABLE;BANDE CYCLABLE
+cycleway;"""access""=>""no"",""bicycle""=>""designated"",""oneway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""designated"",""foot""=>""designated"",""lit""=>""yes"",""oneway""=>""no"",""surface""=>""concrete""";PISTE CYCLABLE;PISTE CYCLABLE
+primary;"""cyclability""=>""good"",""cycleway:right""=>""track"",""description:covid19""=>""pistes cyclables temporaires"",""lanes""=>""1"",""maxspeed""=>""50"",""oneway""=>""yes"",""source:maxspeed""=>""sign"",""was:lanes""=>""2""";PISTE CYCLABLE;AUCUN
+primary;"""bicycle""=>""yes"",""cyclability""=>""inadvisable"",""cycleway:right""=>""track"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""1"",""maxspeed""=>""50"",""oneway""=>""yes"",""source:maxspeed""=>""sign""";PISTE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""lane"",""lanes""=>""2"",""maxspeed""=>""50"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""horse""=>""no"",""motor_vehicle""=>""no""";VOIE VERTE;VOIE VERTE
+path;"""bicycle""=>""designated"",""bridge""=>""yes"",""foot""=>""designated"",""horse""=>""no"",""layer""=>""1"",""motor_vehicle""=>""no"",""start_date""=>""2020-06-05""";VOIE VERTE;VOIE VERTE
+secondary;"""cycleway:left""=>""no"",""cycleway:right""=>""lane"",""cycleway:right:lane""=>""exclusive"",""lanes""=>""2"",""maxspeed""=>""30"",""parking:lane:right""=>""parallel"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""cycleway""=>""crossing"",""cycleway:surface""=>""asphalt"",""foot""=>""designated"",""footway""=>""crossing"",""footway:surface""=>""asphalt"",""oneway:bicycle""=>""yes"",""segregated""=>""yes"",""surface""=>""paved""";VOIE VERTE;AUCUN
+path;"""bicycle""=>""designated"",""cycleway:surface""=>""concrete"",""foot""=>""designated"",""footway:surface""=>""concrete"",""oneway:bicycle""=>""yes"",""segregated""=>""yes"",""surface""=>""paved""";VOIE VERTE;AUCUN
+cycleway;"""foot""=>""no"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+secondary;"""cycleway:right""=>""track"",""description:covid19""=>""piste cyclable temporaire"",""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""parking:lane:left""=>""parallel"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""layer""=>""-1"",""tunnel""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+path;NA;PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway:left""=>""lane"",""surface""=>""asphalt""";PISTE CYCLABLE;BANDE CYCLABLE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""surface""=>""fine_gravel""";VOIE VERTE;VOIE VERTE
+residential;"""cycleway:left""=>""opposite_lane"",""lanes""=>""1"",""maxspeed""=>""30"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE BANDE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""surface""=>""concrete""";VOIE VERTE;VOIE VERTE
+residential;"""bicycle""=>""designated"",""cycleway:left""=>""lane"",""cycleway:start_date""=>""2017"",""lit""=>""yes"",""maxspeed""=>""30"",""sidewalk""=>""both"",""surface""=>""asphalt""";AUCUN;BANDE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""foot""=>""designated"",""oneway""=>""yes"",""segregated""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""shared"",""foot""=>""designated"",""oneway""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""cycleway""=>""shared_lane"",""junction""=>""roundabout"",""maxspeed""=>""30""";AUTRE;AUCUN
+cycleway;"""bicycle""=>""yes"",""crossing""=>""marked"",""cycleway""=>""crossing""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""foot""=>""designated"",""lit""=>""yes"",""motor_vehicle""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""cycleway:surface""=>""concrete"",""foot""=>""designated"",""footway""=>""sidewalk"",""footway:surface""=>""concrete"",""segregated""=>""yes"",""surface""=>""concrete""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""designated"",""footway""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""lanes""=>""2"",""lit""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+footway;"""bicycle""=>""designated"",""crossing""=>""marked"",""foot""=>""designated"",""footway""=>""crossing"",""footway:surface""=>""asphalt"",""segregated""=>""yes"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+footway;"""bicycle""=>""designated"",""crossing""=>""marked"",""foot""=>""designated"",""footway""=>""crossing"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+cycleway;"""bicycle""=>""designated"",""foot""=>""designated"",""lcn""=>""yes"",""oneway""=>""yes"",""segregated""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""lcn""=>""yes"",""oneway""=>""yes"",""segregated""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""sidewalk"",""lit""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""access""=>""no"",""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""segregated""=>""no"",""surface""=>""asphalt""";VOIE VERTE;VOIE VERTE
+path;"""access""=>""no"",""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""rcn""=>""yes"",""surface""=>""paved""";VOIE VERTE;VOIE VERTE
+path;"""access""=>""no"",""bicycle""=>""designated"",""foot""=>""designated"",""lit""=>""no"",""motor_vehicle""=>""no"",""rcn""=>""yes"",""surface""=>""asphalt""";VOIE VERTE;VOIE VERTE
+cycleway;"""access""=>""no"",""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated""";PISTE CYCLABLE;PISTE CYCLABLE
+primary_link;"""bicycle""=>""yes"",""cycleway:right""=>""lane"",""lanes""=>""1"",""maxspeed""=>""50"",""oneway""=>""yes"",""ref""=>""M 986"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""sidepath""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""start_date""=>""2014""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""foot""=>""designated"",""segregated""=>""no"",""surface""=>""concrete:plates""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""cycleway:surface""=>""concrete"",""foot""=>""designated"",""footway:surface""=>""concrete"",""segregated""=>""yes"",""surface""=>""concrete""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""ref:MMM""=>""test""";PISTE CYCLABLE;PISTE CYCLABLE
+tertiary;"""cycleway""=>""lane"",""ref""=>""M 27E6""";BANDE CYCLABLE;BANDE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""segregated""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""foot""=>""designated""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""bridge""=>""yes"",""cycleway""=>""sidewalk"",""foot""=>""designated""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""motor_vehicle""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""cycleway:right""=>""lane"",""maxspeed""=>""50""";BANDE CYCLABLE;AUCUN
+footway;"""bicycle""=>""designated"",""crossing""=>""marked"",""foot""=>""designated"",""footway""=>""crossing"",""motor_vehicle""=>""no""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+footway;"""bicycle""=>""designated"",""description""=>""Voie verte"",""foot""=>""designated"",""motor_vehicle""=>""no"",""surface""=>""fine_gravel""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+footway;"""bicycle""=>""designated"",""crossing""=>""marked"",""description""=>""Voie verte"",""foot""=>""designated"",""footway""=>""crossing"",""motor_vehicle""=>""no"",""surface""=>""fine_gravel""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+footway;"""bicycle""=>""designated"",""crossing""=>""marked"",""description""=>""Voie verte"",""foot""=>""designated"",""footway""=>""crossing"",""motor_vehicle""=>""no"",""segregated""=>""no"",""surface""=>""fine_gravel""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+footway;"""bicycle""=>""designated"",""crossing""=>""marked"",""footway""=>""crossing"",""segregated""=>""yes""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+tertiary;"""cycleway:left""=>""opposite_lane"",""oneway""=>""yes"",""ref""=>""M 132""";AUCUN;DOUBLE SENS CYCLABLE BANDE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""surface""=>""concrete""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""foot""=>""designated"",""start_date""=>""2016""";PISTE CYCLABLE;PISTE CYCLABLE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""motor_vehicle""=>""no"",""oneway""=>""no"",""width""=>""3""";VOIE VERTE;VOIE VERTE
+footway;"""bicycle""=>""designated"",""crossing""=>""marked"",""foot""=>""designated"",""footway""=>""crossing"",""incline""=>""down"",""motor_vehicle""=>""no"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+footway;"""bicycle""=>""designated"",""crossing""=>""marked"",""foot""=>""designated"",""footway""=>""crossing"",""incline""=>""up"",""motor_vehicle""=>""no"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+cycleway;"""cycleway""=>""sidewalk"",""oneway:bicycle""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""cycleway""=>""sidewalk"",""oneway""=>""no"",""smoothness""=>""good"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+tertiary;"""cycleway:right""=>""lane"",""cycleway:right:oneway""=>""no"",""lanes""=>""2"",""maxspeed""=>""30"",""maxspeed:type""=>""sign"",""smoothness""=>""good"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+footway;"""bicycle""=>""yes"",""footway""=>""sidewalk"",""smoothness""=>""excellent"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+cycleway;"""cycleway""=>""sidewalk"",""oneway:bicycle""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+primary_link;"""cycleway:right""=>""lane"",""cycleway:right:lane""=>""exclusive"",""oneway""=>""yes"",""ref""=>""M 65"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+primary;"""cycleway:right""=>""lane"",""maxspeed""=>""70"",""ref""=>""M 65"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+footway;"""bicycle""=>""designated"",""crossing""=>""marked"",""foot""=>""designated"",""footway""=>""crossing""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+cycleway;"""cycleway""=>""shared"",""oneway""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""oneway""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+unclassified;"""cycleway:right""=>""lane"",""cycleway:right:oneway""=>""no"",""oneway""=>""yes""";BANDE CYCLABLE;AUCUN
+cycleway;"""foot""=>""yes"",""oneway""=>""no"",""tunnel""=>""yes""";PISTE CYCLABLE;PISTE CYCLABLE
+footway;"""bicycle""=>""designated"",""crossing""=>""marked"",""description""=>""2011/NT/R/DGU-P 128"",""foot""=>""designated"",""footway""=>""crossing"",""oneway""=>""no"",""segregated""=>""yes"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+footway;"""bicycle""=>""designated"",""crossing""=>""marked"",""description""=>""2011/NT/R/DGU-P 128"",""foot""=>""designated"",""footway""=>""crossing"",""lit""=>""yes"",""oneway""=>""no"",""segregated""=>""yes"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+cycleway;"""bicycle""=>""designated"",""cycleway""=>""sidewalk"",""description""=>""2011/NT/R/DGU-P 128"",""foot""=>""designated"",""lit""=>""yes"",""oneway""=>""no"",""segregated""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+footway;"""bicycle""=>""designated"",""crossing""=>""marked"",""cycleway:surface""=>""concrete"",""description""=>""2011/NT/R/DGU-P 128"",""foot""=>""designated"",""footway""=>""crossing"",""footway:surface""=>""asphalt"",""lit""=>""yes"",""oneway""=>""no"",""segregated""=>""yes"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+cycleway;"""cycleway""=>""sidewalk"",""oneway""=>""yes"",""tunnel""=>""yes""";PISTE CYCLABLE;AUCUN
+footway;"""bicycle""=>""yes"",""footway""=>""sidewalk"",""lit""=>""yes"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+path;"""bicycle""=>""designated"",""cycleway""=>""crossing"",""foot""=>""designated"",""footway""=>""crossing"",""lit""=>""yes"",""oneway:bicycle""=>""yes"",""segregated""=>""yes"",""surface""=>""paved""";VOIE VERTE;AUCUN
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""footway""=>""sidewalk"",""oneway:bicycle""=>""yes"",""segregated""=>""no"",""surface""=>""paved""";VOIE VERTE;AUCUN
+cycleway;"""oneway""=>""yes"",""surface""=>""paved""";PISTE CYCLABLE;AUCUN
+cycleway;"""foot""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""lit""=>""yes"",""smoothness""=>""excellent"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+track;"""bicycle""=>""yes"",""foot""=>""yes"",""horse""=>""yes"",""motor_vehicle""=>""no"",""tracktype""=>""grade1"",""trail_visibility""=>""good""";AUTRE;AUTRE
+track;"""access""=>""agricultural"",""bicycle""=>""yes"",""foot""=>""yes"",""horse""=>""yes"",""motor_vehicle""=>""no"",""tracktype""=>""grade1"",""trail_visibility""=>""good""";AUTRE;AUTRE
+service;"""bicycle""=>""yes"",""motor_vehicle""=>""no""";AUTRE;AUTRE
+residential;"""cycleway:right""=>""lane"",""lit""=>""yes"",""maxspeed""=>""30"",""sidewalk""=>""right"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+service;"""admin_level""=>""11"",""boundary""=>""administrative"",""lit""=>""yes"",""motor_vehicle""=>""no"",""surface""=>""asphalt""";AUTRE;AUTRE
+living_street;"""cycleway""=>""opposite"",""lit""=>""yes"",""maxspeed""=>""20"",""oneway""=>""yes"",""smoothness""=>""good"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+cycleway;"""access""=>""no"",""bicycle""=>""designated"",""foot""=>""no"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+footway;"""bicycle""=>""designated"",""crossing""=>""marked"",""footway""=>""crossing""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+cycleway;"""bicycle""=>""designated"",""description""=>""2016-P 110"",""foot""=>""designated"",""segregated""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""bicycle""=>""designated"",""crossing""=>""marked"",""description""=>""2016-P 110"",""foot""=>""designated"",""footway""=>""crossing"",""segregated""=>""yes"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+track;"""bicycle""=>""yes"",""foot""=>""yes"",""horse""=>""yes"",""motor_vehicle""=>""private"",""motorcar""=>""no"",""mtb:scale""=>""0"",""surface""=>""compacted"",""tracktype""=>""grade1""";AUTRE;AUTRE
+track;"""bicycle""=>""yes"",""foot""=>""yes"",""horse""=>""yes"",""motor_vehicle""=>""no"",""tracktype""=>""grade2""";AUTRE;AUTRE
+track;"""access""=>""agricultural"",""motorcar""=>""no"",""mtb:scale""=>""0"",""surface""=>""compacted"",""tracktype""=>""grade1"",""width""=>""5""";AUTRE;AUTRE
+service;"""horse""=>""no"",""motor_vehicle""=>""no""";AUTRE;AUTRE
+cycleway;"""foot""=>""yes"",""footway""=>""crossing"",""lit""=>""yes"",""segregated""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""foot""=>""yes"",""footway""=>""sidewalk"",""lit""=>""yes"",""segregated""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""foot""=>""yes"",""lit""=>""yes"",""segregated""=>""no"",""surface""=>""asphalt""";PISTE CYCLABLE;PISTE CYCLABLE
+residential;"""cycleway:left""=>""lane"",""oneway""=>""yes"",""oneway:bicycle""=>""no"",""width""=>""4""";AUCUN;DOUBLE SENS CYCLABLE BANDE
+cycleway;"""bicycle""=>""yes"",""bridge""=>""yes"",""foot""=>""yes"",""layer""=>""1"",""oneway""=>""no""";PISTE CYCLABLE;PISTE CYCLABLE
+primary;"""cycleway:right""=>""track"",""junction""=>""roundabout"",""lane_markings""=>""no"",""maxspeed""=>""50"",""smoothness""=>""excellent"",""source:maxspeed""=>""FR:urban"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""designated"",""foot""=>""yes"",""horse""=>""no"",""smoothness""=>""excellent"",""surface""=>""asphalt"",""width""=>""1""";PISTE CYCLABLE;PISTE CYCLABLE
+service;"""motor_vehicle""=>""no"",""oneway""=>""yes""";AUTRE;AUCUN
+secondary;"""admin_level""=>""10"",""boundary""=>""administrative"",""cycleway:right""=>""lane"",""cycleway:right:lane""=>""advisory"",""lanes""=>""2"",""maxspeed""=>""30"",""oneway""=>""no"",""surface""=>""asphalt""";BANDE CYCLABLE;AUCUN
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""ref:FR:FANTOIR""=>""341729260G""";VOIE VERTE;VOIE VERTE
+steps;"""incline""=>""up"",""ramp:bicycle""=>""yes""";GOULOTTE;GOULOTTE
+track;"""bicycle""=>""yes"",""bridge""=>""yes"",""horse""=>""yes"",""layer""=>""1"",""motor_vehicle""=>""no"",""surface""=>""asphalt"",""tracktype""=>""grade1""";AUTRE;AUTRE
+footway;"""bicycle""=>""yes"",""check_date:surface""=>""2022-11-29"",""footway""=>""sidewalk"",""surface""=>""asphalt""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+unclassified;"""cycleway:left""=>""opposite_lane"",""maxspeed""=>""50"",""oneway""=>""yes""";AUCUN;DOUBLE SENS CYCLABLE BANDE
+unclassified;"""cycleway:left""=>""lane"",""cycleway:right""=>""lane"",""maxspeed""=>""50""";BANDE CYCLABLE;BANDE CYCLABLE
+path;"""bicycle""=>""designated"",""foot""=>""designated"",""segregated""=>""no"",""surface""=>""asphalt"",""traffic_sign""=>""FR:C115""";VOIE VERTE;VOIE VERTE
+footway;"""bicycle""=>""designated"",""crossing""=>""marked"",""foot""=>""designated"",""footway""=>""crossing"",""motor_vehicle""=>""no"",""segregated""=>""no""";AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE;AMENAGEMENT MIXTE PIETON VELO HORS VOIE VERTE
+unclassified;"""bicycle""=>""yes"",""cycleway""=>""opposite"",""lit""=>""no"",""oneway""=>""yes"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+cycleway;"""oneway""=>""yes"",""width""=>""2""";PISTE CYCLABLE;AUCUN
+service;"""access""=>""no"",""bicycle""=>""yes"",""cycleway""=>""opposite"",""foot""=>""yes"",""lit""=>""yes"",""maxspeed""=>""30"",""motor_vehicle""=>""no"",""smoothness""=>""excellent"",""source:maxspeed""=>""sign"",""surface""=>""asphalt""";AUTRE;AUTRE
+living_street;"""cycleway""=>""opposite"",""lit""=>""no"",""maxspeed""=>""20"",""oneway""=>""yes"",""surface""=>""asphalt""";AUCUN;DOUBLE SENS CYCLABLE NON MATERIALISE
+cycleway;"""bicycle""=>""yes"",""foot""=>""yes"",""lit""=>""no"",""motor_vehicle""=>""no"",""surface""=>""compacted""";PISTE CYCLABLE;PISTE CYCLABLE
+cycleway;"""oneway""=>""yes"",""smoothness""=>""excellent"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""cycleway""=>""share_busway"",""oneway""=>""yes"",""smoothness""=>""excellent"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""yes"",""motor_vehicle""=>""bus"",""oneway""=>""yes""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""yes"",""cycleway""=>""share_busway"",""motor_vehicle""=>""bus"",""oneway""=>""yes"",""smoothness""=>""excellent"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""yes"",""motor_vehicle""=>""bus"",""oneway""=>""yes"",""smoothness""=>""excellent"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""bicycle""=>""yes"",""bridge""=>""yes"",""layer""=>""1"",""motor_vehicle""=>""bus"",""oneway""=>""yes"",""smoothness""=>""excellent"",""surface""=>""asphalt""";PISTE CYCLABLE;AUCUN
+cycleway;"""abandoned:railway""=>""rail"",""alt_name""=>""Ancienne Voie Ferrée"",""railway""=>""abandoned""";PISTE CYCLABLE;PISTE CYCLABLE
+tertiary;"""cycleway:both""=>""lane"",""cycleway:both:lane""=>""exclusive"",""lanes""=>""2"",""lit""=>""yes"",""maxspeed""=>""30"",""surface""=>""asphalt""";BANDE CYCLABLE;BANDE CYCLABLE
+NA;NA;BANDE CYCLABLE;BANDE CYCLABLE
+NA;NA;BANDE CYCLABLE;AUCUN
+NA;NA;PISTE CYCLABLE;PISTE CYCLABLE
