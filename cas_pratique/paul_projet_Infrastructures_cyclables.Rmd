@@ -169,14 +169,30 @@ carte_finale <- carte_base+
 tmap_leaflet(carte_finale)
 ```
 
+## 
+
 ```{r}
 #route500
+library(ggplot2)
 
-table(lieux_epci$vma)
-sum(table(lieux_epci$vma))
+# table(lieux_epci$vma)
+# sum(table(lieux_epci$vma))
 
 merged_df <- merge(Accidents_velo_epci_sf, lieux_epci, by = "Num_Acc")
-table(merged_df$vma)
-sum(table(merged_df$vma))
+# table(merged_df$vma)
+# sum(table(merged_df$vma))
 
+
+merged_df %>%
+  slice(-532) %>%
+  filter(!is.na(vma)) %>%
+  ggplot(aes(x = vma)) +
+    geom_histogram(stat = "count")+
+    labs(title = "Nombre d'accidents de vélo en fonction de la limitation de vitesse", x = "Vitesse Maximale Autorisée", y = "Nombre d'accidents")
 ```
+
+On se rend compte qu'il y a plus d'accidents en vélo lorsque la limitation de vitesse est de 50.
+
+Remarque: j'enlève la ligne 532 car il y a un -1 dans la colonne des limitations des vitesses et ce -1 s'affiche donc dans mon histogramme. Etant donné que je n'arrive pas à enlever ce -1 avec un replacce, j'ai donc décidé de le faire manuellement en regardant à quelle ligne il se situait.
+
+### Maintenant, on va essayer de voir comment obtenir les infos sur les tampons
