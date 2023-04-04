@@ -100,6 +100,11 @@ Ensemble_temp_trajet_carreaux_200m_select_explode <- readRDS("data MMM/Trajets_d
 #### Cartographie de l'offre cyclable 
 
 ```{r carte}
+# route500
+
+
+
+
 carte_base <- tm_shape(communes_epci)+
   tm_polygons(col = "grey",border.col = "white")+
   tm_shape(epci)+
