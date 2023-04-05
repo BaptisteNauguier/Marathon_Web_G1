@@ -25,17 +25,60 @@ Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>%
   mutate(mois := as.integer(mois))
 Accidents_velo_epci_sf$mois <- month.name[Accidents_velo_epci_sf$mois] #transforme les nombre en noms de mois
 Accidents_velo_epci_sf$mois <- factor(Accidents_velo_epci_sf$mois, levels = month.name)
+# 
+# #histogramme des accidents par mois
+# ggplot(Accidents_velo_epci_sf, aes(x = mois)) +
+#   geom_histogram(stat = "count")+
+#   labs(title = "Nombre d'accident par mois sur MMM", x = "Mois", y = "Nombre d'accidents")
+# 
+# #barplot empilé
+# df_count <- Accidents_velo_epci_sf %>%
+#   count(mois, an)
+# ggplot(df_count, aes(x = mois, y = n)) +
+#   geom_col(aes(fill = an), width = 0.7)
+# 
 
-#histogramme des accidents par mois
-ggplot(Accidents_velo_epci_sf, aes(x = mois)) +
-  geom_histogram(stat = "count")+
-  labs(title = "Nombre d'accident par mois sur MMM", x = "Mois", y = "Nombre d'accidents")
+#____________________________________________________________
 
-#barplot empilé
+### GEOMLINE 
 df_count <- Accidents_velo_epci_sf %>%
-  count(mois, an)
+  count(mois) %>%
+  mutate(total = sum(n))
+
+df_count$mois <- as.integer(df_count$mois)
+
 ggplot(df_count, aes(x = mois, y = n)) +
-  geom_col(aes(fill = an), width = 0.7)
+  geom_line(color = "#99c3f0") +
+  geom_point(color = "#99d4f0", size = 3) +
+  # geom_line(aes(x = mois, y = total), color = "red", linetype = "solid") +
+  labs(title = "Nombre d'accidents par mois", x = "Mois", y = "Nombre d'accidents") +
+  scale_x_continuous(breaks = 1:12, labels = month.name[1:12])
+
+#____________________________________________________________
+
+#____________________________________________________________
+#DIAGRAMME EN LIGNE PAR MOIS ET PAR AN
+df_count <- Accidents_velo_epci_sf %>%
+  count(mois, an) %>%
+  arrange(mois, an)
+
+couleurs <- c("#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928")
+
+couleurs2 <- c("red", "green", "blue", "orange", "purple", "yellow", "pink", "brown", "gray", "black", "cyan", "magenta")
+
+ggplot(df_count, aes(x = an, y = n, group = mois, color = mois)) +
+  geom_line() +
+  labs(title = "Nombre d'accidents par mois et par année",
+       x = "Année", y = "Nombre d'accidents") +
+  scale_x_discrete(breaks = unique(df_count$an))+
+  scale_color_manual(values = couleurs2)
+
+#____________________________________________________________
+
+
+```
+
+```{r}
 
 #lumière lors de l'accident : 
 Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>% 
@@ -52,12 +95,19 @@ Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>%
 etiquettes = c("Plein jour", "Crépuscule", "Nuit sans éclairage public", "Nuit avec éclairage public non allumé","Nuit avec éclairage public allumé")
 
 ggplot(Accidents_velo_epci_sf, aes(x = lum, fill=lum)) +
-  geom_bar(stat = "count")+
+  geom_bar(stat = "count") +
+  scale_fill_manual(values = c("#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00")) +
   labs(title = "Lumière au moment de l'accident", 
        x = "Lumière", 
-       y = "Nombre d'accidents")+
-  theme(axis.text.x = element_blank())+
-    guides(fill = guide_legend(title = ""))
+       y = "Nombre d'accidents") +
+  theme(axis.text.x = element_blank()) +
+  guides(fill = guide_legend(title = ""))
+
+
+
+```
+
+```{r}
 
 #horaires des accidents.
 Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>%#on ne va garder que les heures et se débarasser des minutes.
@@ -132,6 +182,10 @@ ggplot(df_count, aes(x = hrmn, y = n)) +
   geom_col(aes(fill = agg), width = 0.7)+
   scale_fill_manual(values = c("#fcbfff","#bfe5ff"))+
   labs(title = "Heures des accidentents, en agglomération et hors agglomération.")+  theme(legend.title = element_blank())
+
+```
+
+```{r}
 
 ### intersection ;
 Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>% 
@@ -295,13 +349,4 @@ vehicules_epci <- readRDS("data MMM/onisr/vehicules_epci.rds")
 dim(vehicules_epci)
 # names(vehicules_epci) #nom des colonnes
 glimpse(vehicules_epci)
-```
-
-```{r}
-epci_osm_230101 %>% 
-  filter(str_detect(other_tags,"maxspeed"))
-leaflet(data=epci) %>% 
-  addTiles() %>% 
-  addPolygons()
-
 ```
