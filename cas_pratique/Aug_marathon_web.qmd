@@ -6,36 +6,24 @@ editor: visual
 
 ## Analyse descriptive et quantitative des diférentes tables.
 
-```{r}
+```{r echo=FALSE}
 library(dplyr)
 library(sf)
 library(ggplot2)
+library(tidyr)
 library(leaflet)
 library(reshape2)
 library(vcd)
 ```
 
-```{r}
+```{r echo=FALSE}
 Accidents_velo_epci_sf <- readRDS("data MMM/onisr/Accidents_velo_epci_sf.rds")
-dim(Accidents_velo_epci_sf)
-# glimpse(Accidents_velo_epci_sf)
 
 Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>%
   mutate(mois = gsub("^0*", "", mois)) %>%
   mutate(mois := as.integer(mois))
 Accidents_velo_epci_sf$mois <- month.name[Accidents_velo_epci_sf$mois] #transforme les nombre en noms de mois
 Accidents_velo_epci_sf$mois <- factor(Accidents_velo_epci_sf$mois, levels = month.name)
-# 
-# #histogramme des accidents par mois
-# ggplot(Accidents_velo_epci_sf, aes(x = mois)) +
-#   geom_histogram(stat = "count")+
-#   labs(title = "Nombre d'accident par mois sur MMM", x = "Mois", y = "Nombre d'accidents")
-# 
-# #barplot empilé
-# df_count <- Accidents_velo_epci_sf %>%
-#   count(mois, an)
-# ggplot(df_count, aes(x = mois, y = n)) +
-#   geom_col(aes(fill = an), width = 0.7)
 # 
 
 #____________________________________________________________
@@ -78,7 +66,7 @@ ggplot(df_count, aes(x = an, y = n, group = mois, color = mois)) +
 
 ```
 
-```{r}
+```{r echo=FALSE}
 
 #lumière lors de l'accident : 
 Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>% 
@@ -96,7 +84,7 @@ etiquettes = c("Plein jour", "Crépuscule", "Nuit sans éclairage public", "Nuit
 
 ggplot(Accidents_velo_epci_sf, aes(x = lum, fill=lum)) +
   geom_bar(stat = "count") +
-  scale_fill_manual(values = c("#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00")) +
+  scale_fill_manual(values = c("#8dd3c7","#ffffb3", "#bebafa","#fb8072", "#80b1d3")) +
   labs(title = "Lumière au moment de l'accident", 
        x = "Lumière", 
        y = "Nombre d'accidents") +
@@ -107,16 +95,11 @@ ggplot(Accidents_velo_epci_sf, aes(x = lum, fill=lum)) +
 
 ```
 
-```{r}
+```{r echo=FALSE}
 
 #horaires des accidents.
 Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>%#on ne va garder que les heures et se débarasser des minutes.
   mutate(hrmn = substr(hrmn, 1, 2))
-
-ggplot(Accidents_velo_epci_sf, aes(x = hrmn)) +
-  geom_histogram(stat = "count")+
-  labs(title = "horaires", x = "heure", y = "Nombre d'accidents")
-# unique(Accidents_velo_epci_sf$hrmn)
 
 #gros nettoyage de la colonne horaire
 Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>% 
@@ -159,10 +142,6 @@ Accidents_velo_epci_sf$hrmn <- factor(Accidents_velo_epci_sf$hrmn,
                                       levels = c(0, 1, 2, 3, 4, 5, 6,7,8,9,10, 11,12,13,14,15,16,17,18,19,20,21,22,23), 
                                       labels = c("0", "1", "2", "3", "4", "5", "6","7","8","9","10", "11","12","13","14","15","16","17","18","19","20","21","22","23"))
 
-ggplot(Accidents_velo_epci_sf, aes(x = hrmn)) +
-  geom_bar(stat = "count")+
-  labs(title = "Nombre d'accident par heure sur MMM", x = "heure", y = "Nombre d'accidents")
-
 
 #agglomération ou hors agglomération
 Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>% 
@@ -173,8 +152,7 @@ Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>%
       TRUE ~ agg
     )
   )
-# ggplot(Accidents_velo_epci_sf, aes(x = agg)) +
-#   geom_bar(stat = "count")
+
 
 df_count <- Accidents_velo_epci_sf %>%
   count(hrmn, agg)
@@ -185,7 +163,35 @@ ggplot(df_count, aes(x = hrmn, y = n)) +
 
 ```
 
-```{r}
+```{r echo=FALSE}
+
+# Création des données
+date <- sort(unique(Accidents_velo_epci_sf$hrmn))
+temp <- Accidents_velo_epci_sf %>% count(hrmn, agg)
+prov <- data.frame(temp$hrmn, temp$agg,temp$n)
+
+####
+df_new <- prov %>%
+  pivot_wider(names_from = temp.agg, values_from = temp.n)
+colnames(df_new) <- c("heure", "en_agglomeration", "hors_agglomeration")
+
+df_new$hors_agglomeration[2:6] <-c(0,0,0,0,0)
+df_new$hors_agglomeration[20] <-c(0)
+
+
+# Création du graphique
+ggplot(df_new, aes(x = heure)) + 
+  geom_line(aes(y = en_agglomeration, group = "en_agglomeration", color = "en_agglomeration"), size = 1) + 
+  geom_line(aes(y = hors_agglomeration*10, group = "hors_agglomeration", color = "hors_agglomération"), size = 1) +
+  scale_y_continuous(name = "en_agglomeration", 
+                     sec.axis = sec_axis(~./10, name = "hors_agglomération")) +
+  scale_color_manual(name = "Légende", 
+                     values = c("en_agglomeration" = "#fcbfff", "hors_agglomération" = "#bfe5ff"),
+                     labels = c("en_agglomeration" = "En agglomération", "hors_agglomération" = "Hors agglomération")) +
+  labs(title = "Heures des accidents, en agglomération et hors agglomération.")
+```
+
+```{r echo=FALSE}
 
 ### intersection ;
 Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>% 
@@ -203,7 +209,11 @@ Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>%
       TRUE ~ int
     )
   )
-# etiquettes = c("Hors intersection", "Crépuscule", "Nuit sans éclairage public", "Nuit avec éclairage public non allumé","Nuit avec éclairage public allumé")
+
+couleurs <- c("#8dd3c7", "#ffffb3", "#bebafa", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9")
+
+
+
 
 ggplot(Accidents_velo_epci_sf, aes(x = int, fill=int)) +
   geom_bar(stat = "count")+
@@ -211,7 +221,8 @@ ggplot(Accidents_velo_epci_sf, aes(x = int, fill=int)) +
        x = "type d'intersection", 
        y = "Nombre d'accidents")+
   theme(axis.text.x = element_blank())+
-    guides(fill = guide_legend(title = ""))
+    guides(fill = guide_legend(title = ""))+
+  scale_fill_manual(values = couleurs)
 
 # on observe que il y abeaucoup d'accidents qui ne sont pas dans des intersections. donc on va faire une colonne qui contient soit intersection soit non-inetrsection. 
 
@@ -224,10 +235,11 @@ ggplot(Accidents_velo_epci_sf, aes(x = type_int, fill=int)) +
        x = "type d'intersection", 
        y = "Nombre d'accidents")+
   theme(axis.text.x = element_blank())+
-    guides(fill = guide_legend(title = ""))
+    guides(fill = guide_legend(title = ""))+
+  scale_fill_manual(values = couleurs)
 ```
 
-```{r}
+```{r echo=FALSE}
 
 lieux_epci <- readRDS("data MMM/onisr/lieux_epci.rds")
 dim(lieux_epci)
@@ -251,6 +263,7 @@ lieux_epci <- lieux_epci %>%
     )
   )
 
+couleurs <- c("#8dd3c7","#ffffb3", "#bebafa","#fb8072", "#80b1d3", "#fdb462")
 
 ggplot(lieux_epci, aes(x = catr, fill=catr)) +
   geom_bar(stat = "count")+
@@ -258,8 +271,13 @@ ggplot(lieux_epci, aes(x = catr, fill=catr)) +
        x = "catégorie de route", 
        y = "Nombre d'accidents")+
   theme(axis.text.x = element_blank())+
-    guides(fill = guide_legend(title = ""))
+    guides(fill = guide_legend(title = ""))+
+  scale_fill_manual(values = couleurs)
 
+
+```
+
+```{r echo=FALSE}
 
 # je voudrais croiser situ et vosp . l'un donne l'info si l'accident a lieu sur une route ou bien une voie spéciale. l'autre donne l'information si il y a une piste cyclable pas trop loin
 table(lieux_epci$situ)
@@ -303,50 +321,22 @@ colnames(corr_matrix) <- c("Variable1", "Variable2")
 rownames(corr_matrix) <- c("Variable1", "Variable2")
 corr_matrix
 
-ggplot(melt(corr_matrix), aes(x=Var1, y=Var2, fill=value)) + 
-  geom_tile(color="white") +
-  scale_fill_gradient2(low="blue", high="red", mid="white", midpoint=0, limit=c(-1,1), space="Lab", name="Corrélation") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 1, 
-                                   size = 12, hjust = 1)) +
-  labs(title="Matrice de corrélation",
-       x = "Variable 1",
-       y = "Variable 2")
 
 
-# my_corr <- cor(table(lieux_epci$vosp, lieux_epci$situ))
-# my_corr[upper.tri(my_corr)] <- NA
-# 
-# # Convertir la matrice de corrélation en format "long"
-# df_corr <- melt(my_corr)
-# 
-# # Créer une heatmap
-# ggplot(df_corr, aes(x = Var1, y = Var2, fill = value)) +
-#   geom_tile() +
-#   scale_fill_gradient(low = "#FDFD96", high = "#FF0000", name = "Corrélation") +
-#   labs(x = "Vosp", y = "Situ") +
-#   theme_minimal()
-# heatmap(my_corr, 
-#         xlab = "Variable vosp", 
-#         ylab = "Variable situ", 
-#         main = "Matrice de corrélation entre vosp et situ")
-```
+my_corr <- cor(table(lieux_epci$vosp, lieux_epci$situ))
+my_corr[upper.tri(my_corr)] <- NA
 
-```{r}
+# Convertir la matrice de corrélation en format "long"
+df_corr <- melt(my_corr)
 
-
-Tampon_Accidents_velo_sf <- readRDS("data MMM/onisr/Tampon_Accidents_velo_sf.rds")
-dim(Tampon_Accidents_velo_sf)
-# names(Tampon_Accidents_velo_sf) #nom des colonnes
-glimpse(Tampon_Accidents_velo_sf)
-
-usagers_epci <- readRDS("data MMM/onisr/usagers_epci.rds")
-dim(usagers_epci)
-# names(usagers_epci) #nom des colonnes
-glimpse(usagers_epci)
-
-vehicules_epci <- readRDS("data MMM/onisr/vehicules_epci.rds")
-dim(vehicules_epci)
-# names(vehicules_epci) #nom des colonnes
-glimpse(vehicules_epci)
+# Créer une heatmap
+ggplot(df_corr, aes(x = Var1, y = Var2, fill = value)) +
+  geom_tile() +
+  scale_fill_gradient(low = "#FDFD96", high = "#FF0000", name = "Corrélation") +
+  labs(x = "Vosp", y = "Situ") +
+  theme_minimal()
+heatmap(my_corr,
+        xlab = "Variable vosp",
+        ylab = "Variable situ",
+        main = "Matrice de corrélation entre vosp et situ")
 ```
