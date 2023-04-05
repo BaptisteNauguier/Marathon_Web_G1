@@ -35,17 +35,59 @@ df_count <- Accidents_velo_epci_sf %>%
 
 df_count$mois <- as.integer(df_count$mois)
 
-ggplot(df_count, aes(x = mois, y = n)) +
+# ggplot(df_count, aes(x = mois, y = n)) +
+#   geom_line(color = "#99c3f0") +
+#   geom_point(color = "#99d4f0", size = 3) +
+#   # geom_line(aes(x = mois, y = total), color = "red", linetype = "solid") +
+#   labs(title = "Nombre d'accidents par mois", x = "Mois", y = "Nombre d'accidents") +
+#   scale_x_continuous(breaks = 1:12, labels = month.name[1:12])
+library(plotly)
+
+# Création des données
+# df_count <- Accidents_velo_epci_sf %>% 
+#   mutate(mois = month(date)) %>% 
+#   count(mois) %>% 
+#   mutate(mois = factor(mois, levels = 1:12, labels = month.name[1:12]))
+
+# Création du graphique ggplot2
+gg <- ggplot(df_count, aes(x = mois, y = n)) +
   geom_line(color = "#99c3f0") +
   geom_point(color = "#99d4f0", size = 3) +
-  # geom_line(aes(x = mois, y = total), color = "red", linetype = "solid") +
   labs(title = "Nombre d'accidents par mois", x = "Mois", y = "Nombre d'accidents") +
   scale_x_continuous(breaks = 1:12, labels = month.name[1:12])
+
+# Transformation en graphique interactif avec plotly
+ggplotly(gg)
 
 #____________________________________________________________
 
 #____________________________________________________________
 #DIAGRAMME EN LIGNE PAR MOIS ET PAR AN
+# df_count <- Accidents_velo_epci_sf %>%
+#   count(mois, an) %>%
+#   arrange(mois, an)
+# 
+# couleurs <- c("#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928")
+# 
+# couleurs2 <- c("red", "green", "blue", "orange", "purple", "yellow", "pink", "brown", "gray", "black", "cyan", "magenta")
+# 
+# ggplot(df_count, aes(x = an, y = n, group = mois, color = mois)) +
+#   geom_line() +
+#   labs(title = "Nombre d'accidents par mois et par année",
+#        x = "Année", y = "Nombre d'accidents") +
+#   scale_x_discrete(breaks = unique(df_count$an))+
+#   scale_color_manual(values = couleurs2)
+
+#____________________________________________________________
+
+
+```
+
+```{r echo=FALSE}
+library(ggplot2)
+library(dplyr)
+library(plotly)
+
 df_count <- Accidents_velo_epci_sf %>%
   count(mois, an) %>%
   arrange(mois, an)
@@ -54,22 +96,47 @@ couleurs <- c("#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", 
 
 couleurs2 <- c("red", "green", "blue", "orange", "purple", "yellow", "pink", "brown", "gray", "black", "cyan", "magenta")
 
-ggplot(df_count, aes(x = an, y = n, group = mois, color = mois)) +
+# Créer le graphique de base avec ggplot2
+p <- ggplot(df_count, aes(x = an, y = n, group = mois, color = mois)) +
   geom_line() +
   labs(title = "Nombre d'accidents par mois et par année",
        x = "Année", y = "Nombre d'accidents") +
-  scale_x_discrete(breaks = unique(df_count$an))+
+  scale_x_discrete(breaks = unique(df_count$an)) +
   scale_color_manual(values = couleurs2)
 
-#____________________________________________________________
-
+# Rendre le graphique interactif avec plotly
+ggplotly(p) %>%
+  layout(legend = list(x = 0.8, y = 0.5)) %>%
+  htmlwidgets::onRender("
+            function(el, x) {
+              var g = Plotly.d3.select(el).select('g.legend');
+              g.selectAll('g.traces').on('mouseover', function(d) {
+                Plotly.d3.select(this).style('opacity', 1);
+                var name = d[0].data.name;
+                var update = {};
+                var visible = [];
+                var data = x.data;
+                for (i = 0; i < data.length; i++) {
+                  if (data[i].name == name) {
+                    visible.push(true);
+                  } else {
+                    visible.push('legendonly');
+                  }
+                }
+                update['visible'] = visible;
+                Plotly.update(el, update, {});
+              }).on('mouseout', function(d) {
+                Plotly.d3.select(this).style('opacity', null);
+              });
+            }
+            ")
 
 ```
 
 ```{r echo=FALSE}
 
-#lumière lors de l'accident : 
-Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>% 
+#lumière lors de l'accident :
+Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>%
   mutate(
     lum = case_when(
       lum == "1" ~ "Plein jour",
@@ -85,11 +152,13 @@ etiquettes = c("Plein jour", "Crépuscule", "Nuit sans éclairage public", "Nuit
 ggplot(Accidents_velo_epci_sf, aes(x = lum, fill=lum)) +
   geom_bar(stat = "count") +
   scale_fill_manual(values = c("#8dd3c7","#ffffb3", "#bebafa","#fb8072", "#80b1d3")) +
-  labs(title = "Lumière au moment de l'accident", 
-       x = "Lumière", 
+  labs(title = "Lumière au moment de l'accident",
+       x = "Lumière",
        y = "Nombre d'accidents") +
   theme(axis.text.x = element_blank()) +
   guides(fill = guide_legend(title = ""))
+
+
 
 
 
@@ -274,69 +343,4 @@ ggplot(lieux_epci, aes(x = catr, fill=catr)) +
     guides(fill = guide_legend(title = ""))+
   scale_fill_manual(values = couleurs)
 
-
-```
-
-```{r echo=FALSE}
-
-# je voudrais croiser situ et vosp . l'un donne l'info si l'accident a lieu sur une route ou bien une voie spéciale. l'autre donne l'information si il y a une piste cyclable pas trop loin
-table(lieux_epci$situ)
-table(lieux_epci$vosp)
-lieux_epci <- lieux_epci %>% 
-  mutate(
-    situ = case_when(
-      situ == "-1" ~ "Non renseigné",
-      situ == "1" ~ "Sur chaussée",
-      situ == "2" ~ "Sur bande d’arrêt d’urgence",
-      situ == "3" ~ "Sur accotement",
-      situ == "4" ~ "Sur trottoir",
-      situ == "5" ~ "Sur piste cyclable",
-      situ == "6" ~"Sur autre voie spéciale",
-      situ == "7" ~ "Sur autre voie spéciale",
-      situ == "8" ~ "Autres",
-      situ == "0" ~ "Aucun",
-      TRUE ~ situ
-    )
-  )
-
-lieux_epci <- lieux_epci %>% 
-  mutate(
-    vosp = case_when(
-      vosp == "-1" ~ "Non renseigné",
-      vosp == "0" ~ "Sans objet",
-      vosp == "1" ~ "Piste cyclable ",
-      vosp == "2" ~ "Bande cyclable",
-      vosp == "3" ~ "Voie réservée",
-      TRUE ~ vosp
-    )
-  )
-
-table_cont <- table(lieux_epci$vosp, lieux_epci$situ)
-# Calculer le coefficient de contingence
-corr_cont <- assocstats(table_cont)$corr
-
-# Afficher la matrice de corrélation
-corr_matrix <- matrix(c(1, corr_cont, corr_cont, 1), nrow = 2, ncol = 2)
-colnames(corr_matrix) <- c("Variable1", "Variable2")
-rownames(corr_matrix) <- c("Variable1", "Variable2")
-corr_matrix
-
-
-
-my_corr <- cor(table(lieux_epci$vosp, lieux_epci$situ))
-my_corr[upper.tri(my_corr)] <- NA
-
-# Convertir la matrice de corrélation en format "long"
-df_corr <- melt(my_corr)
-
-# Créer une heatmap
-ggplot(df_corr, aes(x = Var1, y = Var2, fill = value)) +
-  geom_tile() +
-  scale_fill_gradient(low = "#FDFD96", high = "#FF0000", name = "Corrélation") +
-  labs(x = "Vosp", y = "Situ") +
-  theme_minimal()
-heatmap(my_corr,
-        xlab = "Variable vosp",
-        ylab = "Variable situ",
-        main = "Matrice de corrélation entre vosp et situ")
 ```
