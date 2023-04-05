@@ -97,8 +97,6 @@ epci_osm = readRDS("data MMM/OSM/epci_osm_230101.rds")
 
 ```
 
-### L'offre cyclable
-
 #### Analyse descriptive et cartographie de l'offre cyclable
 
 Individu: Aménagement cyclable
@@ -178,12 +176,12 @@ library(ggplot2)
 # table(lieux_epci$vma)
 # sum(table(lieux_epci$vma))
 
-merged_df <- merge(Accidents_velo_epci_sf, lieux_epci, by = "Num_Acc")
+merged_lieu <- merge(Accidents_velo_epci_sf, lieux_epci, by = "Num_Acc")
 # table(merged_df$vma)
 # sum(table(merged_df$vma))
 
 
-merged_df %>%
+merged_lieu %>%
   slice(-532) %>%
   filter(!is.na(vma)) %>%
   ggplot(aes(x = vma)) +
@@ -193,6 +191,229 @@ merged_df %>%
 
 On se rend compte qu'il y a plus d'accidents en vélo lorsque la limitation de vitesse est de 50.
 
-Remarque: j'enlève la ligne 532 car il y a un -1 dans la colonne des limitations des vitesses et ce -1 s'affiche donc dans mon histogramme. Etant donné que je n'arrive pas à enlever ce -1 avec un replacce, j'ai donc décidé de le faire manuellement en regardant à quelle ligne il se situait.
+Remarque: j'enlève la ligne 532 car il y a un -1 dans la colonne des limitations des vitesses et ce -1 s'affiche donc dans mon histogramme. Etant donné que je n'arrive pas à enlever ce -1 avec un replace, j'ai donc décidé de le faire manuellement en regardant à quelle ligne il se situait.
 
 ### Maintenant, on va essayer de voir comment obtenir les infos sur les tampons
+
+```{r Tags sur tampons}
+# -- (ligne en commentaire car erreur)
+
+# library(osmdata)
+# library(sf)
+
+# Définir le polygone
+# poly <- Tampon_Accidents_velo_sf$geometry[1]
+
+# Créer une requête Overpass pour extraire les données OSM dans la zone définie par le polygone
+# q <- opq(poly)
+
+# Déboguer la requête en affichant la réponse brute d'Overpass sous forme de XML
+# xml <- osmdata_xml(q)
+
+# Extraire les données OSM
+# osm <- osmdata_sf(q)
+
+# Extraire les tags OSM
+# tags <- osm$osm_points$other_tags
+
+# Convertir les données OSM en objets sf
+# sf <- st_as_sf(tags)
+```
+
+### Analyse de la correlation entre les accidents de vélo et les variables de la table usagers
+
+```{r Usagers et accidents}
+
+merged_usager = merge(Accidents_velo_epci_sf, usagers_epci, by = "Num_Acc")
+
+# Calcul du nomre de modalités et il y a bien les 548 accidents référencés dans la table accident
+length(unique(merged_usager$Num_Acc))
+```
+
+Avec "length(unique(merged_usager\$Num_Acc))", on se rend compte que cette table merged_usager contient tous les accidents, et pour chaque accident on a au minimum 1 individu en vélo impliqué. Les autres individus peuvent être en voiture, en transport en commun ou bien à pied.
+
+#### Variable trajet
+
+##### Description des modalités:
+
+-1 = Non renseigné
+
+0 = Non renseigné
+
+1 = Domicile -- travail
+
+2 = Domicile -- école
+
+3 = Courses -- achats
+
+4 = Utilisation professionnelle
+
+5 = Promenade -- loisirs
+
+9 = Autre
+
+```{r}
+library(ggplot2)
+
+#lumière lors de l'accident : 
+Accidents_velo_trajet <- merged_usager %>% 
+  mutate(
+    trajet = case_when(
+      trajet == "-1" ~ "Non renseigné",
+      trajet == "0" ~ "Non renseigné",
+      trajet == "1" ~ "Domicile – travail",
+      trajet == "2" ~ "Domicile – école",
+      trajet == "3" ~ "Courses – achats",
+      trajet == "4" ~ "Utilisation professionnelle",
+      trajet == "5" ~ "Promenade – loisirs",
+      trajet == "9" ~ "Autre",
+      TRUE ~ trajet
+    )
+  )
+
+etiquettes = c("Non renseigné", "Non renseigné", "Domicile – travail", "Domicile – école","Courses – achats","Utilisation professionnelle","Promenade – loisirs","Autre")
+
+ggplot(Accidents_velo_trajet, aes(x = trajet, fill=trajet)) +
+  geom_bar(stat = "count")+
+  labs(title = "Nombre d'accidents impliquant un vélo en fonction du motif de déplacement", 
+       x = "Motif de déplacement", 
+       y = "Nombre d'accidents")+
+  theme(axis.text.x = element_blank())+
+    guides(fill = guide_legend(title = ""))
+
+```
+
+On se rend compte que les accidents impliquant un vélo se déroule souvent lors de loisirs ou de promenade.
+
+Puis faire la même chose en fonction des heures:
+
+```{r}
+
+library(dplyr)
+#horaires des accidents.
+Accidents_velo_trajet <- merged_usager %>%#on ne va garder que les heures et se débarasser des minutes.
+  mutate(hr = substr(hrmn, 1, 2))
+
+#gros nettoyage de la colonne horaire
+Accidents_velo_trajet <- Accidents_velo_trajet %>% 
+  mutate(
+    hr = case_when(
+      hr == "75" ~ "7",
+      hr == "92" ~ "9",
+      hr == "81" ~ "8",
+      hr == "90" ~ "9",
+      hr == "84" ~ "8",
+      hr == "83" ~ "8",
+      hr == "82" ~ "8",
+      hr == "91" ~ "9",
+      hr == "85" ~ "8",
+      hr == "41" ~ "4",
+      hr == "32" ~ "3",
+      hr == "74" ~ "7",
+      hr == "95" ~ "9",
+      hr == "63" ~ "6",
+      hr == "72" ~ "7",
+      hr == "45" ~ "4",
+      hr == "24" ~ "2",
+      hr == "30" ~ "3",
+      hr == "09" ~ "9",
+      hr == "08" ~ "8",
+      hr == "07" ~ "7",
+      hr == "05" ~ "5",
+      hr == "54" ~ "5",
+      hr == "93" ~ "9",
+      hr == "94" ~ "9",
+      hr == "80" ~ "8",
+      hr == "65" ~ "6",
+      hr == "35" ~ "3",
+      TRUE ~ hr
+    )
+  )%>% mutate(hr := as.integer(hr))
+
+#je transforme la data de hr en facteurs
+Accidents_velo_trajet$hr <- factor(Accidents_velo_trajet$hr, 
+                                      levels = c(0, 1, 2, 3, 4, 5, 6,7,8,9,10, 11,12,13,14,15,16,17,18,19,20,21,22,23), 
+                                      labels = c("0", "1", "2", "3", "4", "5", "6","7","8","9","10", "11","12","13","14","15","16","17","18","19","20","21","22","23"))
+
+Accidents_velo_trajet <- Accidents_velo_trajet %>%
+  mutate(
+    trajet = case_when(
+      trajet == "-1" ~ "Non renseigné",
+      trajet == "0" ~ "Non renseigné",
+      trajet == "1" ~ "Domicile – travail",
+      trajet == "2" ~ "Domicile – école",
+      trajet == "3" ~ "Courses – achats",
+      trajet == "4" ~ "Utilisation professionnelle",
+      trajet == "5" ~ "Promenade – loisirs",
+      trajet == "9" ~ "Autre",
+      TRUE ~ trajet
+    )
+  )
+
+couleurs2 <- c("red", "green", "blue", "orange", "purple", "yellow", "pink", "brown")
+
+df_count <- Accidents_velo_trajet %>%
+  count(trajet, hr) %>%
+  arrange(trajet, hr)
+
+df_count$hr = as.numeric(df_count$hr)
+
+ggplot(df_count, aes(x = hr, y = n, group = trajet, color = trajet)) +
+  geom_line(size = 1) +
+  labs(title = "Nombre d'accidents par type de trajet et par heure",
+       x = "Heure", y = "Nombre d'accidents") +
+  scale_x_discrete(breaks = unique(df_count$trajet))+
+  scale_color_manual(values = couleurs2)+
+  scale_x_continuous(limits = c(0, 23), breaks = 0:23)
+
+
+```
+
+#### Variable Locp
+
+##### Description des modalités:
+
+Localisation du piéton : -1 -- Non renseigné 0 -- Sans objet Sur chaussée : 1 -- A + 50 m du passage piéton 2 -- A -- 50 m du passage piéton Sur passage piéton : 3 -- Sans signalisation lumineuse 4 -- Avec signalisation lumineuse Divers : 5 -- Sur trottoir 6 -- Sur accotement 7 -- Sur refuge ou BAU 8 -- Sur contre allée 9 -- Inconnue
+
+```{r}
+table(merged_usager$locp)
+```
+
+La plupart des localisations des piétons sont "sans objet", ce n'est donc pas très utile d'en tirer de l'information
+
+### Création de la table avec 300 colonnes correspondant aux tags, et 548 lignes correspondant aux accidents
+
+```{r}
+table_tags <- tibble(
+  tags=str_split(Tampon_Accidents_velo_osm_sf$other_tags,",") %>% 
+  unlist()
+) %>% 
+  group_by(tags) %>% 
+  count() %>% 
+  arrange(desc(n)) %>% 
+  unique() %>% 
+  drop_na()
+
+
+
+Accidents_velo_tags_osm <- map(table_tags$tags,function(x){
+  temp <- Tampon_Accidents_velo_osm_sf %>% 
+    filter(str_detect(other_tags,fixed(x))) %>% 
+    distinct(Num_Acc)
+
+  Accidents_velo_epci_sf %>% 
+    as_tibble() %>% 
+    mutate(!!x :=ifelse(Num_Acc %in% temp$Num_Acc,1,0)) %>% 
+    select(Num_Acc,.data[[x]])
+}) %>% 
+  reduce(left_join, by = 'Num_Acc')
+
+```
+
+#### Analyse sur cette nouvelle table
+
+##### Khi2
+
+```{r}
+
+```
