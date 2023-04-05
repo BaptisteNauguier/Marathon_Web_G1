@@ -97,7 +97,7 @@ epci_osm = readRDS("data MMM/OSM/epci_osm_230101.rds")
 
 ```
 
-#### Analyse descriptive et cartographie de l'offre cyclable
+### Analyse et cartographie de l'offre cyclable
 
 Individu: Aménagement cyclable
 
@@ -167,7 +167,7 @@ carte_finale <- carte_base+
 tmap_leaflet(carte_finale)
 ```
 
-## 
+### Graphique du nombre d'accidents de vélo en fonction de la limitation de vitesse
 
 ```{r}
 #route500
@@ -191,9 +191,9 @@ merged_lieu %>%
 
 On se rend compte qu'il y a plus d'accidents en vélo lorsque la limitation de vitesse est de 50.
 
-Remarque: j'enlève la ligne 532 car il y a un -1 dans la colonne des limitations des vitesses et ce -1 s'affiche donc dans mon histogramme. Etant donné que je n'arrive pas à enlever ce -1 avec un replace, j'ai donc décidé de le faire manuellement en regardant à quelle ligne il se situait.
+Remarque: j'enlève la ligne 532 car il y a un -1 dans la colonne des limitations des vitesses et ce -1 s'affiche donc dans mon histogramme. Etant donné que je n'arrive pas à enlever ce -1 avec un replace (R ne voit pas ce -1 comme étant un -1 dans la table), j'ai donc décidé de le faire manuellement en regardant à quelle ligne il se situait et l'enlever.
 
-### Maintenant, on va essayer de voir comment obtenir les infos sur les tampons
+### Maintenant, on va essayer de voir comment obtenir les infos sur les tampons afin d'avoir plus d'informations sur ce qu'il y a autour de chaque accident
 
 ```{r Tags sur tampons}
 # -- (ligne en commentaire car erreur)
@@ -220,6 +220,8 @@ Remarque: j'enlève la ligne 532 car il y a un -1 dans la colonne des limitation
 # sf <- st_as_sf(tags)
 ```
 
+Je n'ai pas réussi à le faire malgré de nombreuses tentatives mais par la suite, nous verrons que nous possédons déjà ces informations dans une autre table.
+
 ### Analyse de la correlation entre les accidents de vélo et les variables de la table usagers
 
 ```{r Usagers et accidents}
@@ -234,7 +236,7 @@ Avec "length(unique(merged_usager\$Num_Acc))", on se rend compte que cette table
 
 #### Variable trajet
 
-##### Description des modalités:
+##### Description des modalité:
 
 -1 = Non renseigné
 
@@ -251,6 +253,8 @@ Avec "length(unique(merged_usager\$Num_Acc))", on se rend compte que cette table
 5 = Promenade -- loisirs
 
 9 = Autre
+
+##### Graphique sur le nombre d'accidents impliquant un vélo en fonction du motif du trajet:
 
 ```{r}
 library(ggplot2)
@@ -271,21 +275,25 @@ Accidents_velo_trajet <- merged_usager %>%
     )
   )
 
+couleurs <- c("red", "green", "blue", "orange", "purple", "yellow", "pink", "brown")
+
 etiquettes = c("Non renseigné", "Non renseigné", "Domicile – travail", "Domicile – école","Courses – achats","Utilisation professionnelle","Promenade – loisirs","Autre")
 
-ggplot(Accidents_velo_trajet, aes(x = trajet, fill=trajet)) +
-  geom_bar(stat = "count")+
+ggplot(Accidents_velo_trajet, aes(x = trajet, fill = trajet)) +
+  geom_bar(stat = "count") +
+  scale_fill_manual(values = couleurs) +
   labs(title = "Nombre d'accidents impliquant un vélo en fonction du motif de déplacement", 
        x = "Motif de déplacement", 
-       y = "Nombre d'accidents")+
-  theme(axis.text.x = element_blank())+
-    guides(fill = guide_legend(title = ""))
+       y = "Nombre d'accidents",
+       fill = "Motif de déplacement") +
+  theme(axis.text.x = element_blank(),
+        legend.position = "right")
 
 ```
 
 On se rend compte que les accidents impliquant un vélo se déroule souvent lors de loisirs ou de promenade.
 
-Puis faire la même chose en fonction des heures:
+##### Graphique sur le nombre d'accidents impliquant un vélo en fonction du motif du trajet et de l'heure de l'accident:
 
 ```{r}
 
@@ -373,15 +381,49 @@ ggplot(df_count, aes(x = hr, y = n, group = trajet, color = trajet)) +
 
 ##### Description des modalités:
 
-Localisation du piéton : -1 -- Non renseigné 0 -- Sans objet Sur chaussée : 1 -- A + 50 m du passage piéton 2 -- A -- 50 m du passage piéton Sur passage piéton : 3 -- Sans signalisation lumineuse 4 -- Avec signalisation lumineuse Divers : 5 -- Sur trottoir 6 -- Sur accotement 7 -- Sur refuge ou BAU 8 -- Sur contre allée 9 -- Inconnue
+Localisation du piéton :
+
+-   -1 -- Non renseigné
+
+-   0 -- Sans objet
+
+Sur chaussée :
+
+-   1 -- A + 50 m du passage piéton
+
+-   2 -- A -- 50 m du passage piéton
+
+Sur passage piéton :
+
+-   3 -- Sans signalisation lumineuse
+
+-   4 -- Avec signalisation lumineuse
+
+Divers :
+
+-   5 -- Sur trottoir
+
+-   6 -- Sur accotement
+
+-   7 -- Sur refuge ou BAU
+
+-   8 -- Sur contre allée
+
+-   9 -- Inconnue
+
+##### Affichage du nombre d'occurences de chaque modalité:
 
 ```{r}
 table(merged_usager$locp)
 ```
 
-La plupart des localisations des piétons sont "sans objet", ce n'est donc pas très utile d'en tirer de l'information
+La plupart des localisations des piétons sont "sans objet", ce n'est donc pas très utile d'en tirer de l'information.
 
 ### Création de la table avec 300 colonnes correspondant aux tags, et 548 lignes correspondant aux accidents
+
+Comme dit précedemment, nous possédons déjà les informations de OpenStreetMap dans une table et elle se nomme "Tampon_Accidents_velo_osm_sf". Elle contient pour chaque tampon, donc pour chaque zone de 30 mètres autour de chaque accident, des informations sur la limitation de vitesse, le type de route, etc....
+
+On va donc, pour pouvoir analyser ce jeu de données:
 
 ```{r}
 table_tags <- tibble(
@@ -410,10 +452,90 @@ Accidents_velo_tags_osm <- map(table_tags$tags,function(x){
 
 ```
 
-#### Analyse sur cette nouvelle table
+#### Analyse sur la table des tags
 
 ##### Khi2
 
 ```{r}
+# Accidents_velo_tags_osm
 
+n_col = ncol(Accidents_velo_tags_osm)
+# Somme des lignes pour chaque variable
+sum_col = colSums(Accidents_velo_tags_osm[,2:n_col])
+
+# Somme des colonnes pour chaque individu
+sum_row = rowSums(Accidents_velo_tags_osm[,2:n_col])
+
+# Filter les tags
+sum_col_filtered <- subset(sum_col, sum_col >= 10)
+cat("Pour faire le test de Khi-2 sur des paires  sur toutes les variables, j'ai eu besoin de diminuer le nombre de variable pour limiter le temps d'exécution. J'ai donc limiter à 10 apparations minimum de chaque tags (variable) parmi tous les individus. Je me retrouve donc avec",length(sum_col_filtered),"tags.\n")
+
+# Filtrer les individus
+sum_row_filtered <- subset(sum_row, sum_row > 0)
+cat("De plus, il n'y a que",length(sum_row_filtered),"individus qui possèdent au minimum 1 tag ce qui est faible.\n\n")
+
+df_sum_col = data.frame(sum_col)
+df_sum_row = data.frame(sum_row)
+
+# Sélectionner les noms des variables qui sont présents au moins 10 fois chez des accidents individus (je rajoute Num_Acc pour ajouter l'identifiant)
+selected_vars <- c("Num_Acc", names(sum_col_filtered))
+
+# Sélectionner seulement les variables souhaitées
+selected_data <- Accidents_velo_tags_osm[, selected_vars]
+
+
+
+
+# --------------------------------------
+# -- Test de Khi-2 sur toutes les paires de selected_data
+
+# Sélectionner les variables binaires
+binary_vars = selected_vars[2:length(selected_vars)]
+
+# Initialiser la liste pour stocker les résultats
+chisq_results <- list()
+
+# Boucle pour parcourir toutes les paires de variables binaires
+for (i in 1:(length(binary_vars)-1)) {
+  for (j in (i+1):length(binary_vars)) {
+
+    # Créer un tableau de contingence pour chaque paire de variables
+    var1 <- selected_data[, binary_vars[i]][[1]]
+    var2 <- selected_data[, binary_vars[j]][[1]]
+  
+    cont_table <- table(var1, var2)
+
+    # Effectuer l'analyse de chi-carré pour chaque paire de variables
+    chisq_result <- chisq.test(cont_table)
+
+    if (chisq_result$p.value < 0.05) {
+        # Stocker les résultats dans la liste
+        chisq_results[[paste(binary_vars[i+1],binary_vars[j+1], sep = ';')]] <- chisq_result
+
+    }
+  }
+}
+
+# Initialiser un dataframe pour stocker les résultats
+chisq_df <- data.frame(tag1 = character(),
+                        tag2 = character(),
+                        p_value = numeric(),
+                        x_carre = numeric(),
+                        stringsAsFactors = FALSE)
+
+# Boucle pour ajouter les résultats au dataframe
+for (i in names(chisq_results)) {
+  vars <- strsplit(i, ";")[[1]]
+  p_val <- chisq_results[[i]]$p.value
+  x_car = chisq_results[[i]]$statistic[[1]]
+  chisq_df <- rbind(chisq_df, data.frame(tag1 = vars[1], tag2 = vars[2], p_value = p_val, x_carre = x_car))
+}
+
+# Tri du dataframe en fonction de la colonne p_value
+chisq_df_sorted <- chisq_df %>%
+  arrange(p_value)
+
+# Affichage du dataframe trié en fonction des valeurs qui ont un x_carre >= 100
+chisq_df_sorted |>
+  filter(x_carre >= 100)
 ```
