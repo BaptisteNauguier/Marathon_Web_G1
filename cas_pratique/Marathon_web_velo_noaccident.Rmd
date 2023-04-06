@@ -62,6 +62,8 @@ library(leaflet)
 library(leaflet.extras)
 library(magrittr)
 library(png)
+library(reshape2)
+library(vcd)
 ```
 
 ```{r chargement donnees}
@@ -266,7 +268,7 @@ ggplotly(p) %>%
 
 ```
 
-Nous pouvons observer par exemple, que les accidents se déroulent plus souvent lors de trajet "Domicile-travail" vers environ 9h du matin et lors de trajet de "promenade-loisirs" vers 19h ce qui coincident avec la réalité.
+Nous pouvons observer grâce à ce graphique que les accidents se déroulent plus souvent lors de trajet "Domicile-travail" vers environ 9h du matin et lors de trajet de "promenade-loisirs" vers 19h ce qui coincident avec la réalité. En effet, la plupart des individus partent au travail vers 8h, 9h et peuvent faire leurs loisirs après la sortie de leurs travails, donc vers 18h, 19h.
 
 #### Variable Locp
 
@@ -276,19 +278,9 @@ table(merged_usager$locp)
 
 La plupart des localisations des piétons sont "sans objet" (correspond au 0), ce n'est donc pas très utile d'en tirer de l'information.
 
-### Méthode du chi-carré
-
-### Augustin
+### Analyse des variables de la table Accidents_velo_epci_sf
 
 ```{r echo=FALSE, message=FALSE, error=FALSE}
-library(dplyr)
-library(sf)
-library(ggplot2)
-library(tidyr)
-library(leaflet)
-library(reshape2)
-library(vcd)
-library(plotly)
 
 Accidents_velo_epci_sf <- readRDS("data MMM/onisr/Accidents_velo_epci_sf.rds")
 
@@ -320,12 +312,12 @@ gg <- ggplot(df_count, aes(x = mois, y = n)) +
 # Transformation en graphique interactif avec plotly
 ggplotly(gg)
 
-# Importer une image
-mon_image <- readPNG("../newplot.png")
-
-# Afficher l'image importée
-plot(1:10, type = "n", xlab = "", ylab = "")
-rasterImage(mon_image, 1, 1, 10, 10)
+# # Importer une image
+# mon_image <- readPNG("../newplot.png")
+# 
+# # Afficher l'image importée
+# plot(1:10, type = "n", xlab = "", ylab = "")
+# rasterImage(mon_image, 1, 1, 10, 10)
 
 ```
 
@@ -414,7 +406,6 @@ Nous avons supposé que la luminosité au moment de l'accident peut être un fac
 
 ```{r echo=FALSE}
 
-library(ggplot2)
 #horaires des accidents.
 Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>%#on ne va garder que les heures et se débarasser des minutes.
   mutate(hrmn = substr(hrmn, 1, 2))
@@ -579,6 +570,8 @@ ggplot(Accidents_velo_epci_sf, aes(x = type_int, fill=int)) +
 
 Une fois que les différents types d'intersections sont rassemblés en une seule colonne, on voit que l'écart est nettement plus faible. Les accidents hors intersection restent majeurs.
 
+### Analyse des variables de la table lieux_epci
+
 ```{r echo=FALSE}
 
 lieux_epci <- readRDS("data MMM/onisr/lieux_epci.rds")
@@ -619,6 +612,151 @@ couleurs <- c("#8dd3c7","#ffffb3", "#bebafa","#fb8072", "#80b1d3", "#fdb462")
 ```
 
 Observons les différentes catégories de routes sur le lieu d'accident. On voit que la plus grande part des accidents a lieu sur des routes communales. Cela englobe toutes les voies qui appartiennent au domaine public routier communal. Ce sont les routes que nous empruntons chaque jour en ville. Comme leur nom l'indique, les routes communales se trouvent en agglomération. C'est donc cohérent par rapport au fait que la plus grande majorité des accidents a lieu en agglomération.
+
+### Méthode du chi-carré
+
+#### Initialisation de la table tags
+
+Nous possédons les informations de OpenStreetMap dans une table et elle se nomme "Tampon_Accidents_velo_osm_sf". Elle contient pour chaque tampon, donc pour chaque zone de 30 mètres autour de chaque accident, des informations sur la limitation de vitesse, le type de route, etc....
+
+On va donc, pour pouvoir analyser ce jeu de données:
+
+```{r}
+table_tags <- tibble(
+  tags=str_split(Tampon_Accidents_velo_osm_sf$other_tags,",") %>% 
+  unlist()
+) %>% 
+  group_by(tags) %>% 
+  count() %>% 
+  arrange(desc(n)) %>% 
+  unique() %>% 
+  drop_na()
+
+
+Accidents_velo_tags_osm <- map(table_tags$tags,function(x){
+  temp <- Tampon_Accidents_velo_osm_sf %>% 
+    filter(str_detect(other_tags,fixed(x))) %>% 
+    distinct(Num_Acc)
+
+  Accidents_velo_epci_sf %>% 
+    as_tibble() %>% 
+    mutate(!!x :=ifelse(Num_Acc %in% temp$Num_Acc,1,0)) %>% 
+    select(Num_Acc,.data[[x]])
+}) %>% 
+  reduce(left_join, by = 'Num_Acc')
+
+head(Accidents_velo_tags_osm)
+```
+
+Nous constatons que la table "Accidents_velo_tags_osm" est consitutée d'individus (accidents) et de 300 variables (les tags). Chaque variable est binaire et prend 1 si l'individu possède la variable, 0 sinon.
+
+#### Sélection de variables (de tags)
+
+```{r}
+# Accidents_velo_tags_osm
+
+
+n_col = ncol(Accidents_velo_tags_osm)
+
+# Somme des lignes pour chaque variable
+sum_col = colSums(Accidents_velo_tags_osm[,2:n_col])
+
+# Somme des colonnes pour chaque individu
+sum_row = rowSums(Accidents_velo_tags_osm[,2:n_col])
+
+# Filter les tags
+sum_col_filtered <- subset(sum_col, sum_col >= 10)
+
+
+# Filtrer les individus (par curiosité)
+sum_row_filtered <- subset(sum_row, sum_row > 0)
+
+df_sum_col = data.frame(sum_col)
+df_sum_row = data.frame(sum_row)
+
+# Sélectionner les noms des variables qui sont présents au moins 10 fois chez des accidents individus (je rajoute Num_Acc pour ajouter l'identifiant)
+selected_vars <- c("Num_Acc", names(sum_col_filtered))
+
+# Sélectionner seulement les variables souhaitées
+selected_data <- Accidents_velo_tags_osm[, selected_vars]
+
+# On sélectionne que les variables utiles à notre analyse (on enlève celles inutiles)
+selected_data = selected_data |>
+  select(-"\"surface\"=>\"asphalt\"", -"\"gauge\"=>\"1435\"", -"\"frequency\"=>\"0\"", -"\"voltage\"=>\"750\"", -"\"operator\"=>\"Transports de l'agglomération de Montpellier\"", -"\"admin_level\"=>\"10\"", -"\"political_division\"=>\"canton\"", -"\"source:maxspeed\"=>\"sign\"", -"\"admin_level\"=>\"11\"", -"\"operator\"=>\"RTE\"", -"\"cables\"=>\"3\"", -"\"lanes:forward\"=>\"2\"", -"\"source:maxspeed\"=>\"FR:urban\"", -"\"access\"=>\"private\"", -"\"voltage\"=>\"63000\"")
+
+# Je définie les variables sélectionnées comme étant les variables qu'il y a dans le nouveau dataframe, celui sans les variables non pertinentes
+selected_vars = names(selected_data)
+
+head(selected_data)
+
+```
+
+Pour faire le test de Khi-2 sur des paires sur toutes les variables, j'ai eu besoin de diminuer le nombre de variable pour limiter le temps d'exécution. J'ai donc limiter le choix des tags en fonction de s'ils appraisssaient au minimum 10 fois chez les accidents. Je me retrouve donc avec 49 tags.
+
+De plus, j'ai trié les tags aussi en fonction de ceux étant les plus pertinents pour l'analyse et il me reste donc 34 tags.
+
+#### Mise en place du chi-carré
+
+```{r}
+# --------------------------------------
+# -- Test de Khi-2 sur toutes les paires de selected_data
+
+# Sélectionner les variables binaires
+binary_vars = selected_vars[2:length(selected_vars)]
+
+# Initialiser la liste pour stocker les résultats
+chisq_results <- list()
+
+# Boucle pour parcourir toutes les paires de variables binaires
+for (i in 1:(length(binary_vars)-1)) {
+  for (j in (i+1):length(binary_vars)) {
+
+    # Créer un tableau de contingence pour chaque paire de variables
+    var1 <- selected_data[, binary_vars[i]][[1]]
+    var2 <- selected_data[, binary_vars[j]][[1]]
+    cont_table <- table(var1, var2)
+
+    # Effectuer l'analyse de chi-carré pour chaque paire de variables
+    chisq_result <- chisq.test(cont_table)
+
+    if (chisq_result$p.value < 0.05) {
+        # Stocker les résultats dans la liste
+        chisq_results[[paste(binary_vars[i+1],binary_vars[j+1], sep = ';')]] <- chisq_result
+
+    }
+  }
+}
+
+# Initialiser un dataframe pour stocker les résultats
+chisq_df <- data.frame(tag1 = character(),
+                        tag2 = character(),
+                        p_value = numeric(),
+                        x_carre = numeric(),
+                        stringsAsFactors = FALSE)
+
+# Boucle pour ajouter les résultats au dataframe
+for (i in names(chisq_results)) {
+  vars <- strsplit(i, ";")[[1]]
+  p_val <- chisq_results[[i]]$p.value
+  x_car = chisq_results[[i]]$statistic[[1]]
+  chisq_df <- rbind(chisq_df, data.frame(tag1 = vars[1], tag2 = vars[2], p_value = p_val, x_carre = x_car))
+}
+
+# Tri du dataframe en fonction de la colonne p_value
+chisq_df_sorted <- chisq_df %>%
+  arrange(p_value)
+
+# Affichage du dataframe trié en fonction des 20 premières valeurs
+head(chisq_df_sorted)
+```
+
+Nous pouvons observer les premières paires les plus significativement liées.
+
+Les tags sélectionnés pour faire les paires ne correspondent qu'aux tags qui apparaissent dans chez au moins 10 accidents, et qui sont les plus pertinents à étudier.
+
+Interprétation: il y a plus d'accident dans un tunnel lorsqu'il y a un bon niveau de cyclabilité.
+
+Voici la source de toutes les descriptions des différents tags: [OpenStreetMap Taginfo](https://taginfo.openstreetmap.org/)
 
 ## Analyse en Composantes Principales (ACM)
 
@@ -718,172 +856,11 @@ carte_finale <- carte_base+
 tmap_leaflet(carte_finale)
 ```
 
-### 
+### Les zones accidentogènes à Montpellier
 
-### Heatmap de la densité des points dans la métropole en fonction des tags qui définissent le plus le risque d'accident
+Notre but ici va être de créer un dataframe contenant toutes les informations de Montpellier grâce aux nombreux tags présents dans la métropole, proposé par OpenStreetMap. Chaque élément que nous donne OpenStreetMap est sous la forme d'une géometrie "ligne" qui contient un ou plusieurs tags. Ces tags peuvent donc apparaître plusieurs fois, pour plusieurs élément de OpenStreetMap. Nous précisons que nous avons filtré le choix des tags en fonction des tags sélectionnées précedemment, c'est-à-dire ceux qui apparaissent au moins 10 fois chez les accidents mais aussi les tags les plus pertinents pour notre étude.
 
-```{r}
-
-# coordonnees <- data.frame(st_coordinates(df_full_tags$geometry))
-# 
-# 
-# # creating a heat map for the burger search intensity according to Google trends
-# coordonnees %>%
-#   leaflet() %>% 
-#   addTiles() %>% 
-#   addProviderTiles(providers$OpenStreetMap.DE) %>% 
-#   setView(mean(coordonnees$X),mean(coordonnees$Y),11) %>%
-#   addHeatmap(lng=~X,lat=~Y,max=100,radius=20,blur=20)
-```
-
-Voici une carte affichant la densité des points où chacun de ces points correspond à un tag. Les types de tags ont été choisi en fonction des types qui appraissaient chez au moins 10 accidents, et qui étaient les plus pertinents à analyser.
-
-## Création de la table avec 300 colonnes correspondant aux tags, et 548 lignes correspondant aux accidents
-
-Comme dit précedemment, nous possédons déjà les informations de OpenStreetMap dans une table et elle se nomme "Tampon_Accidents_velo_osm_sf". Elle contient pour chaque tampon, donc pour chaque zone de 30 mètres autour de chaque accident, des informations sur la limitation de vitesse, le type de route, etc....
-
-On va donc, pour pouvoir analyser ce jeu de données:
-
-```{r}
-table_tags <- tibble(
-  tags=str_split(Tampon_Accidents_velo_osm_sf$other_tags,",") %>% 
-  unlist()
-) %>% 
-  group_by(tags) %>% 
-  count() %>% 
-  arrange(desc(n)) %>% 
-  unique() %>% 
-  drop_na()
-
-
-
-Accidents_velo_tags_osm <- map(table_tags$tags,function(x){
-  temp <- Tampon_Accidents_velo_osm_sf %>% 
-    filter(str_detect(other_tags,fixed(x))) %>% 
-    distinct(Num_Acc)
-
-  Accidents_velo_epci_sf %>% 
-    as_tibble() %>% 
-    mutate(!!x :=ifelse(Num_Acc %in% temp$Num_Acc,1,0)) %>% 
-    select(Num_Acc,.data[[x]])
-}) %>% 
-  reduce(left_join, by = 'Num_Acc')
-
-```
-
-### Analyse sur la table des tags
-
-#### Triage en fonction des tags qui apparaissent le plus lors d'accident et les plus pertinents
-
-```{r}
-# Accidents_velo_tags_osm
-
-
-n_col = ncol(Accidents_velo_tags_osm)
-
-# Somme des lignes pour chaque variable
-sum_col = colSums(Accidents_velo_tags_osm[,2:n_col])
-
-# Somme des colonnes pour chaque individu
-sum_row = rowSums(Accidents_velo_tags_osm[,2:n_col])
-
-# Filter les tags
-sum_col_filtered <- subset(sum_col, sum_col >= 10)
-cat("Pour faire le test de Khi-2 sur des paires  sur toutes les variables, j'ai eu besoin de diminuer le nombre de variable pour limiter le temps d'exécution. J'ai donc limiter à 10 apparations minimum de chaque tags (variable) parmi tous les individus. Je me retrouve donc avec",length(sum_col_filtered),"tags.\nDe plus, j'ai trié les tags en fonction de ceux qui apparaissent chez au moins 10 accidents et ceux étant les plus pertinents pour l'analyse\n")
-
-
-# Filtrer les individus (par curiosité)
-sum_row_filtered <- subset(sum_row, sum_row > 0)
-cat("De plus, il n'y a que",length(sum_row_filtered),"individus qui possèdent au minimum 1 tag ce qui est faible.\n\n")
-
-df_sum_col = data.frame(sum_col)
-df_sum_row = data.frame(sum_row)
-
-# Sélectionner les noms des variables qui sont présents au moins 10 fois chez des accidents individus (je rajoute Num_Acc pour ajouter l'identifiant)
-selected_vars <- c("Num_Acc", names(sum_col_filtered))
-
-# Sélectionner seulement les variables souhaitées
-selected_data <- Accidents_velo_tags_osm[, selected_vars]
-
-# On sélectionne que les variables utiles à notre analyse (on enlève celles inutiles)
-selected_data = selected_data |>
-  select(-"\"surface\"=>\"asphalt\"", -"\"gauge\"=>\"1435\"", -"\"frequency\"=>\"0\"", -"\"voltage\"=>\"750\"", -"\"operator\"=>\"Transports de l'agglomération de Montpellier\"", -"\"admin_level\"=>\"10\"", -"\"political_division\"=>\"canton\"", -"\"source:maxspeed\"=>\"sign\"", -"\"admin_level\"=>\"11\"", -"\"operator\"=>\"RTE\"", -"\"cables\"=>\"3\"", -"\"lanes:forward\"=>\"2\"", -"\"source:maxspeed\"=>\"FR:urban\"", -"\"access\"=>\"private\"", -"\"voltage\"=>\"63000\"")
-
-# Je définie les variables sélectionnées comme étant les variables qu'il y a dans le nouveau dataframe, celui sans les variables non pertinentes
-selected_vars = names(selected_data)
-
-```
-
-#### chi-carré
-
-```{r}
-# --------------------------------------
-# -- Test de Khi-2 sur toutes les paires de selected_data
-
-# Sélectionner les variables binaires
-binary_vars = selected_vars[2:length(selected_vars)]
-
-# Initialiser la liste pour stocker les résultats
-chisq_results <- list()
-
-# Boucle pour parcourir toutes les paires de variables binaires
-for (i in 1:(length(binary_vars)-1)) {
-  for (j in (i+1):length(binary_vars)) {
-
-    # Créer un tableau de contingence pour chaque paire de variables
-    var1 <- selected_data[, binary_vars[i]][[1]]
-    var2 <- selected_data[, binary_vars[j]][[1]]
-    cont_table <- table(var1, var2)
-
-    # Effectuer l'analyse de chi-carré pour chaque paire de variables
-    chisq_result <- chisq.test(cont_table)
-
-    if (chisq_result$p.value < 0.05) {
-        # Stocker les résultats dans la liste
-        chisq_results[[paste(binary_vars[i+1],binary_vars[j+1], sep = ';')]] <- chisq_result
-
-    }
-  }
-}
-
-# Initialiser un dataframe pour stocker les résultats
-chisq_df <- data.frame(tag1 = character(),
-                        tag2 = character(),
-                        p_value = numeric(),
-                        x_carre = numeric(),
-                        stringsAsFactors = FALSE)
-
-# Boucle pour ajouter les résultats au dataframe
-for (i in names(chisq_results)) {
-  vars <- strsplit(i, ";")[[1]]
-  p_val <- chisq_results[[i]]$p.value
-  x_car = chisq_results[[i]]$statistic[[1]]
-  chisq_df <- rbind(chisq_df, data.frame(tag1 = vars[1], tag2 = vars[2], p_value = p_val, x_carre = x_car))
-}
-
-# Tri du dataframe en fonction de la colonne p_value
-chisq_df_sorted <- chisq_df %>%
-  arrange(p_value)
-
-# Affichage du dataframe trié en fonction des 20 premières valeurs
-chisq_df_sorted[1:20,]
-```
-
-Nous pouvons observer les 20 premières paires les plus significativement liées.
-
-Les tags sélectionnés pour faire les paires ne correspondent qu'aux tags qui apparaissent dans chez au moins 10 accidents, et qui sont les plus pertinents à étudier.
-
-Interprétation:
-
-Il y a plus d'accident près dans un tunnel lorsqu'il y a un bon niveau de cyclabilité.
-
-Voici la source de toutes les descriptions des différents tags:
-
-[OpenStreetMap Taginfo](https://taginfo.openstreetmap.org/)
-
-## Analyse sur tous les tags qui existent à Montpellier
-
-### Création du dataframe contenant les points de tous les tags de la métropole en fonction des tags qui apparaissent le plus lors d'accident et qui sont les plus pertinents
+#### Initialisation de la table avec les informations d'OpenStreetMap
 
 ```{r}
 # ------ epci_osm contient les tags de toute la métropole
@@ -905,14 +882,14 @@ df_full_tags <- separate_rows(centroids, other_tags, sep = ",", convert = TRUE)
 # afficher le nouveau dataframe en filtrant en fonction des tags les plus pertinents
 df_full_tags = df_full_tags |>
   filter(other_tags %in% selected_vars)
-df_full_tags
+head(df_full_tags)
 
 
 ```
 
-Voici le dataframe contenant tous les tags qui existent à Montpellier en filtrant en fonction des tags sélectionnées précedemment.
+Voici le dataframe contenant tous les tags qui existent à Montpellier en fonction de notre sélection de tag.
 
-### Création de la carte affichant la densité des points dans la métropole en fonction des tags qui définissent le plus le risque d'accident
+Nous pouvons observer "osm_id" qui est l'identifiant donné par OpenStreetMap et qui correspond à un endroit géographique contenant plusieurs informations (tags). La colonne "other_tags" montre les tags dans chaque "osm_id" et la dernière colonne "geometry" est le point sur lequel se trouve l'ensemble des informations. Nous pouvons rajouter que la colonne "geometry" contenait des lignes à la place des points comme dit précedemment. Pour réaliser la densité des points par la suite afin de définir les zones accidentogènes, nous avons pris le centroide de la ligne car les lignes étaient toutes petites et nous l'avons donc pris comme point.
 
 ```{r}
 
@@ -927,3 +904,5 @@ coordonnees %>%
   setView(mean(coordonnees$X),mean(coordonnees$Y),11) %>%
   addHeatmap(lng=~X,lat=~Y,max=100,radius=20,blur=20)
 ```
+
+Cette carte montre bel et bien les différentes zones accidentogènes. On remarque que le centre ville est l'endroit où il y a le plus d'accident. De plus, en zoomant, notre analyse se valide en remarquant que ces zones sont principalement près des intersections et près des lignes de trams.
