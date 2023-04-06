@@ -6,7 +6,7 @@ editor: visual
 
 ## Analyse descriptive et quantitative des diférentes tables.
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE, error=FALSE}
 library(dplyr)
 library(sf)
 library(ggplot2)
@@ -14,6 +14,7 @@ library(tidyr)
 library(leaflet)
 library(reshape2)
 library(vcd)
+library(plotly)
 ```
 
 ```{r echo=FALSE}
@@ -35,19 +36,7 @@ df_count <- Accidents_velo_epci_sf %>%
 
 df_count$mois <- as.integer(df_count$mois)
 
-# ggplot(df_count, aes(x = mois, y = n)) +
-#   geom_line(color = "#99c3f0") +
-#   geom_point(color = "#99d4f0", size = 3) +
-#   # geom_line(aes(x = mois, y = total), color = "red", linetype = "solid") +
-#   labs(title = "Nombre d'accidents par mois", x = "Mois", y = "Nombre d'accidents") +
-#   scale_x_continuous(breaks = 1:12, labels = month.name[1:12])
-library(plotly)
 
-# Création des données
-# df_count <- Accidents_velo_epci_sf %>% 
-#   mutate(mois = month(date)) %>% 
-#   count(mois) %>% 
-#   mutate(mois = factor(mois, levels = 1:12, labels = month.name[1:12]))
 
 # Création du graphique ggplot2
 gg <- ggplot(df_count, aes(x = mois, y = n)) +
@@ -59,34 +48,11 @@ gg <- ggplot(df_count, aes(x = mois, y = n)) +
 # Transformation en graphique interactif avec plotly
 ggplotly(gg)
 
-#____________________________________________________________
-
-#____________________________________________________________
-#DIAGRAMME EN LIGNE PAR MOIS ET PAR AN
-# df_count <- Accidents_velo_epci_sf %>%
-#   count(mois, an) %>%
-#   arrange(mois, an)
-# 
-# couleurs <- c("#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928")
-# 
-# couleurs2 <- c("red", "green", "blue", "orange", "purple", "yellow", "pink", "brown", "gray", "black", "cyan", "magenta")
-# 
-# ggplot(df_count, aes(x = an, y = n, group = mois, color = mois)) +
-#   geom_line() +
-#   labs(title = "Nombre d'accidents par mois et par année",
-#        x = "Année", y = "Nombre d'accidents") +
-#   scale_x_discrete(breaks = unique(df_count$an))+
-#   scale_color_manual(values = couleurs2)
-
-#____________________________________________________________
 
 
 ```
 
 ```{r echo=FALSE}
-library(ggplot2)
-library(dplyr)
-library(plotly)
 
 df_count <- Accidents_velo_epci_sf %>%
   count(mois, an) %>%
@@ -94,7 +60,6 @@ df_count <- Accidents_velo_epci_sf %>%
 
 couleurs <- c("#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928")
 
-couleurs2 <- c("red", "green", "blue", "orange", "purple", "yellow", "pink", "brown", "gray", "black", "cyan", "magenta")
 
 # Créer le graphique de base avec ggplot2
 p <- ggplot(df_count, aes(x = an, y = n, group = mois, color = mois)) +
@@ -102,7 +67,7 @@ p <- ggplot(df_count, aes(x = an, y = n, group = mois, color = mois)) +
   labs(title = "Nombre d'accidents par mois et par année",
        x = "Année", y = "Nombre d'accidents") +
   scale_x_discrete(breaks = unique(df_count$an)) +
-  scale_color_manual(values = couleurs2)
+  scale_color_manual(values = couleurs)
 
 # Rendre le graphique interactif avec plotly
 ggplotly(p) %>%
@@ -134,32 +99,6 @@ ggplotly(p) %>%
 ```
 
 ```{r echo=FALSE}
-
-# #lumière lors de l'accident :
-# Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>%
-#   mutate(
-#     lum = case_when(
-#       lum == "1" ~ "Plein jour",
-#       lum == "2" ~ "Crépuscule ou aube",
-#       lum == "3" ~ "Nuit sans éclairage public",
-#       lum == "4" ~ "Nuit avec éclairage public non allumé",
-#       lum == "5" ~ "Nuit avec éclairage public allumé",
-#       TRUE ~ lum
-#     )
-#   )
-# etiquettes = c("Plein jour", "Crépuscule", "Nuit sans éclairage public", "Nuit avec éclairage public non allumé","Nuit avec éclairage public allumé")
-# 
-# ggplot(Accidents_velo_epci_sf, aes(x = lum, fill=lum)) +
-#   geom_bar(stat = "count") +
-#   scale_fill_manual(values = c("#8dd3c7","#ffffb3", "#bebafa","#fb8072", "#80b1d3")) +
-#   labs(title = "Lumière au moment de l'accident",
-#        x = "Lumière",
-#        y = "Nombre d'accidents") +
-#   theme(axis.text.x = element_blank()) +
-#   guides(fill = guide_legend(title = ""))
-
-library(plotly)
-
 #lumière lors de l'accident : 
 Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>% 
   mutate(
@@ -183,12 +122,8 @@ p <- ggplot(Accidents_velo_epci_sf, aes(x = lum, fill=lum)) +
   theme(axis.text.x = element_blank()) +
   guides(fill = guide_legend(title = ""))
 
-ggplotly(p)
-
-
-
-
-
+a<-ggplotly(p)
+a
 ```
 
 ```{r echo=FALSE}
@@ -275,22 +210,6 @@ df_new$hors_agglomeration[2:6] <-c(0,0,0,0,0)
 df_new$hors_agglomeration[20] <-c(0)
 
 
-# Création du graphique
-# ggplot(df_new, aes(x = heure)) +
-#   geom_line(aes(y = en_agglomeration, group = "en_agglomeration", color = "en_agglomeration"), size = 1) +
-#   geom_line(aes(y = hors_agglomeration*10, group = "hors_agglomeration", color = "hors_agglomération"), size = 1) +
-#   scale_y_continuous(name = "en_agglomeration",
-#                      sec.axis = sec_axis(~./10, name = "hors_agglomération")) +
-#   scale_color_manual(name = "Légende",
-#                      values = c("en_agglomeration" = "#fcbfff", "hors_agglomération" = "#bfe5ff"),
-#                      labels = c("en_agglomeration" = "En agglomération", "hors_agglomération" = "Hors agglomération")) +
-#   labs(title = "Heures des accidents, en agglomération et hors agglomération.")
-
-
-
-```
-
-```{r echo=FALSE}
 ### VERSION INTERRACTIVE
 library(plotly)
 p <- ggplotly(
