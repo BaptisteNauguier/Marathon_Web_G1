@@ -135,8 +135,33 @@ ggplotly(p) %>%
 
 ```{r echo=FALSE}
 
-#lumière lors de l'accident :
-Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>%
+# #lumière lors de l'accident :
+# Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>%
+#   mutate(
+#     lum = case_when(
+#       lum == "1" ~ "Plein jour",
+#       lum == "2" ~ "Crépuscule ou aube",
+#       lum == "3" ~ "Nuit sans éclairage public",
+#       lum == "4" ~ "Nuit avec éclairage public non allumé",
+#       lum == "5" ~ "Nuit avec éclairage public allumé",
+#       TRUE ~ lum
+#     )
+#   )
+# etiquettes = c("Plein jour", "Crépuscule", "Nuit sans éclairage public", "Nuit avec éclairage public non allumé","Nuit avec éclairage public allumé")
+# 
+# ggplot(Accidents_velo_epci_sf, aes(x = lum, fill=lum)) +
+#   geom_bar(stat = "count") +
+#   scale_fill_manual(values = c("#8dd3c7","#ffffb3", "#bebafa","#fb8072", "#80b1d3")) +
+#   labs(title = "Lumière au moment de l'accident",
+#        x = "Lumière",
+#        y = "Nombre d'accidents") +
+#   theme(axis.text.x = element_blank()) +
+#   guides(fill = guide_legend(title = ""))
+
+library(plotly)
+
+#lumière lors de l'accident : 
+Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>% 
   mutate(
     lum = case_when(
       lum == "1" ~ "Plein jour",
@@ -149,14 +174,16 @@ Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>%
   )
 etiquettes = c("Plein jour", "Crépuscule", "Nuit sans éclairage public", "Nuit avec éclairage public non allumé","Nuit avec éclairage public allumé")
 
-ggplot(Accidents_velo_epci_sf, aes(x = lum, fill=lum)) +
+p <- ggplot(Accidents_velo_epci_sf, aes(x = lum, fill=lum)) +
   geom_bar(stat = "count") +
   scale_fill_manual(values = c("#8dd3c7","#ffffb3", "#bebafa","#fb8072", "#80b1d3")) +
-  labs(title = "Lumière au moment de l'accident",
-       x = "Lumière",
+  labs(title = "Lumière au moment de l'accident", 
+       x = "Lumière", 
        y = "Nombre d'accidents") +
   theme(axis.text.x = element_blank()) +
   guides(fill = guide_legend(title = ""))
+
+ggplotly(p)
 
 
 
@@ -249,15 +276,37 @@ df_new$hors_agglomeration[20] <-c(0)
 
 
 # Création du graphique
-ggplot(df_new, aes(x = heure)) + 
-  geom_line(aes(y = en_agglomeration, group = "en_agglomeration", color = "en_agglomeration"), size = 1) + 
-  geom_line(aes(y = hors_agglomeration*10, group = "hors_agglomeration", color = "hors_agglomération"), size = 1) +
-  scale_y_continuous(name = "en_agglomeration", 
-                     sec.axis = sec_axis(~./10, name = "hors_agglomération")) +
-  scale_color_manual(name = "Légende", 
-                     values = c("en_agglomeration" = "#fcbfff", "hors_agglomération" = "#bfe5ff"),
-                     labels = c("en_agglomeration" = "En agglomération", "hors_agglomération" = "Hors agglomération")) +
-  labs(title = "Heures des accidents, en agglomération et hors agglomération.")
+# ggplot(df_new, aes(x = heure)) +
+#   geom_line(aes(y = en_agglomeration, group = "en_agglomeration", color = "en_agglomeration"), size = 1) +
+#   geom_line(aes(y = hors_agglomeration*10, group = "hors_agglomeration", color = "hors_agglomération"), size = 1) +
+#   scale_y_continuous(name = "en_agglomeration",
+#                      sec.axis = sec_axis(~./10, name = "hors_agglomération")) +
+#   scale_color_manual(name = "Légende",
+#                      values = c("en_agglomeration" = "#fcbfff", "hors_agglomération" = "#bfe5ff"),
+#                      labels = c("en_agglomeration" = "En agglomération", "hors_agglomération" = "Hors agglomération")) +
+#   labs(title = "Heures des accidents, en agglomération et hors agglomération.")
+
+
+
+```
+
+```{r echo=FALSE}
+### VERSION INTERRACTIVE
+library(plotly)
+p <- ggplotly(
+  ggplot(df_new, aes(x = heure)) + 
+    geom_line(aes(y = en_agglomeration, group = "en_agglomeration", color = "en_agglomeration"), size = 1) + 
+    geom_line(aes(y = hors_agglomeration*10, group = "hors_agglomeration", color = "hors_agglomération"), size = 1) +
+    scale_y_continuous(name = "en_agglomeration", 
+                       sec.axis = sec_axis(~./10, name = "hors_agglomération")) +
+    scale_color_manual(name = "Légende", 
+                       values = c("en_agglomeration" = "#fcbfff", "hors_agglomération" = "#bfe5ff"),
+                       labels = c("en_agglomeration" = "En agglomération", "hors_agglomération" = "Hors agglomération")) +
+    labs(title = "Heures des accidents, en agglomération et hors agglomération.")
+)
+
+# Afficher le graphique interactif
+p
 ```
 
 ```{r echo=FALSE}
