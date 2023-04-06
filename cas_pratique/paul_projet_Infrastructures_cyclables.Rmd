@@ -49,7 +49,7 @@ htmltools::img(src =file.path(getwd(), "Images","no_accident.png"),
 
 **3- Les fournisseurs de service d'itinéraires** cyclistes pour intégrer le contournement de zones identifiables comme plus accidentogènes dans leurs calculs
 
-# Les données
+# Analyse des données
 
 ```{r chargement_package}
 library(tidyverse)
@@ -164,6 +164,8 @@ carte_finale <- carte_base+
   tm_compass()
 tmap_leaflet(carte_finale)
 ```
+
+Cette carte présente les accidents et la vitesse maximale autorisée sur les pistes cyclables. On constate qu'il y a beaucoup plus d'accidents en centre ville, et que les pistes cyclables sont principalement limitées à 5 km/h.
 
 ## Graphique du nombre d'accidents de vélo en fonction de la limitation de vitesse
 

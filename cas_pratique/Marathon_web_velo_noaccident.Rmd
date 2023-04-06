@@ -1,0 +1,929 @@
+---
+title: "Marathon_web_velo_noaccident"
+author: "PEYRARD Paul, NAUGUIER Baptiste, HANNEBERT Augustin"
+date: "2023-04-06"
+output: 
+    html_document:
+      number_sections: true
+      toc_depth: 2
+      toc: true
+      toc_float:
+        toc_collapsed: true
+      df_print: paged
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE,error = FALSE,message = FALSE,eval=TRUE)
+htmltools::img(src =file.path(getwd(), "Images","no_accident.png"),
+               alt = 'logo',
+               style = 'position:absolute; top:0; right:0; padding:20px 20px 10px 10px; width: auto; height: 200px')
+```
+
+# Introduction
+
+## Objectif
+
+**Ambition :** proposer un cadre de vie dans lequel les flux cyclistes sont sécurisés et des moyens sont mis en oeuvre pour systématiquement réduire l'occurrence d'accidents impliquant des cyclistes
+
+**Analyse a posteriori :** Identifier les zones accidentogènes d'un territoire pour les cyclistes à travers l'analyse des flux et des caractéristiques des lieux d'accident
+
+**Analyse a priori :** identifier les zones susceptibles de présenter des caractéristiques accidentogènes sur la base de l'analyse a posteriori
+
+**Reproductibilité :** Proposer un modèle d'analyse générique pour permettre de réaliser l'évaluation d'un territoire par une collectivité, une association ou des usagers avertis avec comme objectif de proposer des évolutions de la voirie susceptible de réduire l'accidentologie
+
+## Besoins
+
+**T1** - Définir les caractéristiques types des zones accidentogènes à travers l'analyse fine de la voirie, des flux, de la météo et de toutes propriétés discriminantes
+
+**T2 -** Identifier les zones d'un territoire géographique susceptible de présenter des critères accidentogènes sur la base de ces critères
+
+**Data \>** Produire un module d'analyse open-source, documenté et partagé pour les zones accidentogènes.
+
+**Communication \>** Promouvoir le modèle d'analyse à travers un site internet, un github et des outils de communication à destination des cibles identifiés
+
+## Cibles
+
+**1- Les collectivités** pour les aider à prioriser les investissements dans les équipements de sécurisation de voirie des flux cyclistes sur leurs territoires.
+
+**2- Les associations de cyclistes** pour analyser les territoires et appuyer leurs plaidoyers pour demander des évolutions des pratiques des collectivités
+
+**3- Les fournisseurs de service d'itinéraires** cyclistes pour intégrer le contournement de zones identifiables comme plus accidentogènes dans leurs calculs
+
+```{r chargement_package}
+library(tidyverse)
+library(sf)
+library(tmap)
+library(ggplot2)
+library(dplyr)
+library(plotly)
+library(sp)
+library(tidyr)
+library(leaflet)
+library(leaflet.extras)
+library(magrittr)
+library(png)
+```
+
+```{r chargement donnees}
+#geovelo
+epci_geovelo_202301 <- readRDS("data MMM/geovelo/epci_geovelo_202301.rds")
+
+#onisr
+caracteristiques_epci <- readRDS("data MMM/onisr/caracteristiques_epci.rds")
+lieux_epci <- readRDS("data MMM/onisr/lieux_epci.rds")
+usagers_epci <- readRDS("data MMM/onisr/usagers_epci.rds")
+vehicules_epci <- readRDS("data MMM/onisr/vehicules_epci.rds")
+Accidents_velo_epci_sf <- readRDS("data MMM/onisr/Accidents_velo_epci_sf.rds")
+Tampon_Accidents_velo_sf <- readRDS("data MMM/onisr/Tampon_Accidents_velo_sf.rds")
+
+#insee
+communes_epci <- readRDS("data MMM/INSEE/communes_epci.rds")
+epci <- readRDS("data MMM/INSEE/epci.rds")
+
+#osm
+Tampon_Accidents_velo_osm_sf <- readRDS("data MMM/OSM/Tampon_Accidents_velo_osm_sf.rds")
+
+#insee données carroyées
+carreauxSf <- readRDS("data MMM/INSEE/carreauxSf.rds")
+
+#Ecole
+OSM_Montpellier_ecole_sf <- readRDS("data MMM/Ecole/OSM_Montpellier_ecole_sf.rds")
+OSM_Metropole_ecole_sf <- readRDS("data MMM/Ecole/OSM_Metropole_ecole_sf.rds")
+
+#Carte scolaire
+carte_sco_Montpellier_propre_sf <- readRDS("data MMM/Ecole/carte_sco_Montpellier_propre_sf.rds")
+
+#Flux scolaires
+Ensemble_temp_trajet_carreaux_200m_select_explode <- readRDS("data MMM/Trajets_dom_ecole/Ensemble_temp_trajet_carreaux_200m_select_explode.rds")
+
+epci_osm = readRDS("data MMM/OSM/epci_osm_230101.rds")
+
+```
+
+# Analyse de données
+
+## Analyse descriptive
+
+### Analyse des variables de la table usagers_epci
+
+```{r Usagers et accidents}
+
+merged_usager = merge(Accidents_velo_epci_sf, usagers_epci, by = "Num_Acc")
+
+# Calcul du nomre de modalités et il y a bien les 548 accidents référencés dans la table accident
+length(unique(merged_usager$Num_Acc))
+```
+
+Nous avons pris les informations de la table usagers_epci pour les accidents qui sont dans la table Accidents_velo_epci_sf. Ainsi, notre étude se concentre sur les accidents de vélo et nous excluons les accidents qui ne concernent que les voitures, piétons, .... Nous avons donc une table merged_usager qui contient cela.
+
+Avec "length(unique(merged_usager\$Num_Acc))", on se rend compte que cette table merged_usager contient tous les accidents, et pour chaque accident on a au minimum 1 individu en vélo impliqué. Les autres individus peuvent être en voiture, en transport en commun ou bien à pied.
+
+#### Variable trajet {.tabset .tabset-fade}
+
+##### Graphique du nombre d'accidents en fonction du motif de déplacement
+
+```{r}
+#lumière lors de l'accident : 
+Accidents_velo_trajet <- merged_usager %>% 
+  mutate(
+    trajet = case_when(
+      trajet == "-1" ~ "Non renseigné",
+      trajet == "0" ~ "Non renseigné",
+      trajet == "1" ~ "Domicile – travail",
+      trajet == "2" ~ "Domicile – école",
+      trajet == "3" ~ "Courses – achats",
+      trajet == "4" ~ "Utilisation professionnelle",
+      trajet == "5" ~ "Promenade – loisirs",
+      trajet == "9" ~ "Autre",
+      TRUE ~ trajet
+    )
+  )
+
+couleurs <- c("red", "green", "blue", "orange", "purple", "yellow", "pink", "brown")
+
+etiquettes = c("Non renseigné", "Non renseigné", "Domicile – travail", "Domicile – école","Courses – achats","Utilisation professionnelle","Promenade – loisirs","Autre")
+
+ggplot(Accidents_velo_trajet, aes(x = trajet, fill = trajet)) +
+  geom_bar(stat = "count") +
+  scale_fill_manual(values = couleurs) +
+  labs(title = "Nombre d'accidents impliquant un vélo en fonction du motif de déplacement", 
+       x = "Motif de déplacement", 
+       y = "Nombre d'accidents",
+       fill = "Motif de déplacement") +
+  theme(axis.text.x = element_blank(),
+        legend.position = "right")
+
+```
+
+On se rend compte que les accidents impliquant un vélo se déroule souvent lors de loisirs ou de promenade.
+
+##### Graphique du nombre d'accidents en fonction du motif de déplacement et de l'heure
+
+```{r}
+#horaires des accidents.
+Accidents_velo_trajet <- merged_usager %>%#on ne va garder que les heures et se débarasser des minutes.
+  mutate(hr = substr(hrmn, 1, 2))
+
+#gros nettoyage de la colonne horaire
+Accidents_velo_trajet <- Accidents_velo_trajet %>% 
+  mutate(
+    hr = case_when(
+      hr == "75" ~ "7",
+      hr == "92" ~ "9",
+      hr == "81" ~ "8",
+      hr == "90" ~ "9",
+      hr == "84" ~ "8",
+      hr == "83" ~ "8",
+      hr == "82" ~ "8",
+      hr == "91" ~ "9",
+      hr == "85" ~ "8",
+      hr == "41" ~ "4",
+      hr == "32" ~ "3",
+      hr == "74" ~ "7",
+      hr == "95" ~ "9",
+      hr == "63" ~ "6",
+      hr == "72" ~ "7",
+      hr == "45" ~ "4",
+      hr == "24" ~ "2",
+      hr == "30" ~ "3",
+      hr == "09" ~ "9",
+      hr == "08" ~ "8",
+      hr == "07" ~ "7",
+      hr == "05" ~ "5",
+      hr == "54" ~ "5",
+      hr == "93" ~ "9",
+      hr == "94" ~ "9",
+      hr == "80" ~ "8",
+      hr == "65" ~ "6",
+      hr == "35" ~ "3",
+      TRUE ~ hr
+    )
+  )%>% mutate(hr := as.integer(hr))
+
+#je transforme la data de hr en facteurs
+Accidents_velo_trajet$hr <- factor(Accidents_velo_trajet$hr, 
+                                      levels = c(0, 1, 2, 3, 4, 5, 6,7,8,9,10, 11,12,13,14,15,16,17,18,19,20,21,22,23), 
+                                      labels = c("0", "1", "2", "3", "4", "5", "6","7","8","9","10", "11","12","13","14","15","16","17","18","19","20","21","22","23"))
+
+Accidents_velo_trajet <- Accidents_velo_trajet %>%
+  mutate(
+    trajet = case_when(
+      trajet == "-1" ~ "Non renseigné",
+      trajet == "0" ~ "Non renseigné",
+      trajet == "1" ~ "Domicile – travail",
+      trajet == "2" ~ "Domicile – école",
+      trajet == "3" ~ "Courses – achats",
+      trajet == "4" ~ "Utilisation professionnelle",
+      trajet == "5" ~ "Promenade – loisirs",
+      trajet == "9" ~ "Autre",
+      TRUE ~ trajet
+    )
+  )
+
+couleurs2 <- c("red", "green", "blue", "orange", "purple", "yellow", "pink", "brown")
+
+df_count <- Accidents_velo_trajet %>%
+  count(trajet, hr) %>%
+  arrange(trajet, hr)
+
+df_count$hr = as.numeric(df_count$hr)
+
+p = ggplot(df_count, aes(x = hr, y = n, group = trajet, color = trajet)) +
+  geom_line(size = 1) +
+  labs(title = "Nombre d'accidents par type de trajet et par heure",
+       x = "Heure", y = "Nombre d'accidents") +
+  scale_x_discrete(breaks = unique(df_count$trajet))+
+  scale_color_manual(values = couleurs2)+
+  scale_x_continuous(limits = c(0, 23), breaks = 0:23)
+
+# Rendre le graphique interactif avec plotly
+ggplotly(p) %>%
+  layout(legend = list(x = 1, y = 0.5)) %>%
+  htmlwidgets::onRender("
+            function(el, x) {
+              var g = Plotly.d3.select(el).select('g.legend');
+              g.selectAll('g.traces').on('mouseover', function(d) {
+                Plotly.d3.select(this).style('opacity', 1);
+                var name = d[0].data.name;
+                var update = {};
+                var visible = [];
+                var data = x.data;
+                for (i = 0; i < data.length; i++) {
+                  if (data[i].name == name) {
+                    visible.push(true);
+                  } else {
+                    visible.push('legendonly');
+                  }
+                }
+                update['visible'] = visible;
+                Plotly.update(el, update, {});
+              }).on('mouseout', function(d) {
+                Plotly.d3.select(this).style('opacity', null);
+              });
+            }
+            ")
+
+
+```
+
+Nous pouvons observer par exemple, que les accidents se déroulent plus souvent lors de trajet "Domicile-travail" vers environ 9h du matin et lors de trajet de "promenade-loisirs" vers 19h ce qui coincident avec la réalité.
+
+#### Variable Locp
+
+```{r}
+table(merged_usager$locp)
+```
+
+La plupart des localisations des piétons sont "sans objet" (correspond au 0), ce n'est donc pas très utile d'en tirer de l'information.
+
+### Méthode du chi-carré
+
+### Augustin
+
+```{r echo=FALSE, message=FALSE, error=FALSE}
+library(dplyr)
+library(sf)
+library(ggplot2)
+library(tidyr)
+library(leaflet)
+library(reshape2)
+library(vcd)
+library(plotly)
+
+Accidents_velo_epci_sf <- readRDS("data MMM/onisr/Accidents_velo_epci_sf.rds")
+
+Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>%
+  mutate(mois = gsub("^0*", "", mois)) %>%
+  mutate(mois := as.integer(mois))
+Accidents_velo_epci_sf$mois <- month.name[Accidents_velo_epci_sf$mois] #transforme les nombre en noms de mois
+Accidents_velo_epci_sf$mois <- factor(Accidents_velo_epci_sf$mois, levels = month.name)
+```
+
+```{r echo=FALSE}
+
+### GEOMLINE 
+df_count <- Accidents_velo_epci_sf %>%
+  count(mois) %>%
+  mutate(total = sum(n))
+
+df_count$mois <- as.integer(df_count$mois)
+
+
+
+# Création du graphique ggplot2
+gg <- ggplot(df_count, aes(x = mois, y = n)) +
+  geom_line(color = "#99c3f0") +
+  geom_point(color = "#99d4f0", size = 3) +
+  labs(title = "Nombre d'accidents par mois", x = "Mois", y = "Nombre d'accidents") +
+  scale_x_continuous(breaks = 1:12, labels = month.name[1:12])
+
+# Transformation en graphique interactif avec plotly
+ggplotly(gg)
+
+# Importer une image
+mon_image <- readPNG("../newplot.png")
+
+# Afficher l'image importée
+plot(1:10, type = "n", xlab = "", ylab = "")
+rasterImage(mon_image, 1, 1, 10, 10)
+
+```
+
+Observons le nombre d'accident par mois de 2005 à 2021, sur Montpellier Méditerrannée Métropole (MMM). Nous observons un pic du nombre d'accidents au mois de Septembre. Nous pouvons faire l'hypothèse que c'est la période où il y a le plus de cyclistes, car c'est le début de l'année scolaire, et que les jours sont encore assez chauds. On remarque un faible nombre d'accident durant tous les mois d'hiver. Nous faisons l'hypothèse qu'il y a une baisse du nombre de cycliste en automne-hiver. Le mois d'août est le troisième mois le plus faible, c'est la période où la plus grande partie des gens est en congé, donc la circulation est plus faible.
+
+Ce graphique montre bien l'évolution du nombre d'accident au cours des mois. Nous supposons que le nombre d'accident est lié au nombre de cyclistes.
+
+```{r echo=FALSE}
+df_count <- Accidents_velo_epci_sf %>%
+  count(mois, an) %>%
+  arrange(mois, an)
+
+couleurs <- c("#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928")
+
+
+# Créer le graphique de base avec ggplot2
+p <- ggplot(df_count, aes(x = an, y = n, group = mois, color = mois)) +
+  geom_line() +
+  labs(title = "Nombre d'accidents par mois et par année",
+       x = "Année", y = "Nombre d'accidents") +
+  scale_x_discrete(breaks = unique(df_count$an)) +
+  scale_color_manual(values = couleurs)
+
+# Rendre le graphique interactif avec plotly
+ggplotly(p) %>%
+  layout(legend = list(x = 0.8, y = 0.5)) %>%
+  htmlwidgets::onRender("
+            function(el, x) {
+              var g = Plotly.d3.select(el).select('g.legend');
+              g.selectAll('g.traces').on('mouseover', function(d) {
+                Plotly.d3.select(this).style('opacity', 1);
+                var name = d[0].data.name;
+                var update = {};
+                var visible = [];
+                var data = x.data;
+                for (i = 0; i < data.length; i++) {
+                  if (data[i].name == name) {
+                    visible.push(true);
+                  } else {
+                    visible.push('legendonly');
+                  }
+                }
+                update['visible'] = visible;
+                Plotly.update(el, update, {});
+              }).on('mouseout', function(d) {
+                Plotly.d3.select(this).style('opacity', null);
+              });
+            }
+            ")
+
+
+
+
+```
+
+Observons le nombre d'accident par mois pour chaque année, de 2005 à 2021, sur MMM. Nous pouvons sélectionner un seul mois ou plusieurs pour mieux les comparer. On peut ainsi voir qu'il y a des mois qui sont au de-dessus d'autres, pour toutes les années confondues (septembre est toujours au dessus d'août, ou équivalent). Aussi, Certains mois ont une très grande variabilité suivant les années. C'est le cas du mois d'avril par exemple.
+
+```{r echo=FALSE}
+#lumière lors de l'accident : 
+Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>% 
+  mutate(
+    lum = case_when(
+      lum == "1" ~ "Plein jour",
+      lum == "2" ~ "Crépuscule ou aube",
+      lum == "3" ~ "Nuit sans éclairage public",
+      lum == "4" ~ "Nuit avec éclairage public non allumé",
+      lum == "5" ~ "Nuit avec éclairage public allumé",
+      TRUE ~ lum
+    )
+  )
+etiquettes = c("Plein jour", "Crépuscule", "Nuit sans éclairage public", "Nuit avec éclairage public non allumé","Nuit avec éclairage public allumé")
+
+p <- ggplot(Accidents_velo_epci_sf, aes(x = lum, fill=lum)) +
+  geom_bar(stat = "count") +
+  scale_fill_manual(values = c("#8dd3c7","#ffffb3", "#bebafa","#fb8072", "#80b1d3")) +
+  labs(title = "Lumière au moment de l'accident", 
+       x = "Lumière", 
+       y = "Nombre d'accidents") +
+  theme(axis.text.x = element_blank()) +
+  guides(fill = guide_legend(title = ""))
+
+p
+```
+
+Nous avons supposé que la luminosité au moment de l'accident peut être un facteur déterminant. Nous observons sur ce graphique que la très grande majorité des accidents a lieu en plein jour. En effet, c'est en plein jour qu'il y a le plus de cyclistes, et le plus d'automobilistes. C'est ensuite la nuit avec éclairage public allumé qu'il y a autre partie des accidents. C'est sans doute car les accidents ont majoritairement lieu en ville.
+
+```{r echo=FALSE}
+
+library(ggplot2)
+#horaires des accidents.
+Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>%#on ne va garder que les heures et se débarasser des minutes.
+  mutate(hrmn = substr(hrmn, 1, 2))
+
+#gros nettoyage de la colonne horaire
+Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>% 
+  mutate(
+    hrmn = case_when(
+      hrmn == "75" ~ "7",
+      hrmn == "92" ~ "9",
+      hrmn == "81" ~ "8",
+      hrmn == "90" ~ "9",
+      hrmn == "84" ~ "8",
+      hrmn == "83" ~ "8",
+      hrmn == "82" ~ "8",
+      hrmn == "91" ~ "9",
+      hrmn == "85" ~ "8",
+      hrmn == "41" ~ "4",
+      hrmn == "32" ~ "3",
+      hrmn == "74" ~ "7",
+      hrmn == "95" ~ "9",
+      hrmn == "63" ~ "6",
+      hrmn == "72" ~ "7",
+      hrmn == "45" ~ "4",
+      hrmn == "24" ~ "2",
+      hrmn == "30" ~ "3",
+      hrmn == "09" ~ "9",
+      hrmn == "08" ~ "8",
+      hrmn == "07" ~ "7",
+      hrmn == "05" ~ "5",
+      hrmn == "54" ~ "5",
+      hrmn == "93" ~ "9",
+      hrmn == "94" ~ "9",
+      hrmn == "80" ~ "8",
+      hrmn == "65" ~ "6",
+      hrmn == "35" ~ "3",
+      TRUE ~ hrmn
+    )
+  )%>% mutate(hrmn := as.integer(hrmn))
+
+#je transforme la data de hrmn en facteurs
+Accidents_velo_epci_sf$hrmn <- factor(Accidents_velo_epci_sf$hrmn, 
+                                      levels = c(0, 1, 2, 3, 4, 5, 6,7,8,9,10, 11,12,13,14,15,16,17,18,19,20,21,22,23), 
+                                      labels = c("0", "1", "2", "3", "4", "5", "6","7","8","9","10", "11","12","13","14","15","16","17","18","19","20","21","22","23"))
+
+
+#agglomération ou hors agglomération
+Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>% 
+  mutate(
+    agg = case_when(
+      agg == "1" ~ "Hors agglomération",
+      agg == "2" ~ "En agglomération",
+      TRUE ~ agg
+    )
+  )
+
+
+df_count <- Accidents_velo_epci_sf %>%
+  count(hrmn, agg)
+ggplot(df_count, aes(x = hrmn, y = n)) +
+  geom_col(aes(fill = agg), width = 0.7)+
+  scale_fill_manual(values = c("#fcbfff","#bfe5ff"))+
+  labs(title = "Heures des accidents, en agglomération et hors agglomération.")+  theme(legend.title = element_blank())
+
+```
+
+Observons les heures des accidents. On constate les pics d'accidents aux horaires de pointe : 8h-9h et 17h-18h. C'est en effet l'heure où il y a le plus de circulation. La nuit, il n'y presque pas d'accident (comme le montrait aussi le graphique précédent).
+
+Nous avons aussi regardé quelle est la part des accidents entre l'agglomération et hors de l'agglomération. On peut facilement voir que la plus grande part des accidents a lieu en agglomération.
+
+```{r echo=FALSE}
+
+# Création des données
+date <- sort(unique(Accidents_velo_epci_sf$hrmn))
+temp <- Accidents_velo_epci_sf %>% count(hrmn, agg)
+prov <- data.frame(temp$hrmn, temp$agg,temp$n)
+
+####
+df_new <- prov %>%
+  pivot_wider(names_from = temp.agg, values_from = temp.n)
+colnames(df_new) <- c("heure", "en_agglomeration", "hors_agglomeration")
+
+df_new$hors_agglomeration[2:6] <-c(0,0,0,0,0)
+df_new$hors_agglomeration[20] <-c(0)
+
+
+### VERSION INTERRACTIVE
+library(plotly)
+# ggplotly(
+  ggplot(df_new, aes(x = heure)) + 
+    geom_line(aes(y = en_agglomeration, group = "en_agglomeration", color = "en_agglomeration"), size = 1) + 
+    geom_line(aes(y = hors_agglomeration*10, group = "hors_agglomeration", color = "hors_agglomération"), size = 1) +
+    scale_y_continuous(name = "en_agglomeration", 
+                       sec.axis = sec_axis(~./10, name = "hors_agglomération")) +
+    scale_color_manual(name = "Légende", 
+                       values = c("en_agglomeration" = "#fcbfff", "hors_agglomération" = "#bfe5ff"),
+                       labels = c("en_agglomeration" = "En agglomération", "hors_agglomération" = "Hors agglomération")) +
+    labs(title = "Heures des accidents, en agglomération et hors agglomération.")
+# )
+
+# Afficher le graphique interactif
+
+
+
+
+```
+
+Grâce à ce graphique à double échelles, nous pouvons comparer les accidents entre agglomération et hors agglomération. Ce qui est intéressant est de regarder si les pics ont lieu aux mêmes horaires. Or comme nous l'avions déjà observé précédemment, en agglomération, le pics d'accient à lieu aux heures de pointe (8h-9h et 17h-18h). En revanche, hors agglomération, le pic a lieu dans la matinée vers 11H. Nous pouvons supposer que cela concerne plutôt des déplacments de types loisirs, et à des heures ou la circulation automobile est faible.
+
+```{r echo=FALSE}
+
+### intersection ;
+Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>% 
+  mutate(
+    int = case_when(
+      int == "1" ~ "Hors intersection",
+      int == "2" ~ "Intersection en X",
+      int == "3" ~ "Intersection en T",
+      int == "4" ~ "Intersection en Y",
+      int == "5" ~ "Intersection à plus de 4 branches",
+      int == "6" ~ "Giratoire",
+      int == "7" ~ "Place",
+      int == "8" ~ "Passage à niveau",
+      int == "9" ~ "Autre intersection",
+      TRUE ~ int
+    )
+  )
+
+couleurs <- c("#8dd3c7", "#ffffb3", "#bebafa", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9")
+
+
+
+
+ggplot(Accidents_velo_epci_sf, aes(x = int, fill=int)) +
+  geom_bar(stat = "count")+
+  labs(title = "Type d'intersection sur l'accident", 
+       x = "type d'intersection", 
+       y = "Nombre d'accidents")+
+  theme(axis.text.x = element_blank())+
+    guides(fill = guide_legend(title = ""))+
+  scale_fill_manual(values = couleurs)
+```
+
+Analysons les types d'intersections sur le lieu des accidents. On se demande si les accidents ont lieu sur des routes sans intersection ou bien sur des intersections. On oberve que le plus grand nombre d'accident a lieu sur des routes hors intersection.
+
+Toutefois, on a une variable Hors interection mais plusieurs variables décrivant les différents types d'intersections. On fait la comparaison entre les accidents hors intersection et les accidents ayant lieu sur tous types d'intersection .
+
+```{r echo=FALSE}
+# on observe que il y abeaucoup d'accidents qui ne sont pas dans des intersections. donc on va faire une colonne qui contient soit intersection soit non-inetrsection. 
+Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>%
+  mutate(type_int = if_else(int != "Hors intersection", "Intersection", int))
+
+ggplot(Accidents_velo_epci_sf, aes(x = type_int, fill=int)) +
+  geom_bar(stat = "count")+
+  labs(title = "Type d'intersection sur l'accident", 
+       x = "type d'intersection", 
+       y = "Nombre d'accidents")+
+  theme(axis.text.x = element_blank())+
+    guides(fill = guide_legend(title = ""))+
+  scale_fill_manual(values = couleurs)
+```
+
+Une fois que les différents types d'intersections sont rassemblés en une seule colonne, on voit que l'écart est nettement plus faible. Les accidents hors intersection restent majeurs.
+
+```{r echo=FALSE}
+
+lieux_epci <- readRDS("data MMM/onisr/lieux_epci.rds")
+
+lieux_epci <- merge(Accidents_velo_epci_sf, lieux_epci, by = "Num_Acc")
+
+
+###nature de la route
+lieux_epci <- lieux_epci %>% 
+  mutate(
+    catr = case_when(
+      catr == "1" ~ "Autoroute",
+      catr == "2" ~ "Route nationale",
+      catr == "3" ~ "Route Départementale",
+      catr == "4" ~ "Voie Communales",
+      catr == "5" ~ "Hors réseau public",
+      catr == "6" ~ "Parc de stationnement ouvert à la circulation publique",
+      catr == "7" ~ "Routes de métropole urbaine",
+      catr == "9" ~ "autre",
+      TRUE ~ catr
+    )
+  )
+
+couleurs <- c("#8dd3c7","#ffffb3", "#bebafa","#fb8072", "#80b1d3", "#fdb462")
+
+# ggplotly(
+  ggplot(lieux_epci, aes(x = catr, fill=catr)) +
+  geom_bar(stat = "count")+
+  labs(title = "Catégorie de route sur l'accident", 
+       x = "catégorie de route", 
+       y = "Nombre d'accidents")+
+  theme(axis.text.x = element_blank())+
+    guides(fill = guide_legend(title = ""))+
+  scale_fill_manual(values = couleurs)
+  # )
+
+
+```
+
+Observons les différentes catégories de routes sur le lieu d'accident. On voit que la plus grande part des accidents a lieu sur des routes communales. Cela englobe toutes les voies qui appartiennent au domaine public routier communal. Ce sont les routes que nous empruntons chaque jour en ville. Comme leur nom l'indique, les routes communales se trouvent en agglomération. C'est donc cohérent par rapport au fait que la plus grande majorité des accidents a lieu en agglomération.
+
+## Analyse en Composantes Principales (ACM)
+
+## Zone accidentogène
+
+### Analyse et cartographie des accidents et des pistes cyclables avec leurs limitations de vitesse {.tabset .tabset-fade}
+
+#### Graphique
+
+```{r}
+#geovelo
+epci_geovelo_202301 <- readRDS("data MMM/geovelo/epci_geovelo_202301.rds")
+
+#onisr
+caracteristiques_epci <- readRDS("data MMM/onisr/caracteristiques_epci.rds")
+lieux_epci <- readRDS("data MMM/onisr/lieux_epci.rds")
+usagers_epci <- readRDS("data MMM/onisr/usagers_epci.rds")
+vehicules_epci <- readRDS("data MMM/onisr/vehicules_epci.rds")
+Accidents_velo_epci_sf <- readRDS("data MMM/onisr/Accidents_velo_epci_sf.rds")
+Tampon_Accidents_velo_sf <- readRDS("data MMM/onisr/Tampon_Accidents_velo_sf.rds")
+
+#insee
+communes_epci <- readRDS("data MMM/INSEE/communes_epci.rds")
+epci <- readRDS("data MMM/INSEE/epci.rds")
+
+#osm
+Tampon_Accidents_velo_osm_sf <- readRDS("data MMM/OSM/Tampon_Accidents_velo_osm_sf.rds")
+
+#insee données carroyées
+carreauxSf <- readRDS("data MMM/INSEE/carreauxSf.rds")
+
+#Ecole
+OSM_Montpellier_ecole_sf <- readRDS("data MMM/Ecole/OSM_Montpellier_ecole_sf.rds")
+OSM_Metropole_ecole_sf <- readRDS("data MMM/Ecole/OSM_Metropole_ecole_sf.rds")
+
+#Carte scolaire
+carte_sco_Montpellier_propre_sf <- readRDS("data MMM/Ecole/carte_sco_Montpellier_propre_sf.rds")
+
+#Flux scolaires
+Ensemble_temp_trajet_carreaux_200m_select_explode <- readRDS("data MMM/Trajets_dom_ecole/Ensemble_temp_trajet_carreaux_200m_select_explode.rds")
+
+epci_osm = readRDS("data MMM/OSM/epci_osm_230101.rds")
+
+
+
+
+
+merged_lieu <- merge(Accidents_velo_epci_sf, lieux_epci, by = "Num_Acc")
+
+merged_lieu %>%
+  slice(-532) %>%
+  filter(!is.na(vma)) %>%
+  ggplot(aes(x = vma, fill = vma)) +
+    geom_histogram(stat = "count")+
+  scale_fill_manual(values = c("#8dd3c7","#ffffb3", "#bebafa","#fb8072", "#80b1d3"))+
+    labs(title = "Nombre d'accidents de vélo en fonction de la limitation de vitesse", x = "Vitesse Maximale Autorisée", y = "Nombre d'accidents")
+```
+
+Nous pouvons constater qu'il y a plus d'accidents en vélo lorsque la limitation de vitesse est de 50.
+
+Nous pouvons supposer que c'est en ville qu'il y a le plus d'accidents, là où la route est limitée à 50 km/h. Les zones limitées à 5 km/h correspond aux zones piétonnes donc il y a peu de chances qu'il y est des accidents. De plus, sur les routes limitées à 70 et 80 km/h, on ne trouve que peu de cycliste donc il n'est pas étonnant de voir qu'il y a moins d'accident.
+
+#### Carte des pistes cyclables
+
+```{r carte piste cyclable}
+epci_geovelo_202301$trafic_vit = as.character(epci_geovelo_202301$trafic_vit)
+
+
+carte_base <- tm_shape(communes_epci)+
+  tm_polygons(col = "grey",border.col = "white")+
+  tm_shape(epci)+
+  tm_borders(col = "#666666",lwd=3)
+
+carte_geovelo_vitesse <- tm_shape(epci_geovelo_202301 %>% 
+                mutate(ame_d=str_trunc(ame_d,15,side="right",ellipsis="…")) %>%
+                  filter(!is.na(trafic_vit))
+)+
+  tm_lines(col="blue", palette="Set1", lwd = 4)
+
+carte_accidents <- tm_shape(Accidents_velo_epci_sf %>% 
+                              select(-adresse,-adr))+
+  tm_dots(col="red", size = 0.03)+
+  tm_add_legend(type = "fill",labels = "Accidents",col="red")
+
+carte_tampons_accidents <- tm_shape(Tampon_Accidents_velo_sf %>% 
+                                      select(-adresse,-adr))+
+  tm_fill(col="navy",alpha = 0.5)
+carte_finale <- carte_base+
+  carte_tampons_accidents+
+  carte_geovelo_vitesse+
+  carte_accidents+
+  tm_layout(main.title ='Aménagements cyclables de Montpellier Méditerranée Métropole',
+            main.title.size=1,
+            inner.margins=0.1,
+            legend.outside = T,
+            legend.text.size=0.4)
+tmap_leaflet(carte_finale)
+```
+
+### 
+
+### Heatmap de la densité des points dans la métropole en fonction des tags qui définissent le plus le risque d'accident
+
+```{r}
+
+# coordonnees <- data.frame(st_coordinates(df_full_tags$geometry))
+# 
+# 
+# # creating a heat map for the burger search intensity according to Google trends
+# coordonnees %>%
+#   leaflet() %>% 
+#   addTiles() %>% 
+#   addProviderTiles(providers$OpenStreetMap.DE) %>% 
+#   setView(mean(coordonnees$X),mean(coordonnees$Y),11) %>%
+#   addHeatmap(lng=~X,lat=~Y,max=100,radius=20,blur=20)
+```
+
+Voici une carte affichant la densité des points où chacun de ces points correspond à un tag. Les types de tags ont été choisi en fonction des types qui appraissaient chez au moins 10 accidents, et qui étaient les plus pertinents à analyser.
+
+## Création de la table avec 300 colonnes correspondant aux tags, et 548 lignes correspondant aux accidents
+
+Comme dit précedemment, nous possédons déjà les informations de OpenStreetMap dans une table et elle se nomme "Tampon_Accidents_velo_osm_sf". Elle contient pour chaque tampon, donc pour chaque zone de 30 mètres autour de chaque accident, des informations sur la limitation de vitesse, le type de route, etc....
+
+On va donc, pour pouvoir analyser ce jeu de données:
+
+```{r}
+table_tags <- tibble(
+  tags=str_split(Tampon_Accidents_velo_osm_sf$other_tags,",") %>% 
+  unlist()
+) %>% 
+  group_by(tags) %>% 
+  count() %>% 
+  arrange(desc(n)) %>% 
+  unique() %>% 
+  drop_na()
+
+
+
+Accidents_velo_tags_osm <- map(table_tags$tags,function(x){
+  temp <- Tampon_Accidents_velo_osm_sf %>% 
+    filter(str_detect(other_tags,fixed(x))) %>% 
+    distinct(Num_Acc)
+
+  Accidents_velo_epci_sf %>% 
+    as_tibble() %>% 
+    mutate(!!x :=ifelse(Num_Acc %in% temp$Num_Acc,1,0)) %>% 
+    select(Num_Acc,.data[[x]])
+}) %>% 
+  reduce(left_join, by = 'Num_Acc')
+
+```
+
+### Analyse sur la table des tags
+
+#### Triage en fonction des tags qui apparaissent le plus lors d'accident et les plus pertinents
+
+```{r}
+# Accidents_velo_tags_osm
+
+
+n_col = ncol(Accidents_velo_tags_osm)
+
+# Somme des lignes pour chaque variable
+sum_col = colSums(Accidents_velo_tags_osm[,2:n_col])
+
+# Somme des colonnes pour chaque individu
+sum_row = rowSums(Accidents_velo_tags_osm[,2:n_col])
+
+# Filter les tags
+sum_col_filtered <- subset(sum_col, sum_col >= 10)
+cat("Pour faire le test de Khi-2 sur des paires  sur toutes les variables, j'ai eu besoin de diminuer le nombre de variable pour limiter le temps d'exécution. J'ai donc limiter à 10 apparations minimum de chaque tags (variable) parmi tous les individus. Je me retrouve donc avec",length(sum_col_filtered),"tags.\nDe plus, j'ai trié les tags en fonction de ceux qui apparaissent chez au moins 10 accidents et ceux étant les plus pertinents pour l'analyse\n")
+
+
+# Filtrer les individus (par curiosité)
+sum_row_filtered <- subset(sum_row, sum_row > 0)
+cat("De plus, il n'y a que",length(sum_row_filtered),"individus qui possèdent au minimum 1 tag ce qui est faible.\n\n")
+
+df_sum_col = data.frame(sum_col)
+df_sum_row = data.frame(sum_row)
+
+# Sélectionner les noms des variables qui sont présents au moins 10 fois chez des accidents individus (je rajoute Num_Acc pour ajouter l'identifiant)
+selected_vars <- c("Num_Acc", names(sum_col_filtered))
+
+# Sélectionner seulement les variables souhaitées
+selected_data <- Accidents_velo_tags_osm[, selected_vars]
+
+# On sélectionne que les variables utiles à notre analyse (on enlève celles inutiles)
+selected_data = selected_data |>
+  select(-"\"surface\"=>\"asphalt\"", -"\"gauge\"=>\"1435\"", -"\"frequency\"=>\"0\"", -"\"voltage\"=>\"750\"", -"\"operator\"=>\"Transports de l'agglomération de Montpellier\"", -"\"admin_level\"=>\"10\"", -"\"political_division\"=>\"canton\"", -"\"source:maxspeed\"=>\"sign\"", -"\"admin_level\"=>\"11\"", -"\"operator\"=>\"RTE\"", -"\"cables\"=>\"3\"", -"\"lanes:forward\"=>\"2\"", -"\"source:maxspeed\"=>\"FR:urban\"", -"\"access\"=>\"private\"", -"\"voltage\"=>\"63000\"")
+
+# Je définie les variables sélectionnées comme étant les variables qu'il y a dans le nouveau dataframe, celui sans les variables non pertinentes
+selected_vars = names(selected_data)
+
+```
+
+#### chi-carré
+
+```{r}
+# --------------------------------------
+# -- Test de Khi-2 sur toutes les paires de selected_data
+
+# Sélectionner les variables binaires
+binary_vars = selected_vars[2:length(selected_vars)]
+
+# Initialiser la liste pour stocker les résultats
+chisq_results <- list()
+
+# Boucle pour parcourir toutes les paires de variables binaires
+for (i in 1:(length(binary_vars)-1)) {
+  for (j in (i+1):length(binary_vars)) {
+
+    # Créer un tableau de contingence pour chaque paire de variables
+    var1 <- selected_data[, binary_vars[i]][[1]]
+    var2 <- selected_data[, binary_vars[j]][[1]]
+    cont_table <- table(var1, var2)
+
+    # Effectuer l'analyse de chi-carré pour chaque paire de variables
+    chisq_result <- chisq.test(cont_table)
+
+    if (chisq_result$p.value < 0.05) {
+        # Stocker les résultats dans la liste
+        chisq_results[[paste(binary_vars[i+1],binary_vars[j+1], sep = ';')]] <- chisq_result
+
+    }
+  }
+}
+
+# Initialiser un dataframe pour stocker les résultats
+chisq_df <- data.frame(tag1 = character(),
+                        tag2 = character(),
+                        p_value = numeric(),
+                        x_carre = numeric(),
+                        stringsAsFactors = FALSE)
+
+# Boucle pour ajouter les résultats au dataframe
+for (i in names(chisq_results)) {
+  vars <- strsplit(i, ";")[[1]]
+  p_val <- chisq_results[[i]]$p.value
+  x_car = chisq_results[[i]]$statistic[[1]]
+  chisq_df <- rbind(chisq_df, data.frame(tag1 = vars[1], tag2 = vars[2], p_value = p_val, x_carre = x_car))
+}
+
+# Tri du dataframe en fonction de la colonne p_value
+chisq_df_sorted <- chisq_df %>%
+  arrange(p_value)
+
+# Affichage du dataframe trié en fonction des 20 premières valeurs
+chisq_df_sorted[1:20,]
+```
+
+Nous pouvons observer les 20 premières paires les plus significativement liées.
+
+Les tags sélectionnés pour faire les paires ne correspondent qu'aux tags qui apparaissent dans chez au moins 10 accidents, et qui sont les plus pertinents à étudier.
+
+Interprétation:
+
+Il y a plus d'accident près dans un tunnel lorsqu'il y a un bon niveau de cyclabilité.
+
+Voici la source de toutes les descriptions des différents tags:
+
+[OpenStreetMap Taginfo](https://taginfo.openstreetmap.org/)
+
+## Analyse sur tous les tags qui existent à Montpellier
+
+### Création du dataframe contenant les points de tous les tags de la métropole en fonction des tags qui apparaissent le plus lors d'accident et qui sont les plus pertinents
+
+```{r}
+# ------ epci_osm contient les tags de toute la métropole
+
+# sélectionne les variables qui nous sont utiles
+epci_osm = epci_osm %>%
+  select(osm_id, other_tags, geometry)
+
+
+# Convertir la colonne de linestring en une colonne de sf
+df_sf <- st_as_sf(epci_osm, wkt = "geometry")
+
+# Extraire le centre de chaque linestring
+centroids <- st_centroid(df_sf)
+
+# utiliser la fonction separate_rows pour créer un nouveau dataframe avec une ligne par élément et conserver l'identifiant
+df_full_tags <- separate_rows(centroids, other_tags, sep = ",", convert = TRUE)
+
+# afficher le nouveau dataframe en filtrant en fonction des tags les plus pertinents
+df_full_tags = df_full_tags |>
+  filter(other_tags %in% selected_vars)
+df_full_tags
+
+
+```
+
+Voici le dataframe contenant tous les tags qui existent à Montpellier en filtrant en fonction des tags sélectionnées précedemment.
+
+### Création de la carte affichant la densité des points dans la métropole en fonction des tags qui définissent le plus le risque d'accident
+
+```{r}
+
+coordonnees <- data.frame(st_coordinates(df_full_tags$geometry))
+
+
+# creating a heat map for the burger search intensity according to Google trends
+coordonnees %>%
+  leaflet() %>% 
+  addTiles() %>% 
+  addProviderTiles(providers$OpenStreetMap.DE) %>% 
+  setView(mean(coordonnees$X),mean(coordonnees$Y),11) %>%
+  addHeatmap(lng=~X,lat=~Y,max=100,radius=20,blur=20)
+```
