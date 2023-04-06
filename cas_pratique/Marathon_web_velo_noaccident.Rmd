@@ -64,6 +64,10 @@ library(magrittr)
 library(png)
 library(reshape2)
 library(vcd)
+library(FactoMineR)
+library(factoextra)
+library(ca)
+library(knitr)
 ```
 
 ```{r chargement donnees}
@@ -270,6 +274,8 @@ ggplotly(p) %>%
 
 Nous pouvons observer grâce à ce graphique que les accidents se déroulent plus souvent lors de trajet "Domicile-travail" vers environ 9h du matin et lors de trajet de "promenade-loisirs" vers 19h ce qui coincident avec la réalité. En effet, la plupart des individus partent au travail vers 8h, 9h et peuvent faire leurs loisirs après la sortie de leurs travails, donc vers 18h, 19h.
 
+
+
 #### Variable Locp
 
 ```{r}
@@ -277,6 +283,41 @@ table(merged_usager$locp)
 ```
 
 La plupart des localisations des piétons sont "sans objet" (correspond au 0), ce n'est donc pas très utile d'en tirer de l'information.
+
+#### nombre de personnes par accident 
+Nous avons cherché à déterminer le nombre de personnes impliquées dans chaque accident impliquant des cyclistes. Cette analyse nous permettra de déterminer si les cyclistes tombent souvent seuls ou s'ils sont impliqués dans des accidents avec d'autres personnes. Voici quelques information sur la table issus de la jointure entre "usagers_epci" et "Accidents_velo_epci_sf" :
+<!-- Voici la jointure entre les deux tables : -->
+```{r, echo=FALSE}
+Accidents_velo_usagers <- data.frame(merge(usagers_epci,Accidents_velo_epci_sf, on = "Num_Acc"))
+glimpse(Accidents_velo_usagers)
+```
+ la jointure entre ces deux tables, nous donne 1 097 enregistrements. Cela est dû au fait qu'un accident peut impliquer plusieurs usagers et que nous effectuons la jointure entre les deux tables grâce au champ "Num_Acc". Par conséquent, il y a des duplications de ces numéros d'accidents dans la jointure.
+
+Voici le diagramme en barre qui représente le nombre de personnes sur l'axe des abscisse et le nombre d'accidents sur l'axe des ordonnées :
+```{r, echo=FALSE}
+freq_valeurs <- table(Accidents_velo_usagers$Num_Acc)
+data <- as.data.frame(freq_valeurs)
+data2 <- as.data.frame(table(data$Freq))
+data3 <- data.frame(nombre_personne = c(data2$Var1), nombre_accidents = c(data2$Freq))
+
+# Créer un data frame avec les données
+df <- data3
+
+# Créer le graphique avec ggplot2
+ggplot(data = df, aes(x = nombre_personne, y = nombre_accidents, fill = nombre_personne)) + 
+  geom_bar(stat = "identity") +
+  labs(title = " ", x = "Nombres de personnes impliquées dans un accident", y = "Nombres d'accidents") +
+  geom_text(aes(label = nombre_accidents), position = position_stack(vjust = 0.5), color = "white") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"),
+        axis.title = element_text(face = "bold"),
+        legend.position = "none",
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank())
+```
+Nous observons que dans 79% des cas les accidents impliquent deux personnes. Puis dans 12% des accidents il y a une seul personnes et dans 7 % des accidents nous avont 3 personnes.
+
 
 ### Analyse des variables de la table Accidents_velo_epci_sf
 
@@ -759,6 +800,130 @@ Interprétation: il y a plus d'accident dans un tunnel lorsqu'il y a un bon nive
 Voici la source de toutes les descriptions des différents tags: [OpenStreetMap Taginfo](https://taginfo.openstreetmap.org/)
 
 ## Analyse en Composantes Principales (ACM)
+
+Nous avons choisi de réaliser une analyse multidimensionnelle en utilisant l'ACM afin d'explorer les relations entre les différentes variables représentant les tags présents à une distance maximale de 30 mètres d'un lieu d'accident. Pour cela, nous avons créé un dataframe où chaque enregistrement représente un accident et chaque variable représente un tag. Cela nous a conduit à un dataframe comportant 300 variables et 548 individus. Le voici : <!-- Voici le code utilisé pour créer ce dataFrame : -->
+
+```{r, echo=FALSE}
+table_tags <- tibble(
+  tags=str_split(Tampon_Accidents_velo_osm_sf$other_tags,",") %>% 
+  unlist()
+) %>% 
+  group_by(tags) %>% 
+  count() %>% 
+  arrange(desc(n)) %>% 
+  unique() %>% 
+  drop_na()
+
+
+
+Accidents_velo_tags_osm <- map(table_tags$tags,function(x){
+  temp <- Tampon_Accidents_velo_osm_sf %>% 
+    filter(str_detect(other_tags,fixed(x))) %>% 
+    distinct(Num_Acc)
+
+  Accidents_velo_epci_sf %>% 
+    as_tibble() %>% 
+    mutate(!!x :=ifelse(Num_Acc %in% temp$Num_Acc,1,0)) %>% 
+    select(Num_Acc,.data[[x]])
+}) %>% 
+  reduce(left_join, by = 'Num_Acc')
+
+### Renomage des colonnes 
+for (i in 1:ncol(Accidents_velo_tags_osm)){
+  nom <- gsub("\"", "", names(Accidents_velo_tags_osm[i]))
+  colnames(Accidents_velo_tags_osm)[i] <- nom
+}
+
+
+### Resultat
+head(Accidents_velo_tags_osm,5)
+
+
+```
+
+Ensuite, nous avons créé une fonction pour simplifier la construction du dataFrame utilisé dans l'ACM. Cette fonction prend un dataFrame et un nombre en entrée, et retourne le même dataFrame avec toutes les variables qui sont présente à minima au nombre de fois donné par le nombre entrée de la fonction. J'ai utilisé cette fonction pour créer un dataFrame qui me donneras toute les variables qui ont la valeur 1 sur au moins 10 individus, ce dataframe renverras seulement 48 variables. Le voici :
+ <!-- Voici le code de cette fonction : -->
+
+```{r, echo=FALSE}
+BD_ACM <- function(data,nb_tag){
+  df1 <- data.frame(col = 1)
+  for (i in 1:ncol(data)) {
+    if(class(data[[i]]) == "numeric"){
+      val <- c(sum(data[i] == 1))
+      nom <- names(data[i])
+      df1 <- cbind(df1, nom = val)
+      colnames(df1)[i] <- nom
+    }}
+    df2 <- cbind(data[1])
+    #y <- 1
+    for(i in 1:ncol(df1)){
+      if( df1[[i]] > nb_tag){
+        #y <- y + 1
+        nom_col <- names(df1)[i]
+        df2 <- cbind(df2,data[,c(nom_col)])
+      }
+    }
+  return(df2)
+}
+
+# Création d'un dataframe qui regroupe toutes les variables qui ont au moins 10 présences sur l'ensemble des individus.
+
+datacm <-BD_ACM(Accidents_velo_tags_osm,10)
+#kable(
+  head(datacm,5)# %>%
+  #select(1:8))
+```
+
+Afin de réaliser une ACM, nous devons convertir les variables de tags en facteurs. Nous effectuerons cette analyse sur deux dataframes, l'un contenant toutes les variables de tags, et l'autre ne contenant que les variables de tags présentes au moins dix fois sur l'ensemble des individus. Voici les types modifié sur ces deux dataframes :
+
+```{r, echo=FALSE}
+# Modification du type pour le dataFrame qui comprend toute les varibales
+Accidents_velo_tags_osm[] <- lapply(Accidents_velo_tags_osm, factor)
+Accidents_velo_tags_osm$Num_Acc <- as.character(Accidents_velo_tags_osm$Num_Acc)
+
+# Modification du type pour le dataFrame qui comprend 48 variables
+datacm[] <- lapply(datacm, factor)
+datacm$Num_Acc <- as.character(datacm$Num_Acc)
+
+Accidents_velo_tags_osm
+head(datacm,5) 
+```
+
+###Premières ACM sur toutes les variables 
+
+
+```{r, echo=FALSE}
+res.mca <- MCA(Accidents_velo_tags_osm,graph=FALSE)
+#summary(res.mca)
+plot(res.mca, autoLab = "yes")
+head(res.mca$ind$coord,5)
+```
+
+Nous avons en sortie un extrait du tableau des coordonnées des individus ainsi que notre graphique de l'ACM, dans cette exemple-ci nous avont utilisé notre datafrale complet. Cependant, nous ne pouvons pas tirer de conclusions sur les individus ou les variables car le pourcentage d'information résumé pour le premier axe est de 2,74% et de 2,15% pour le second axe, soit un total de seulement 4,89% de l'information. Ce pourcentage est considéré comme trop faible pour en tirer des conclusions significatives.
+
+
+###Deuxième ACM sur le dataFrame qui comprend seulement les 48 variables (tags) 
+
+```{r, echo=FALSE}
+res.mca <- MCA(datacm,graph=FALSE)
+#summary(res.mca)
+plot(res.mca, autoLab = "yes")
+head(res.mca$ind$coord,5)
+```
+Nous avons comme sur la première ACM, un premier tableau qui est un extrait des coordonnées des individus sur les 5 premiers axes et sur la seconde figure notre ACM avec les variables et les individus représentés. Nous pouvons faire la même conclusion que l'analyse d'avant le pourcentage d'information résumé est trop faible nous avons au total seulement 2,59%. Nous pouvons tout de même regardé les différences qu'il y aurait entre certains individus affiché. J'ai récupéré les informations de certains individus affiché en haut du graphique : 
+
+```{r, echo=FALSE}
+kable(subset(datacm, datacm$Num_Acc == "202000043620") %>%
+        select(1:7))
+kable(subset(datacm, datacm$Num_Acc == "202000039502")%>%
+        select(1:7))
+kable(subset(datacm, datacm$Num_Acc == "202000008898")%>%
+        select(1:7))
+kable(subset(datacm, datacm$Num_Acc == "202000033025")%>%
+        select(1:7))
+```
+
+Nous pouvons rapidement observer que sur les 7 premières variables prennent les mêmes valeurs. Il y a quelques différences sur la suite des variables, mais cela semble cohérent que ces individus soient proches dans le graphique.
 
 ## Zone accidentogène
 
