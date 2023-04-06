@@ -2,6 +2,13 @@
 title: "Aug_marathon_web"
 format: html
 editor: visual
+output: 
+    html_document:
+      number_sections: true
+      toc_depth: 2
+      toc: true
+      toc_float:
+        toc_collapsed: true
 ---
 
 ## Analyse descriptive et quantitative des diférentes tables.
@@ -52,6 +59,10 @@ ggplotly(gg)
 
 ```
 
+Observons le nombre d'accident par mois de 2005 à 2021, sur Montpellier Méditerrannée Métropole (MMM). Nous observons un pic du nombre d'accidents au mois de Septembre. Nous pouvons faire l'hypothèse que c'est la période où il y a le plus de cyclistes, car c'est le début de l'année scolaire, et que les jours sont encore assez chauds. On remarque un faible nombre d'accident durant tous les mois d'hiver. Nous faisons l'hypothèse qu'il y a une baisse du nombre de cycliste en automne-hiver. Le mois d'août est le troisième mois le plus faible, c'est la période où la plus grande partie des gens est en congé, donc la circulation est plus faible.
+
+Ce graphique montre bien l'évolution du nombre d'accident au cours des mois. Nous supposons que le nombre d'accident est lié au nombre de cyclistes.
+
 ```{r echo=FALSE}
 
 df_count <- Accidents_velo_epci_sf %>%
@@ -98,6 +109,8 @@ ggplotly(p) %>%
 
 ```
 
+Observons le nombre d'accident par mois pour chaque année, de 2005 à 2021, sur MMM. Nous pouvons sélectionner un seul mois ou plusieurs pour mieux les comparer. On peut ainsi voir qu'il y a des mois qui sont au de-dessus d'autres, pour toutes les années confondues (septembre est toujours au dessus d'août, ou équivalent). Aussi, Certains mois ont une très grande variabilité suivant les années. C'est le cas du mois d'avril par exemple.
+
 ```{r echo=FALSE}
 #lumière lors de l'accident : 
 Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>% 
@@ -122,12 +135,14 @@ p <- ggplot(Accidents_velo_epci_sf, aes(x = lum, fill=lum)) +
   theme(axis.text.x = element_blank()) +
   guides(fill = guide_legend(title = ""))
 
-a<-ggplotly(p)
-a
+p
 ```
+
+Nous avons supposé que la luminosité au moment de l'accident peut être un facteur déterminant. Nous observons sur ce graphique que la très grande majorité des accidents a lieu en plein jour. En effet, c'est en plein jour qu'il y a le plus de cyclistes, et le plus d'automobilistes. C'est ensuite la nuit avec éclairage public allumé qu'il y a autre partie des accidents. C'est sans doute car les accidents ont majoritairement lieu en ville.
 
 ```{r echo=FALSE}
 
+library(ggplot2)
 #horaires des accidents.
 Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>%#on ne va garder que les heures et se débarasser des minutes.
   mutate(hrmn = substr(hrmn, 1, 2))
@@ -190,9 +205,12 @@ df_count <- Accidents_velo_epci_sf %>%
 ggplot(df_count, aes(x = hrmn, y = n)) +
   geom_col(aes(fill = agg), width = 0.7)+
   scale_fill_manual(values = c("#fcbfff","#bfe5ff"))+
-  labs(title = "Heures des accidentents, en agglomération et hors agglomération.")+  theme(legend.title = element_blank())
-
+  labs(title = "Heures des accidents, en agglomération et hors agglomération.")+  theme(legend.title = element_blank())
 ```
+
+Observons les heures des accidents. On constate les pics d'accidents aux horaires de pointe : 8h-9h et 17h-18h. C'est en effet l'heure où il y a le plus de circulation. La nuit, il n'y presque pas d'accident (comme le montrait aussi le graphique précédent).
+
+Nous avons aussi regardé quelle est la part des accidents entre l'agglomération et hors de l'agglomération. On peut facilement voir que la plus grande part des accidents a lieu en agglomération.
 
 ```{r echo=FALSE}
 
@@ -212,7 +230,7 @@ df_new$hors_agglomeration[20] <-c(0)
 
 ### VERSION INTERRACTIVE
 library(plotly)
-p <- ggplotly(
+ggplotly(
   ggplot(df_new, aes(x = heure)) + 
     geom_line(aes(y = en_agglomeration, group = "en_agglomeration", color = "en_agglomeration"), size = 1) + 
     geom_line(aes(y = hors_agglomeration*10, group = "hors_agglomeration", color = "hors_agglomération"), size = 1) +
@@ -225,8 +243,10 @@ p <- ggplotly(
 )
 
 # Afficher le graphique interactif
-p
+
 ```
+
+Grâce à ce graphique à double échelles, nous pouvons comparer les accidents entre agglomération et hors agglomération. Ce qui est intéressant est de regarder si les pics ont lieu aux mêmes horaires. Or comme nous l'avions déjà observé précédemment, en agglomération, le pics d'accient à lieu aux heures de pointe (8h-9h et 17h-18h). En revanche, hors agglomération, le pic a lieu dans la matinée vers 11H. Nous pouvons supposer que cela concerne plutôt des déplacments de types loisirs, et à des heures ou la circulation automobile est faible.
 
 ```{r echo=FALSE}
 
@@ -261,8 +281,15 @@ ggplot(Accidents_velo_epci_sf, aes(x = int, fill=int)) +
     guides(fill = guide_legend(title = ""))+
   scale_fill_manual(values = couleurs)
 
-# on observe que il y abeaucoup d'accidents qui ne sont pas dans des intersections. donc on va faire une colonne qui contient soit intersection soit non-inetrsection. 
 
+```
+
+Analysons les types d'intersections sur le lieu des accidents. On se demande si les accidents ont lieu sur des routes sans intersection ou bien sur des intersections. On oberve que le plus grand nombre d'accident a lieu sur des routes hors intersection.
+
+Toutefois, on a une variable Hors interection mais plusieurs variables décrivant les différents types d'intersections. On fait la comparaison entre les accidents hors intersection et les accidents ayant lieu sur tous types d'intersection .
+
+```{r echo=FALSE}
+# on observe que il y abeaucoup d'accidents qui ne sont pas dans des intersections. donc on va faire une colonne qui contient soit intersection soit non-inetrsection. 
 Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>%
   mutate(type_int = if_else(int != "Hors intersection", "Intersection", int))
 
@@ -276,10 +303,11 @@ ggplot(Accidents_velo_epci_sf, aes(x = type_int, fill=int)) +
   scale_fill_manual(values = couleurs)
 ```
 
+Une fois que les différents types d'intersections sont rassemblés en une seule colonne, on voit que l'écart est nettement plus faible. Les accidents hors intersection restent majeurs.
+
 ```{r echo=FALSE}
 
 lieux_epci <- readRDS("data MMM/onisr/lieux_epci.rds")
-dim(lieux_epci)
 
 lieux_epci <- merge(Accidents_velo_epci_sf, lieux_epci, by = "Num_Acc")
 
@@ -302,7 +330,7 @@ lieux_epci <- lieux_epci %>%
 
 couleurs <- c("#8dd3c7","#ffffb3", "#bebafa","#fb8072", "#80b1d3", "#fdb462")
 
-ggplot(lieux_epci, aes(x = catr, fill=catr)) +
+ggplotly(ggplot(lieux_epci, aes(x = catr, fill=catr)) +
   geom_bar(stat = "count")+
   labs(title = "Catégorie de route sur l'accident", 
        x = "catégorie de route", 
@@ -310,5 +338,8 @@ ggplot(lieux_epci, aes(x = catr, fill=catr)) +
   theme(axis.text.x = element_blank())+
     guides(fill = guide_legend(title = ""))+
   scale_fill_manual(values = couleurs)
+  )
 
 ```
+
+Observons les différentes catégories de routes sur le lieu d'accident. On voit que la plus grande part des accidents a lieu sur des routes communales. Cela englobe toutes les voies qui appartiennent au domaine public routier communal. Ce sont les routes que nous empruntons chaque jour en ville. Comme leur nom l\'indique, les routes communales se trouvent en agglomération. C'est donc cohérent par rapport au fait que la plus grande majorité des accidents a lieu en agglomération.
