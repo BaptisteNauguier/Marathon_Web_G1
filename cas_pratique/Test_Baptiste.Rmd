@@ -5,26 +5,514 @@ date: "03/04/2023"
 output: html_document
 ---
 
+# Chargement des tables 
+
+**GEOVELO**
+
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+geovelo <- readRDS("data MMM/geovelo/epci_geovelo_202301.rds")
+geovelo
+```
+** **
+
+
+```{r}
+library(tidyverse)
+library(sf)
+library(tmap)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r}
+geovelo
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+onisr <- readRDS("data MMM/onisr/Accidents_velo_epci_sf.rds")
+onisr
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+#test <- geojson_read("data MMM/france-20230301.geojson")
+```
+
+```{r}
+#test
+```
+
+
+```{r}
+test2 <- readRDS("data MMM/OSM/epci_osm_140101.rds")
+test2
+```
+
+```{r}
+test3 <- readRDS("data MMM/onisr/caracteristiques_epci.rds")
+test3
+```
+
+
+```{r}
+test4 <- readRDS("data MMM/OSM/epci_osm_140101.rds")
+test4
+```
+
+
+```{r}
+
+test5 <-readRDS("data MMM/OSM/Tampon_Accidents_velo_osm_sf.rds")
+test5
+
+```
+
+# Exploration des données :
+
+```{r}
+library(dplyr)
+glimpse(test3)
+```
+
+```{r}
+osm <- readRDS("data MMM/OSM/epci_osm_230101.rds")
+osm
+```
+```{r}
+accidents <- readRDS("data MMM/onisr/Accidents_velo_epci_sf.rds")
+tempons <- readRDS("data MMM/onisr/Tampon_Accidents_velo_sf.rds")
+```
+
+
+
+
+
+
+```{r}
+library(leaflet)
+epci <- readRDS("data MMM/INSEE/epci.rds")
+leaflet(data=epci) %>% 
+  addTiles() %>% 
+  addPolygons()
+```
+
+
+
+```{r}
+#geovelo
+epci_geovelo_202301 <- readRDS("data MMM/geovelo/epci_geovelo_202301.rds")
+
+#onisr
+caracteristiques_epci <- readRDS("data MMM/onisr/caracteristiques_epci.rds")
+lieux_epci <- readRDS("data MMM/onisr/lieux_epci.rds")
+usagers_epci <- readRDS("data MMM/onisr/usagers_epci.rds")
+vehicules_epci <- readRDS("data MMM/onisr/vehicules_epci.rds")
+Accidents_velo_epci_sf <- readRDS("data MMM/onisr/Accidents_velo_epci_sf.rds")
+Tampon_Accidents_velo_sf <- readRDS("data MMM/onisr/Tampon_Accidents_velo_sf.rds")
+
+#insee
+communes_epci <- readRDS("data MMM/INSEE/communes_epci.rds")
+epci <- readRDS("data MMM/INSEE/epci.rds")
+
+#osm
+Tampon_Accidents_velo_osm_sf <- readRDS("data MMM/OSM/Tampon_Accidents_velo_osm_sf.rds")
+
+#insee données carroyées
+carreauxSf <- readRDS("data MMM/INSEE/carreauxSf.rds")
+
+#Ecole
+OSM_Montpellier_ecole_sf <- readRDS("data MMM/Ecole/OSM_Montpellier_ecole_sf.rds")
+OSM_Metropole_ecole_sf <- readRDS("data MMM/Ecole/OSM_Metropole_ecole_sf.rds")
+
+#Carte scolaire
+carte_sco_Montpellier_propre_sf <- readRDS("data MMM/Ecole/carte_sco_Montpellier_propre_sf.rds")
+
+#Flux scolaires
+Ensemble_temp_trajet_carreaux_200m_select_explode <- readRDS("data MMM/Trajets_dom_ecole/Ensemble_temp_trajet_carreaux_200m_select_explode.rds")
+
+```
+
+```{r}
+Accidents_velo_epci_sf 
+Accidents_Lat_Long <- Accidents_velo_epci_sf[,c("lat","long")]
+Accidents_Lat_Long
+
+```
+
+
+```{r}
+OSM_Vrai <- readRDS("data MMM/onisr/Tampon_Accidents_velo_sf.rds")
+OSM_Vrai
+```
+
+```{r}
+Tampon_Accidents_velo_sf <- OSM_Vrai %>%
+  st_set_crs(4326) %>%
+  st_transform(crs=2154) %>%
+  st_buffer(dist=units::set_units(500,"m")) %>%
+  st_transform(crs=4326)
+Tampon_Accidents_velo_sf
+```
+
+
+
+```{r}
+OSM_Faux <- readRDS("data MMM/OSM/Tampon_Accidents_velo_osm_sf.rds")
+OSM
+```
+
+
+```{r}
+carte_base <- tm_shape(communes_epci)+
+  tm_polygons(col = "grey",border.col = "white")+
+  tm_shape(epci)+
+  tm_borders(col = "#666666",lwd=3)
+
+carte_geovelo <- tm_shape(epci_geovelo_202301 %>% 
+                     mutate(ame_d=str_trunc(ame_d,15,side="right",ellipsis="..."))
+)+
+  tm_lines(col="ame_d",title.col = "Type\nd'aménagement",
+           palette="viridis") 
+
+carte_accidents <- tm_shape(Accidents_velo_epci_sf %>% 
+                              select(-adresse,-adr))+
+  tm_dots(col="red")+
+  tm_add_legend(type = "fill",labels = "Accidents",col="red")
+
+carte_tampons_accidents <- tm_shape(Tampon_Accidents_velo_sf %>% 
+                                      select(-adresse,-adr))+
+  tm_fill(col="navy",alpha = 0.5)
+
+
+
+carte_finale <- carte_base+
+  carte_tampons_accidents+
+  carte_geovelo+
+  carte_accidents+
+  tm_layout(main.title ='Aménagements cyclables de Montpellier Méditerranée Métropole',
+            main.title.size=1,
+            inner.margins=0.1,
+            legend.outside = T,
+            legend.text.size=0.4)+
+  tm_credits("Source: géovélo, onisr, insee",position = c(0,0))+
+  tm_compass()
+
+tmap_leaflet(carte_finale)
+```
+
+
+```{r}
+# Charger la bibliothèque osmdata
+library(osmdata)
+
+# Spécifier la latitude et la longitude de l'accident
+lat <- 48.858093
+lon <- 2.294694
+
+# Définir une fenêtre autour du lieu de l'accident
+bbox <- opq(bbox = c(lon - 0.001, lat - 0.001, lon + 0.001, lat + 0.001))
+
+# Récupérer les données OSM dans la fenêtre définie
+osmdata <- osm
+
+# Extraire les informations pertinentes du dataframe OSM récupéré
+osm_info <- data.frame(
+  name = osmdata$osmdata$nodes$tags$name,
+  amenity = osmdata$osmdata$nodes$tags$amenity,
+  highway = osmdata$osmdata$ways$tags$highway
+)
+
+# Afficher les informations
+print(osm_info)
+```
+
+
+```{r}
+osm
+```
+
+```{r}
+library(ROverpass)
+
+# Spécifier la paire de coordonnées GPS
+lat <- 43.610769
+lon <- 3.876716
+
+# Construire la requête Overpass
+overpass_query <- paste0("
+  [out:json];
+  node(around:100, ", lat, ",", lon, ");
+  out tags;
+")
+
+# Envoyer la requête et récupérer les résultats
+osm_data <- tryCatch(
+  overpass_osmdata(overpass_query),
+  error = function(e) NULL
+)
+
+# Extraire les tags et les stocker dans une liste
+if (!is.null(osm_data)) {
+  tags_list <- osm_data$osm_points$tags
+}
+```
+```{r}
+library(osmdata)
+
+# Spécifier la paire de coordonnées GPS
+lat <- 43.610769
+lon <- 3.876716
+
+# Créer un objet bbox pour spécifier la zone autour des coordonnées
+bbox <- opq(bbox = c(lon-0.001, lat-0.001, lon+0.001, lat+0.001))
+
+# Envoyer la requête et récupérer les résultats
+osm_data <- tryCatch(
+  osmdata_sf(bbox),
+  error = function(e) NULL
+)
+
+tags_list <- osm_data$osm_points$tags
+
+
+# Extraire les tags et les stocker dans une liste
+#if (!is.null(osm_data)) {
+ # tags_list <- osm_data$osm_points$tags
+#}
+
+tags_list
+```
+
+```{r}
+tags_list
+```
+
+
+# Analyse descriptives 
+
+
+**Chargement de données**
+```{r}
+Accidents_velo <- readRDS("data MMM/onisr/Accidents_velo_epci_sf.rds")
+Caracteristiques <- readRDS("data MMM/onisr/caracteristiques_epci.rds")
+Lieu <- readRDS("data MMM/onisr/lieux_epci.rds")
+Tampon_Accidents <- readRDS("data MMM/onisr/Tampon_Accidents_velo_sf.rds")
+Usagers <- readRDS("data MMM/onisr/usagers_epci.rds")
+Vehicules <- readRDS("data MMM/onisr/vehicules_epci.rds")
+Tampon_Accidents_velo_osm_sf <- readRDS("data MMM/OSM/Tampon_Accidents_velo_osm_sf.rds")
+Accidents_velo_epci_sf <- readRDS("data MMM/onisr/Accidents_velo_epci_sf.rds")
+
+Accidents_velo
+Caracteristiques
+Lieu
+Tampon_Accidents_velo_osm_sf
+Usagers
+Vehicules
+
+#jointures
+Accidents_velo_usagers <- data.frame(merge(Usagers,Accidents_velo, on = "Num_Acc"))
+#Pieton <- Accidents_velo_usagers %>%
+#  filter(place == "10")
+#Pieton
+Accidents_velo_usagers
+Tampon_Accidents_velo_osm_sf
+```
+nous avons la table Usagers qui comporte plus de 20 000 enregistrements et la table Accidents_velo qui comporte 548 enregistrements on pourrait s'attendre à que on est au maximum 548 enregistrements sur la jointure entre ces deux tables mais nous avons 1 097 enregistrements cela est du au faite que un accidents comporte plusieurs usagers et nous faisons la jointure entre les deux tables grace au champ Num_Acc donc nous avons des duplications de ces Numeros d'accidents
+
+
+```{r}
+library(ggplot2)
+
+freq_valeurs <- table(Accidents_velo_usagers$Num_Acc)
+data <- as.data.frame(freq_valeurs)
+data2 <- as.data.frame(table(data$Freq))
+data3 <- data.frame(nombre_personne = c(data2$Var1), nombre_accidents = c(data2$Freq))
+ 
+
+# Créer un data frame avec les données
+df <- data3
+
+# Créer le graphique avec ggplot2
+ggplot(data = df, aes(x = nombre_personne, y = nombre_accidents, fill = nombre_personne)) + 
+  geom_bar(stat = "identity") +
+  labs(title = "Diagramme en barre", x = "Nombres de personnes impliquées dans un accident", y = "Nombres d'accidents") +
+  geom_text(aes(label = nombre_accidents), position = position_stack(vjust = 0.5), color = "white") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"),
+        axis.title = element_text(face = "bold"),
+        legend.position = "none",
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank())
+```
+
+Nous observons que la plus pars des accidents de vélo implique 2 personnes ce qui constitue 79% des accidents.
+
+
+```{r}
+
+table_tags <- tibble(
+  tags=str_split(Tampon_Accidents_velo_osm_sf$other_tags,",") %>% 
+  unlist()
+) %>% 
+  group_by(tags) %>% 
+  count() %>% 
+  arrange(desc(n)) %>% 
+  unique() %>% 
+  drop_na()
+
+
+
+Accidents_velo_tags_osm <- map(table_tags$tags,function(x){
+  temp <- Tampon_Accidents_velo_osm_sf %>% 
+    filter(str_detect(other_tags,fixed(x))) %>% 
+    distinct(Num_Acc)
+
+  Accidents_velo_epci_sf %>% 
+    as_tibble() %>% 
+    mutate(!!x :=ifelse(Num_Acc %in% temp$Num_Acc,1,0)) %>% 
+    select(Num_Acc,.data[[x]])
+}) %>% 
+  reduce(left_join, by = 'Num_Acc')
+
+Accidents_velo_tags_osm$`"oneway"=>"yes"` <- as.numeric(Accidents_velo_tags_osm$`"oneway"=>"yes"`)
+sum(Accidents_velo_tags_osm[2] == 1)
+
+### RENAME ####
+for (i in 1:ncol(Accidents_velo_tags_osm)){
+  nom <- gsub("\"", "", names(Accidents_velo_tags_osm[i]))
+  colnames(Accidents_velo_tags_osm)[i] <- nom
+}
+Accidents_velo_tags_osm
+
+
+### Fonction pour choisir un dataFrame pour l'ACM 
+
+BD_ACM <- function(data,nb_tag){
+  df1 <- data.frame(col = 1)
+  for (i in 1:ncol(data)) {
+    if(class(data[[i]]) == "numeric"){
+      val <- c(sum(data[i] == 1))
+      nom <- names(data[i])
+      df1 <- cbind(df1, nom = val)
+      colnames(df1)[i] <- nom
+    }}
+    df2 <- cbind(data[1])
+    #y <- 1
+    for(i in 1:ncol(df1)){
+      if( df1[[i]] > nb_tag){
+        #y <- y + 1
+        nom_col <- names(df1)[i]
+        df2 <- cbind(df2,data[,c(nom_col)])
+      }
+    }
+  return(df2)
+}
+
+
+datacm <-BD_ACM(Accidents_velo_tags_osm,10)
+datacm
+#datacm <- as_tibble(datacm)
+```
+
+
+```{r}
+tmp <- datacm
+```
+
+
+# ACM pour toutes les variables (donc tout les tags)
+
+```{r}
+library(FactoMineR)
+Accidents_velo_tags_osm[] <- lapply(Accidents_velo_tags_osm, factor)
+Accidents_velo_tags_osm$Num_Acc <- as.character(Accidents_velo_tags_osm$Num_Acc)
+#Accidents_velo_tags_osm_num <- data.frame(lapply(Accidents_velo_tags_osm, as.integer))
+#nombre_rep_col <- colSums(lapply(Accidents_velo_tags_osm,integer))
+#any(is.na(Accidents_velo_tags_osm)) # regarde si il
+Accidents_velo_tags_osm
+```
+
+```{r}
+Accidents_velo_tags_osm
+```
+
+
+
+```{r}
+res.mca <- MCA(Accidents_velo_tags_osm,graph=FALSE)
+summary(res.mca)
+plot(res.mca, autoLab = "yes")
+#plot(res.mca,cex = 0.8,autoLab = "yes")
+res.mca$ind
+```
+
+# ACM pour toute les colonnes de variables où l'apparition de cette variable(tag) est présente au moins 10 fois au seins des individus 
+```{r}
+library(FactoMineR)
+datacm[] <- lapply(datacm, factor)
+datacm$Num_Acc <- as.character(datacm$Num_Acc)
+#datacm <- data.frame(lapply(datacm, as.integer))
+```
+
+```{r}
+datacm
+subset(datacm, datacm$Num_Acc == "202000043620")
+```
+
+
+```{r}
+res.mca <- MCA(datacm,graph=FALSE)
+summary(res.mca)
+plot(res.mca, autoLab = "yes")
+res.mca$ind
+```
+Nous pouvons observée que le pourcentage d'information est moins important que sur l'ACM en prenant la totalité d'informations résumé. Mais j'ai l'impression que nous avons une meilleur variance.
+
+
+# Test analyse ACM 
+
+```{r}
+subset(datacm, datacm$Num_Acc == "202000043620")
+subset(datacm, datacm$Num_Acc == "202000039502")
+subset(datacm, datacm$Num_Acc == "202000008898")
+subset(datacm, datacm$Num_Acc == "202000033025")
+```
+
+```{r}
+library(FactoMineR)
+data(decathlon)
+res.mca
+col <- c("red", "green", "blue", "purple", "yellow", "cyan", "magenta", "black")
+heatmap(res.mca$ind$coord[, 1:4], Colv = NA, Rowv = NA, col = col, 
+        main = "Heatmap des individus sur les 4 premiers axes factoriels")
+```
+
+
+Un heatmap est un graphique qui permet de visualiser la corrélation entre différentes variables. Il utilise une échelle de couleurs pour représenter les valeurs numériques de chaque variable. Les couleurs chaudes (rouge, orange, jaune) représentent des valeurs élevées, tandis que les couleurs froides (bleu, vert) représentent des valeurs faibles.
+
+L'interprétation d'un heatmap dépend de la question de recherche et des données utilisées. Cependant, voici quelques éléments généraux à prendre en compte :
+
+    Les variables qui sont fortement corrélées auront des couleurs similaires. Par exemple, si deux variables ont une forte corrélation positive, elles auront une couleur chaude similaire. Si elles ont une forte corrélation négative, elles auront une couleur froide similaire.
+
+    Les variables qui ne sont pas corrélées auront une couleur neutre (blanche ou grise).
+
+    Les groupes de variables qui sont corrélées entre elles peuvent former des motifs ou des blocs sur le heatmap.
+
+    Les variables qui ont une forte corrélation avec une seule autre variable peuvent former des bandes diagonales.
+
+En résumé, le heatmap permet de visualiser rapidement les corrélations entre différentes variables et d'identifier des groupes de variables qui sont liées entre elles. Cela peut aider à comprendre la structure des données et à formuler de nouvelles hypothèses de recherche.
+
+
+```{r}
+# Chargement des packages nécessaires
+library(ca)
+library(factoextra)
+
+
+# affichage des variables sur nos 2 premiers axes
+fviz_mca_var(res.mca, choice = "mca.cor", 
+            repel = TRUE, # Avoid text overlapping (slow)
+            ggtheme = theme_minimal())
+
+
+```
+
