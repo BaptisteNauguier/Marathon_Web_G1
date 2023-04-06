@@ -191,8 +191,6 @@ On se rend compte qu'il y a plus d'accidents en vélo lorsque la limitation de v
 
 Remarque: j'enlève la ligne 532 car il y a un -1 dans la colonne des limitations des vitesses et ce -1 s'affiche donc dans mon histogramme. Etant donné que je n'arrive pas à enlever ce -1 avec un replace (R ne voit pas ce -1 comme étant un -1 dans la table), j'ai donc décidé de le faire manuellement en regardant à quelle ligne il se situait et l'enlever.
 
-## Maintenant, on va essayer de voir comment obtenir les infos sur les tampons afin d'avoir plus d'informations sur ce qu'il y a autour de chaque accident
-
 ```{r Tags sur tampons}
 # -- (ligne en commentaire car erreur)
 
@@ -217,8 +215,6 @@ Remarque: j'enlève la ligne 532 car il y a un -1 dans la colonne des limitation
 # Convertir les données OSM en objets sf
 # sf <- st_as_sf(tags)
 ```
-
-Je n'ai pas réussi à le faire malgré de nombreuses tentatives mais par la suite, nous verrons que nous possédons déjà ces informations dans une autre table.
 
 ## Analyse de la correlation entre les accidents de vélo et les variables de la table usagers
 
@@ -296,6 +292,7 @@ On se rend compte que les accidents impliquant un vélo se déroule souvent lors
 ```{r}
 
 library(dplyr)
+library(plotly)
 #horaires des accidents.
 Accidents_velo_trajet <- merged_usager %>%#on ne va garder que les heures et se débarasser des minutes.
   mutate(hr = substr(hrmn, 1, 2))
@@ -364,7 +361,7 @@ df_count <- Accidents_velo_trajet %>%
 
 df_count$hr = as.numeric(df_count$hr)
 
-ggplot(df_count, aes(x = hr, y = n, group = trajet, color = trajet)) +
+p = ggplot(df_count, aes(x = hr, y = n, group = trajet, color = trajet)) +
   geom_line(size = 1) +
   labs(title = "Nombre d'accidents par type de trajet et par heure",
        x = "Heure", y = "Nombre d'accidents") +
@@ -372,8 +369,37 @@ ggplot(df_count, aes(x = hr, y = n, group = trajet, color = trajet)) +
   scale_color_manual(values = couleurs2)+
   scale_x_continuous(limits = c(0, 23), breaks = 0:23)
 
+# Rendre le graphique interactif avec plotly
+ggplotly(p) %>%
+  layout(legend = list(x = 1, y = 0.5)) %>%
+  htmlwidgets::onRender("
+            function(el, x) {
+              var g = Plotly.d3.select(el).select('g.legend');
+              g.selectAll('g.traces').on('mouseover', function(d) {
+                Plotly.d3.select(this).style('opacity', 1);
+                var name = d[0].data.name;
+                var update = {};
+                var visible = [];
+                var data = x.data;
+                for (i = 0; i < data.length; i++) {
+                  if (data[i].name == name) {
+                    visible.push(true);
+                  } else {
+                    visible.push('legendonly');
+                  }
+                }
+                update['visible'] = visible;
+                Plotly.update(el, update, {});
+              }).on('mouseout', function(d) {
+                Plotly.d3.select(this).style('opacity', null);
+              });
+            }
+            ")
+
 
 ```
+
+Nous pouvons observer par exemple, que les accidents se déroulent plus souvent lors de trajet "Domicile-travail" vers environ 9h du matin et lors de trajet de "promenade-loisirs" vers 19h ce qui coincident avec la réalité.
 
 ### Variable Locp
 
