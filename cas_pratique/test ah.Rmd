@@ -1,0 +1,353 @@
+---
+title: "augustin test"
+author: "Augustin Hannebert"
+date: "2023-04-06"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r echo=FALSE, message=FALSE, error=FALSE}
+library(dplyr)
+library(sf)
+library(ggplot2)
+library(tidyr)
+library(leaflet)
+library(reshape2)
+library(vcd)
+library(plotly)
+
+Accidents_velo_epci_sf <- readRDS("data MMM/onisr/Accidents_velo_epci_sf.rds")
+
+Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>%
+  mutate(mois = gsub("^0*", "", mois)) %>%
+  mutate(mois := as.integer(mois))
+Accidents_velo_epci_sf$mois <- month.name[Accidents_velo_epci_sf$mois] #transforme les nombre en noms de mois
+Accidents_velo_epci_sf$mois <- factor(Accidents_velo_epci_sf$mois, levels = month.name)
+```
+
+```{r echo=FALSE}
+
+### GEOMLINE 
+df_count <- Accidents_velo_epci_sf %>%
+  count(mois) %>%
+  mutate(total = sum(n))
+
+df_count$mois <- as.integer(df_count$mois)
+
+
+
+# Création du graphique ggplot2
+gg <- ggplot(df_count, aes(x = mois, y = n)) +
+  geom_line(color = "#99c3f0") +
+  geom_point(color = "#99d4f0", size = 3) +
+  labs(title = "Nombre d'accidents par mois", x = "Mois", y = "Nombre d'accidents") +
+  scale_x_continuous(breaks = 1:12, labels = month.name[1:12])
+
+# Transformation en graphique interactif avec plotly
+ggplotly(gg)
+
+```
+Observons le nombre d'accident par mois de 2005 à 2021, sur Montpellier Méditerrannée Métropole (MMM). Nous observons un pic du nombre d'accidents au mois de Septembre. Nous pouvons faire l'hypothèse que c'est la période où il y a le plus de cyclistes, car c'est le début de l'année scolaire, et que les jours sont encore assez chauds. On remarque un faible nombre d'accident durant tous les mois d'hiver. Nous faisons l'hypothèse qu'il y a une baisse du nombre de cycliste en automne-hiver. Le mois d'août est le troisième mois le plus faible, c'est la période où la plus grande partie des gens est en congé, donc la circulation est plus faible. 
+
+Ce graphique montre bien l'évolution du nombre d'accident au cours des mois. Nous supposons que le nombre d'accident est lié au nombre de cyclistes. 
+
+```{r echo=FALSE}
+df_count <- Accidents_velo_epci_sf %>%
+  count(mois, an) %>%
+  arrange(mois, an)
+
+couleurs <- c("#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928")
+
+
+# Créer le graphique de base avec ggplot2
+p <- ggplot(df_count, aes(x = an, y = n, group = mois, color = mois)) +
+  geom_line() +
+  labs(title = "Nombre d'accidents par mois et par année",
+       x = "Année", y = "Nombre d'accidents") +
+  scale_x_discrete(breaks = unique(df_count$an)) +
+  scale_color_manual(values = couleurs)
+
+# Rendre le graphique interactif avec plotly
+ggplotly(p) %>%
+  layout(legend = list(x = 0.8, y = 0.5)) %>%
+  htmlwidgets::onRender("
+            function(el, x) {
+              var g = Plotly.d3.select(el).select('g.legend');
+              g.selectAll('g.traces').on('mouseover', function(d) {
+                Plotly.d3.select(this).style('opacity', 1);
+                var name = d[0].data.name;
+                var update = {};
+                var visible = [];
+                var data = x.data;
+                for (i = 0; i < data.length; i++) {
+                  if (data[i].name == name) {
+                    visible.push(true);
+                  } else {
+                    visible.push('legendonly');
+                  }
+                }
+                update['visible'] = visible;
+                Plotly.update(el, update, {});
+              }).on('mouseout', function(d) {
+                Plotly.d3.select(this).style('opacity', null);
+              });
+            }
+            ")
+
+
+
+
+```
+
+Observons le nombre d'accident par mois pour chaque année, de 2005 à 2021, sur MMM. Nous pouvons sélectionner un seul mois ou plusieurs pour mieux les comparer. On peut ainsi voir qu'il y a des mois qui sont au de-dessus d'autres, pour toutes les années confondues (septembre est toujours au dessus d'août, ou équivalent). Aussi, Certains mois ont une très grande variabilité suivant les années. C'est le cas du mois d'avril par exemple.
+
+```{r echo=FALSE}
+#lumière lors de l'accident : 
+Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>% 
+  mutate(
+    lum = case_when(
+      lum == "1" ~ "Plein jour",
+      lum == "2" ~ "Crépuscule ou aube",
+      lum == "3" ~ "Nuit sans éclairage public",
+      lum == "4" ~ "Nuit avec éclairage public non allumé",
+      lum == "5" ~ "Nuit avec éclairage public allumé",
+      TRUE ~ lum
+    )
+  )
+etiquettes = c("Plein jour", "Crépuscule", "Nuit sans éclairage public", "Nuit avec éclairage public non allumé","Nuit avec éclairage public allumé")
+
+p <- ggplot(Accidents_velo_epci_sf, aes(x = lum, fill=lum)) +
+  geom_bar(stat = "count") +
+  scale_fill_manual(values = c("#8dd3c7","#ffffb3", "#bebafa","#fb8072", "#80b1d3")) +
+  labs(title = "Lumière au moment de l'accident", 
+       x = "Lumière", 
+       y = "Nombre d'accidents") +
+  theme(axis.text.x = element_blank()) +
+  guides(fill = guide_legend(title = ""))
+
+p
+
+
+```
+
+Nous avons supposé que la luminosité au moment de l'accident peut être un facteur déterminant. Nous observons sur ce graphique que la très grande majorité des accidents a lieu en plein jour. En effet, c'est en plein jour qu'il y a le plus de cyclistes, et le plus d'automobilistes. C'est ensuite la nuit avec éclairage public allumé qu'il y a autre partie  des accidents. C'est sans doute car les accidents ont majoritairement lieu en ville.
+
+```{r echo=FALSE}
+
+library(ggplot2)
+#horaires des accidents.
+Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>%#on ne va garder que les heures et se débarasser des minutes.
+  mutate(hrmn = substr(hrmn, 1, 2))
+
+#gros nettoyage de la colonne horaire
+Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>% 
+  mutate(
+    hrmn = case_when(
+      hrmn == "75" ~ "7",
+      hrmn == "92" ~ "9",
+      hrmn == "81" ~ "8",
+      hrmn == "90" ~ "9",
+      hrmn == "84" ~ "8",
+      hrmn == "83" ~ "8",
+      hrmn == "82" ~ "8",
+      hrmn == "91" ~ "9",
+      hrmn == "85" ~ "8",
+      hrmn == "41" ~ "4",
+      hrmn == "32" ~ "3",
+      hrmn == "74" ~ "7",
+      hrmn == "95" ~ "9",
+      hrmn == "63" ~ "6",
+      hrmn == "72" ~ "7",
+      hrmn == "45" ~ "4",
+      hrmn == "24" ~ "2",
+      hrmn == "30" ~ "3",
+      hrmn == "09" ~ "9",
+      hrmn == "08" ~ "8",
+      hrmn == "07" ~ "7",
+      hrmn == "05" ~ "5",
+      hrmn == "54" ~ "5",
+      hrmn == "93" ~ "9",
+      hrmn == "94" ~ "9",
+      hrmn == "80" ~ "8",
+      hrmn == "65" ~ "6",
+      hrmn == "35" ~ "3",
+      TRUE ~ hrmn
+    )
+  )%>% mutate(hrmn := as.integer(hrmn))
+
+#je transforme la data de hrmn en facteurs
+Accidents_velo_epci_sf$hrmn <- factor(Accidents_velo_epci_sf$hrmn, 
+                                      levels = c(0, 1, 2, 3, 4, 5, 6,7,8,9,10, 11,12,13,14,15,16,17,18,19,20,21,22,23), 
+                                      labels = c("0", "1", "2", "3", "4", "5", "6","7","8","9","10", "11","12","13","14","15","16","17","18","19","20","21","22","23"))
+
+
+#agglomération ou hors agglomération
+Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>% 
+  mutate(
+    agg = case_when(
+      agg == "1" ~ "Hors agglomération",
+      agg == "2" ~ "En agglomération",
+      TRUE ~ agg
+    )
+  )
+
+
+df_count <- Accidents_velo_epci_sf %>%
+  count(hrmn, agg)
+ggplot(df_count, aes(x = hrmn, y = n)) +
+  geom_col(aes(fill = agg), width = 0.7)+
+  scale_fill_manual(values = c("#fcbfff","#bfe5ff"))+
+  labs(title = "Heures des accidents, en agglomération et hors agglomération.")+  theme(legend.title = element_blank())
+
+```
+
+
+Observons les heures des accidents. On constate les pics d'accidents aux horaires de pointe : 8h-9h et 17h-18h. C'est en effet l'heure où il y a le plus de circulation. La nuit, il n'y presque pas d'accident (comme le montrait aussi le graphique précédent). 
+
+Nous avons aussi regardé quelle est la part des accidents entre l'agglomération et hors de l'agglomération. On peut facilement voir que la plus grande part des accidents a lieu en agglomération.  
+
+```{r echo=FALSE}
+
+# Création des données
+date <- sort(unique(Accidents_velo_epci_sf$hrmn))
+temp <- Accidents_velo_epci_sf %>% count(hrmn, agg)
+prov <- data.frame(temp$hrmn, temp$agg,temp$n)
+
+####
+df_new <- prov %>%
+  pivot_wider(names_from = temp.agg, values_from = temp.n)
+colnames(df_new) <- c("heure", "en_agglomeration", "hors_agglomeration")
+
+df_new$hors_agglomeration[2:6] <-c(0,0,0,0,0)
+df_new$hors_agglomeration[20] <-c(0)
+
+
+### VERSION INTERRACTIVE
+library(plotly)
+# ggplotly(
+  ggplot(df_new, aes(x = heure)) + 
+    geom_line(aes(y = en_agglomeration, group = "en_agglomeration", color = "en_agglomeration"), size = 1) + 
+    geom_line(aes(y = hors_agglomeration*10, group = "hors_agglomeration", color = "hors_agglomération"), size = 1) +
+    scale_y_continuous(name = "en_agglomeration", 
+                       sec.axis = sec_axis(~./10, name = "hors_agglomération")) +
+    scale_color_manual(name = "Légende", 
+                       values = c("en_agglomeration" = "#fcbfff", "hors_agglomération" = "#bfe5ff"),
+                       labels = c("en_agglomeration" = "En agglomération", "hors_agglomération" = "Hors agglomération")) +
+    labs(title = "Heures des accidents, en agglomération et hors agglomération.")
+# )
+
+# Afficher le graphique interactif
+
+
+
+
+```
+
+Grâce à ce graphique à double échelles, nous pouvons comparer les accidents entre agglomération et hors agglomération. Ce qui est intéressant est de regarder si les pics ont lieu aux mêmes horaires. Or comme nous l'avions déjà observé précédemment, en agglomération, le pics d'accient à lieu aux heures de pointe (8h-9h et 17h-18h). En revanche, hors agglomération, le pic a lieu dans la matinée vers 11H. Nous pouvons supposer que cela concerne plutôt des déplacments de types loisirs, et à des heures ou la circulation automobile est faible.
+
+
+```{r echo=FALSE}
+
+### intersection ;
+Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>% 
+  mutate(
+    int = case_when(
+      int == "1" ~ "Hors intersection",
+      int == "2" ~ "Intersection en X",
+      int == "3" ~ "Intersection en T",
+      int == "4" ~ "Intersection en Y",
+      int == "5" ~ "Intersection à plus de 4 branches",
+      int == "6" ~ "Giratoire",
+      int == "7" ~ "Place",
+      int == "8" ~ "Passage à niveau",
+      int == "9" ~ "Autre intersection",
+      TRUE ~ int
+    )
+  )
+
+couleurs <- c("#8dd3c7", "#ffffb3", "#bebafa", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9")
+
+
+
+
+ggplot(Accidents_velo_epci_sf, aes(x = int, fill=int)) +
+  geom_bar(stat = "count")+
+  labs(title = "Type d'intersection sur l'accident", 
+       x = "type d'intersection", 
+       y = "Nombre d'accidents")+
+  theme(axis.text.x = element_blank())+
+    guides(fill = guide_legend(title = ""))+
+  scale_fill_manual(values = couleurs)
+
+
+
+
+```
+
+Analysons les types d'intersections sur le lieu des accidents. On se demande si les accidents ont lieu sur des routes sans intersection ou bien sur des intersections. On oberve que le plus grand nombre d'accident a lieu sur des routes hors intersection. 
+
+Toutefois, on a une variable Hors interection mais plusieurs variables décrivant les différents types d'intersections. On fait la comparaison entre les accidents hors intersection et les accidents ayant lieu sur tous types d'intersection .
+
+
+```{r echo=FALSE}
+# on observe que il y abeaucoup d'accidents qui ne sont pas dans des intersections. donc on va faire une colonne qui contient soit intersection soit non-inetrsection. 
+Accidents_velo_epci_sf <- Accidents_velo_epci_sf %>%
+  mutate(type_int = if_else(int != "Hors intersection", "Intersection", int))
+
+ggplot(Accidents_velo_epci_sf, aes(x = type_int, fill=int)) +
+  geom_bar(stat = "count")+
+  labs(title = "Type d'intersection sur l'accident", 
+       x = "type d'intersection", 
+       y = "Nombre d'accidents")+
+  theme(axis.text.x = element_blank())+
+    guides(fill = guide_legend(title = ""))+
+  scale_fill_manual(values = couleurs)
+
+
+
+```
+
+Une fois que les différents types d'intersections sont rassemblés en une seule colonne, on voit que l'écart est nettement plus faible. Les accidents hors intersection restent majeurs.
+
+
+```{r echo=FALSE}
+
+lieux_epci <- readRDS("data MMM/onisr/lieux_epci.rds")
+
+lieux_epci <- merge(Accidents_velo_epci_sf, lieux_epci, by = "Num_Acc")
+
+
+###nature de la route
+lieux_epci <- lieux_epci %>% 
+  mutate(
+    catr = case_when(
+      catr == "1" ~ "Autoroute",
+      catr == "2" ~ "Route nationale",
+      catr == "3" ~ "Route Départementale",
+      catr == "4" ~ "Voie Communales",
+      catr == "5" ~ "Hors réseau public",
+      catr == "6" ~ "Parc de stationnement ouvert à la circulation publique",
+      catr == "7" ~ "Routes de métropole urbaine",
+      catr == "9" ~ "autre",
+      TRUE ~ catr
+    )
+  )
+
+couleurs <- c("#8dd3c7","#ffffb3", "#bebafa","#fb8072", "#80b1d3", "#fdb462")
+
+# ggplotly(
+  ggplot(lieux_epci, aes(x = catr, fill=catr)) +
+  geom_bar(stat = "count")+
+  labs(title = "Catégorie de route sur l'accident", 
+       x = "catégorie de route", 
+       y = "Nombre d'accidents")+
+  theme(axis.text.x = element_blank())+
+    guides(fill = guide_legend(title = ""))+
+  scale_fill_manual(values = couleurs)
+  # )
+
+
+```
+
+Observons les différentes catégories de routes sur le lieu d'accident. On voit que la plus grande part des accidents a lieu sur des routes communales. Cela englobe toutes les voies qui appartiennent au domaine public routier communal. Ce sont les routes que nous empruntons chaque jour en ville. Comme leur nom l’indique, les routes communales se trouvent en agglomération. C'est donc cohérent par rapport au fait que la plus grande majorité des accidents a lieu en agglomération.
